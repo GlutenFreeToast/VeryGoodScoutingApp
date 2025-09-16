@@ -1,0 +1,2 @@
+# VeryGoodScoutingApp
+# VeryGoodScoutingApp
