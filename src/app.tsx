@@ -2,14 +2,40 @@ import { useState } from 'preact/hooks'
 import preactLogo from './assets/preact.svg'
 import viteLogo from '/vite.svg'
 import './app.css'
+import match from './pages/match/match.tsx'
 
 export function App() {
   const [count, setCount] = useState(0)
 
+  function setPage(arg0: string) {
+    
+  }
+
   return (
     <>
+    <div className="buttons">
+      <button className={"match"}> 
+      onClick={() => { setPage("Match") }} 
+      Match</button>
+
+      <button className={"auton"}> 
+
+      Auton</button>
+
+      <button className={"teleop"}> 
+
+      TeleOP</button>
+      
+      <button className={"submit"}> 
+
+      Submit</button>
+
+    </div>
+
+
       <div>
-        <a href="https://vite.dev" target="_blank">
+
+        <a href="https://code.wucode.org/login" target="_blank">
           <img src={viteLogo} class="logo" alt="Vite logo" />
         </a>
         <a href="https://preactjs.com" target="_blank">

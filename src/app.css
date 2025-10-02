@@ -5,6 +5,32 @@
   text-align: center;
 }
 
+.buttons {
+
+}
+
+.match {
+  margin: 1vw;
+  padding: 0.5em, 2em, 0.5em, 2em;
+}
+
+.auton {
+  margin: 1vw;
+  padding: 0.5em, 2em, 0.5em, 2em;
+}
+
+.teleop {
+  margin: 1vw;
+  padding: 0.5em, 2em, 0.5em, 2em;
+}
+
+.submit {
+  margin: 1vw;
+  padding: 0.5em, 2em, 0.5em, 2em;
+}
+
+
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -23,3 +49,4 @@
 .read-the-docs {
   color: #888;
 }
+
