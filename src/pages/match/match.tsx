@@ -1,6 +1,6 @@
 
 import type { App } from '../../app';
-import './app.css'
+import '../../app.css'
 import { useEffect, useState } from 'react'
 
 export interface mainpageProps{
@@ -22,7 +22,9 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setmainpageData}: main
 
 
   return (
-    <>
+   
+   <>
+   
     <div className="buttons">
       <button className={"match"}> 
         
@@ -39,13 +41,13 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setmainpageData}: main
       <button className={"submit"}> 
 
       Submit</button>
-
+    
     </div>
     <div>
-      <Field type="text" value{scoutName} ></Field>
+
     </div>
     </>
   )}
 
 
-export default App
+export default Mainpage

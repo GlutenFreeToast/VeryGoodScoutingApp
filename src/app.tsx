@@ -6,10 +6,7 @@ import match from './pages/match/match.tsx'
 
 export function App() {
   const [count, setCount] = useState(0)
-
-  function setPage(arg0: string) {
-    
-  }
+  const [page, setPage] = useState<String>("Match");
 
   return (
     <>
