@@ -12,7 +12,7 @@ export function App() {
     <>
     <div className="buttons">
       <button className={"match"}> 
-      onClick={() => { setPage("Match") }} 
+        onClick={() => { setPage("Match") }} 
       Match</button>
 
       <button className={"auton"}> 
