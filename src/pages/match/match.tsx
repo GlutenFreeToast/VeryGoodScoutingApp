@@ -1,14 +1,16 @@
 
 import type { App } from '../../app';
+import { useNavigate } from "react-router-dom";
 import '../../app.css'
 import { useEffect, useState } from 'react'
 
 export interface mainpageProps{
   mainpageData: {[key:string]: any};
   setmainpageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
-}
 
-const Mainpage: React.FC<mainpageProps> = ({mainpageData, setmainpageData}: mainpageProps) => {
+}
+// {mainpageData, setmainpageData}: mainpageProps
+const Match: React.FC<mainpageProps> = () => {
 
 //Constants
   const [currentPage, setCurrentPage] = useState("Match");
@@ -24,30 +26,9 @@ const Mainpage: React.FC<mainpageProps> = ({mainpageData, setmainpageData}: main
   return (
    
    <>
-   
-    <div className="buttons">
-      <button className={"match"}> 
-        
-      Match</button>
-
-      <button className={"auton"}> 
-
-      Auton</button>
-
-      <button className={"teleop"}> 
-
-      TeleOP</button>
-      
-      <button className={"submit"}> 
-
-      Submit</button>
-    
-    </div>
-    <div>
-
-    </div>
+    <h1>Match Page</h1>
     </>
   )}
 
 
-export default Mainpage
+export default Match
