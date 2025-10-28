@@ -1,41 +1,62 @@
 import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
 import './app.css'
-import match from './pages/match/match.tsx'
-import Match from './pages/match/match.tsx'
+import Match from './pages/match/match_new.tsx'
 
 export function App() {
-  const [count, setCount] = useState(0)
-  const [page, setPage] = useState<String>("Match");
+  const [page, setPage] = useState<string>("Match")
+  const [note] = useState(() => `build:${new Date().toLocaleTimeString()}`)
 
   return (
     <>
-    <div className="buttons">
-      <button className={"match"}> 
-      onClick={() => { setPage("Match") }} 
-      Match</button>
+      <div className="buttons">
+        <button
+          className="match"
+          onClick={() => {
+            setPage("Match")
+            console.log("Clicked on Match")
+          }}
+        >
+          Match
+        </button>
 
-      <button className={"auton"}
-      onClick={() => { setPage("Auton");console.log("Clicked on " + page); }} 
-> 
+        <button
+          className="auton"
+          onClick={() => {
+            setPage("Auton")
+            console.log("Clicked on Auton")
+          }}
+        >
+          Auton
+        </button>
 
-      Auton</button>
+        <button
+          className="teleop"
+          onClick={() => {
+            setPage("Teleop")
+            console.log("Clicked on Teleop")
+          }}
+        >
+          TeleOP
+        </button>
 
-      <button className={"teleop"}
-      onClick={() => { setPage("Teleop");console.log("Clicked on " + page); }} 
-> 
+        <button
+          className="submit"
+          onClick={() => {
+            setPage("Submit")
+            console.log("Clicked on Submit")
+          }}
+        >
+          Submit
+        </button>
+      </div>
 
-      TeleOP</button>
-      
-      <button className={"submit"}
-    onClick={() => { setPage("Submit");console.log("Clicked on " + page); }} 
-> 
-
-      Submit</button>
-
-    </div>
-
-    {page  ? "Match" : <Match />}
-     </>)
+      <div style={{ padding: 16 }}>
+        <div>{note}</div>
+        <div style={{ marginTop: 8 }}>
+          {page === 'Match' && <Match />}
+          {page !== 'Match' && <div>{page} page (placeholder)</div>}
+        </div>
+      </div>
+    </>
+  )
 }
