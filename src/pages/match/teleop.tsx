@@ -6,17 +6,13 @@ export interface MainpageProps {
   setmainpageData?: (v: { [key: string]: any }) => void
 }
 
-const Match: FunctionalComponent<MainpageProps> = () => {
+const Teleop: FunctionalComponent<MainpageProps> = () => {
   return (
     <>
-      <h1>Match Paged</h1>
-      <form>  
-      <label>Enter Your Name:
-        <input type="text" name="name" />
-      </label>
-      </form>
+      <h1>TeleOP</h1>
+      
     </>
   )
 }
 
-export default Match
+export default Teleop

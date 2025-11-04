@@ -1,0 +1,1 @@
+{"root":["./vite.config.ts","./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/pages/match/auton.tsx","./src/pages/match/match.tsx","./src/pages/match/submit.tsx","./src/pages/match/teleop.tsx"],"errors":true,"version":"5.8.3"}

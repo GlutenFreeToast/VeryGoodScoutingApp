@@ -6,17 +6,13 @@ export interface MainpageProps {
   setmainpageData?: (v: { [key: string]: any }) => void
 }
 
-const auton: FunctionalComponent<MainpageProps> = () => {
+const Auton: FunctionalComponent<MainpageProps> = () => {
   return (
     <>
-      <h1>Match Page</h1>
-      <form>  
-      <label>Enter Your Name:
-        <input type="text" name="name" />
-      </label>
-      </form>
+      <h1>Auton</h1>
+      
     </>
   )
 }
 
-export default auton
+export default Auton
