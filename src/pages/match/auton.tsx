@@ -9,7 +9,7 @@ export interface MainpageProps {
 const Auton: FunctionalComponent<MainpageProps> = () => {
   return (
     <>
-      <h1>Auton</h1>
+
       
     </>
   )

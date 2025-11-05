@@ -9,7 +9,7 @@ export interface MainpageProps {
 const Teleop: FunctionalComponent<MainpageProps> = () => {
   return (
     <>
-      <h1>TeleOP</h1>
+
       
     </>
   )

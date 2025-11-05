@@ -12,7 +12,7 @@ const Match: FunctionalComponent<MainpageProps> = () => {
   };
   return (
     <>
-      <h1>Match Information</h1>
+
       <form onSubmit={handleSubmit}>  
       <label>Enter Your Name:
         <input type="text" name="name" placeholder={"Ex: John Pork"} />

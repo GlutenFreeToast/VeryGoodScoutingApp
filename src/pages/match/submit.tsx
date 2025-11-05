@@ -12,26 +12,22 @@ const Submit: FunctionalComponent<MainpageProps> = () => {
   };
   return (
     <>
-      <h1>Submit</h1>
-      
+    <h5>Put good notes (psst, SNS knows where you live):</h5>
       <form onSubmit={handleSubmit}>  
-      <label>Red Points:
-        <input type="text" name="red" placeholder={"Ex: 57"} />
-      </label>
-
-      <label>Blue Points:
-        <input type="text" name="blue" placeholder={"Ex: 90"} />
-      </label>
-
-      <label>Penalties:
-        <input type="text" name="penalties" placeholder={"Ex: 296"} />
-      </label>
-
-      <label>Ranking Points:
-        <input type="text" name="ranking" placeholder={"Ex: 6"} />
-      </label>
-
+        <textarea
+        name="notes"
+        placeholder="Ex: robot blew up, injured 6 or 7 people"
+        class="notes"
+        />
       </form>
+
+      <h2>---------------</h2>
+      <button
+      className={"buttons"}
+      >
+      Create QR Code with Results
+      </button>
+
     </>
   )
 }
