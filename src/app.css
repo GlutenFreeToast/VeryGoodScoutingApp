@@ -5,48 +5,26 @@
   text-align: center;
 }
 
+.version {
+  color:dodgerblue
+}
+
 .buttons {
-
-}
-
-.match {
   margin: 1vw;
   padding: 0.5em, 2em, 0.5em, 2em;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.6);
+  background-color:rgb(197, 197, 197);
 }
 
-.auton {
-  margin: 1vw;
-  padding: 0.5em, 2em, 0.5em, 2em;
+.buttons:active {
+  color: white;
+  text-shadow: 0px 0px 3px black;
+  transform: scale(2.00);
+  background-color: #00BFFF;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
 }
 
-.teleop {
-  margin: 1vw;
-  padding: 0.5em, 2em, 0.5em, 2em;
+.title {
+  color:rgb(37, 37, 37)
 }
-
-.submit {
-  margin: 1vw;
-  padding: 4em, 8em, 0.5em, 2em;
-}
-
-
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.preact:hover {
-  filter: drop-shadow(0 0 2em #673ab8aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-

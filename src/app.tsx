@@ -27,9 +27,9 @@ export function App() {
         {`Build # ${build.buildRevision}`}
       </div>
 
-      <div className="buttons">
+      <div>
         <button
-          className="match"
+          className="buttons"
           onClick={() => {
             setPage(PageType.MATCH)
             console.log("Clicked on Match")
@@ -39,7 +39,7 @@ export function App() {
         </button>
 
         <button
-          className="auton"
+          className="buttons"
           onClick={() => {
             setPage(PageType.AUTON)
             console.log("Clicked on Auton")
@@ -49,7 +49,7 @@ export function App() {
         </button>
 
         <button
-          className="teleop"
+          className="buttons"
           onClick={() => {
             setPage(PageType.TELEOP)
             console.log("Clicked on Teleop")
@@ -59,7 +59,7 @@ export function App() {
         </button>
 
         <button
-          className="submit"
+          className="buttons"
           onClick={() => {
             setPage(PageType.SUBMIT)
             console.log("Clicked on Submit")
