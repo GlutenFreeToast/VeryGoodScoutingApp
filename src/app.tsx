@@ -22,6 +22,16 @@ export function App() {
   
   return (
     <>
+    <div className="buttons">
+      <button className={"match"}> 
+        onClick={() => { setPage("Match") }} 
+      Match</button>
+
+      <button className={"auton"}> 
+
+      Auton</button>
+
+      <button className={"teleop"}> 
 
       <div className="version">
         {`Build # ${build.buildRevision}`}
