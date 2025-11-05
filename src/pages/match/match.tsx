@@ -1,53 +1,32 @@
-
-import type { App } from '../../app';
 import '../../app.css'
-import { useEffect, useState } from 'react'
+import type { FunctionalComponent } from 'preact'
 
-export interface mainpageProps{
-  mainpageData: {[key:string]: any};
-  setmainpageData: React.Dispatch<React.SetStateAction<{[key: string]: any}>>;
+export interface MainpageProps {
+  mainpageData?: { [key: string]: any }
+  setmainpageData?: (v: { [key: string]: any }) => void
 }
 
-const Mainpage: React.FC<mainpageProps> = ({mainpageData, setmainpageData}: mainpageProps) => {
-
-//Constants
-  const [currentPage, setCurrentPage] = useState("Match");
-  const [scoutName, setScoutName] = useState("");
-  const [teamID, setteamID] = useState("");
-  const [matchID, setMatchID] = useState("");
-  const [compLocation, setcompLocation] = useState("");
-  const [allianceColor, setallianceColor] = useState("");
-  const [startingPosition, setstartingPosition] = useState("");
-
-
-
+const Match: FunctionalComponent<MainpageProps> = () => {
+  const handleSubmit = (event:any) => {
+    event.preventDefault();
+  };
   return (
-   
-   <>
-   
-    <div className="buttons">
-      <button className={"match"}> 
-        
-      Match</button>
+    <>
+      <h1>Match Information</h1>
+      <form onSubmit={handleSubmit}>  
+      <label>Enter Your Name:
+        <input type="text" name="name" placeholder={"Ex: John Pork"} />
+      </label>
 
-      <button className={"auton"}> 
+      <label>Team #:
+        <input type="text" name="team" placeholder={"Ex: 5431"} />
+      </label>
 
-      Auton</button>
-
-      <button className={"teleop"}> 
-
-      TeleOP</button>
-      
-      <button className={"submit"}> 
-
-      Submit</button>
-    
-    </div>
-    <div>
-
-    </div>
+      <label>Match #:
+        <input type="text" name="match" placeholder={"Ex: 67"} />
+      </label>
+      </form>
     </>
-  )}
-
-
-export default Mainpage
+  )
+}
+export default Match

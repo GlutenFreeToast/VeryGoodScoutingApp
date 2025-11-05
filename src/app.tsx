@@ -1,13 +1,25 @@
 import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
 import './app.css'
-import match from './pages/match/match.tsx'
+import Match from './pages/match/match.tsx'
+import Auton from './pages/match/auton.tsx'
+import Teleop from './pages/match/teleop.tsx'
+import Submit from './pages/match/submit.tsx'
+import build from '../buildInfo.json'
+
+export const PageType = {
+  MATCH: 0,
+  AUTON: 1,
+  TELEOP: 2,
+  SUBMIT: 3
+} as const;
+
+export type PageType = typeof PageType[keyof typeof PageType];
 
 export function App() {
-  const [count, setCount] = useState(0)
-  const [page, setPage] = useState<String>("Match");
-
+    
+  const [page, setPage] = useState<PageType>(PageType.MATCH)
+  const [note] = useState()
+  
   return (
     <>
     <div className="buttons">
@@ -21,46 +33,61 @@ export function App() {
 
       <button className={"teleop"}> 
 
-      TeleOP</button>
-      
-      <button className={"submit"}> 
-
-      Submit</button>
-
-    </div>
-
+      <div className="version">
+        {`Build # ${build.buildRevision}`}
+      </div>
 
       <div>
-
-        <a href="https://code.wucode.org/login" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p>
-        Check out{' '}
-        <a
-          href="https://preactjs.com/guide/v10/getting-started#create-a-vite-powered-preact-app"
-          target="_blank"
+        <button
+          className="buttons"
+          onClick={() => {
+            setPage(PageType.MATCH)
+            console.log("Clicked on Match")
+          }}
         >
-          create-preact
-        </a>
-        , the official Preact + Vite starter
-      </p>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
+          Match
+        </button>
+
+        <button
+          className="buttons"
+          onClick={() => {
+            setPage(PageType.AUTON)
+            console.log("Clicked on Auton")
+          }}
+        >
+          Auton
+        </button>
+
+        <button
+          className="buttons"
+          onClick={() => {
+            setPage(PageType.TELEOP)
+            console.log("Clicked on Teleop")
+          }}
+        >
+          TeleOP
+        </button>
+
+        <button
+          className="buttons"
+          onClick={() => {
+            setPage(PageType.SUBMIT)
+            console.log("Clicked on Submit")
+          }}
+        >
+          Submit
+        </button>
+      </div>
+
+      <div style={{ padding: 16 }}>
+        <div>{note}</div>
+        <div style={{ marginTop: 8 }}>
+          {page === PageType.MATCH && <Match />}
+          {page === PageType.AUTON && <Auton />}
+          {page === PageType.TELEOP && <Teleop />}
+          {page === PageType.SUBMIT && <Submit />}
+        </div>
+      </div>
     </>
   )
 }
