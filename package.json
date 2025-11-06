@@ -9,10 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
     "preact": "^10.27.0",
+    "react-qr-code": "^2.0.18",
     "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
+    "@capacitor/cli": "^7.4.4",
     "@preact/preset-vite": "^2.10.2",
     "@types/node": "^24.10.0",
     "typescript": "~5.8.3",
