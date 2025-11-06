@@ -16,19 +16,21 @@ const Results: FunctionalComponent<MainpageProps> = () => {
       
       <form onSubmit={handleSubmit}>  
       <label>Red Points:
-        <input type="text" name="red" placeholder={"Ex: 57"} />
+        <input type="text" name="red" placeholder={"Ex: 57"} className={"field"}/>
       </label>
 
       <label>Blue Points:
-        <input type="text" name="blue" placeholder={"Ex: 90"} />
+        <input type="text" name="blue" placeholder={"Ex: 90"} className={"field"}/>
       </label>
 
+      <div></div>
+
       <label>Penalties:
-        <input type="text" name="penalties" placeholder={"Ex: 296"} />
+        <input type="text" name="penalties" placeholder={"Ex: 296"} className={"field"}/>
       </label>
 
       <label>Ranking Points:
-        <input type="text" name="ranking" placeholder={"Ex: 6"} />
+        <input type="text" name="ranking" placeholder={"Ex: 6"} className={"field"}/>
       </label>
 
       </form>

@@ -30,7 +30,7 @@ export function App() {
         {`Build # ${build.buildRevision}`}
       </div>
     <div style="height: 50px;"></div>
-      <div>
+      <div className={"buttonthing"}>
         <button
           className="buttons"
           data-active={page === PageType.MATCH}
@@ -75,6 +75,8 @@ export function App() {
           Results
         </button>
 
+        <div></div>
+
         <button
           className="buttons"
           data-active={page === PageType.SUBMIT}
@@ -87,7 +89,7 @@ export function App() {
         </button>
       </div>
       <div style="height: 100px;"></div>
-      <div style={{ padding: 0 }}>
+      <div style={{ padding: 0 }} className={"responsive"}>
         <div>{note}</div>
         <div style={{ marginTop: 8 }}>
           {page === PageType.MATCH && <Match />}

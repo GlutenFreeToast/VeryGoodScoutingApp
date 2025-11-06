@@ -14,16 +14,27 @@ const Match: FunctionalComponent<MainpageProps> = () => {
     <>
 
       <form onSubmit={handleSubmit}>  
-      <label>Enter Your Name:
-        <input type="text" name="name" placeholder={"Ex: John Pork"} />
-      </label>
 
+      <fieldset>
+        <legend>Set Once:</legend>
+
+        <label>Enter Your Name:
+          <input type="text" name="name" placeholder={"Ex: John Pork"} className={"field"}/>
+        </label>
+
+        <div></div>
+
+        <label>Comp Name:
+          <input type="text" name="comp" placeholder={"Ex: Plano"} className={"field"}/>
+        </label>
+      </fieldset>
+      
       <label>Team #:
-        <input type="text" name="team" placeholder={"Ex: 5431"} />
+        <input type="text" name="team" placeholder={"Ex: 5431"} className={"field"}/>
       </label>
 
       <label>Match #:
-        <input type="text" name="match" placeholder={"Ex: 67"} />
+        <input type="text" name="match" placeholder={"Ex: 67"} className={"field"}/>
       </label>
       </form>
     </>
