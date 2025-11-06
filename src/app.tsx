@@ -23,22 +23,11 @@ export function App() {
 
   return (
     <>
-    <div className="buttons">
-      <button className={"match"}> 
-        onClick={() => { setPage("Match") }} 
-      Match</button>
-
-      <button className={"auton"}> 
-
-      Auton</button>
-
-      <button className={"teleop"}> 
-
-      <div className="version">
-        {`Build # ${build.buildRevision}`}
-      </div>
-
-      <div>
+      <div style="height: 50px;"></div>
+      <img src="FRCRebuilt.png" alt="" width={300} />
+      <div className="version">{`Build # ${build.buildRevision}`}</div>
+      <div style="height: 50px;"></div>
+      <div className={"buttonthing"}>
         <button
           className="buttons"
           data-active={page === PageType.MATCH}
