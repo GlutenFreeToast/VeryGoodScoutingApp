@@ -1,39 +1,30 @@
-import '../../app.css'
-import type { FunctionalComponent } from 'preact'
+import "../../app.css";
+import type { FunctionalComponent } from "preact";
 
 export interface MainpageProps {
-  mainpageData?: { [key: string]: any }
-  setmainpageData?: (v: { [key: string]: any }) => void
+  mainpageData?: { [key: string]: any };
+  setmainpageData?: (v: { [key: string]: any }) => void;
 }
 
 const Submit: FunctionalComponent<MainpageProps> = () => {
-  const handleSubmit = (event:any) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
   };
   return (
     <>
-      <h1>Submit</h1>
-      
-      <form onSubmit={handleSubmit}>  
-      <label>Red Points:
-        <input type="text" name="red" placeholder={"Ex: 57"} />
-      </label>
-
-      <label>Blue Points:
-        <input type="text" name="blue" placeholder={"Ex: 90"} />
-      </label>
-
-      <label>Penalties:
-        <input type="text" name="penalties" placeholder={"Ex: 296"} />
-      </label>
-
-      <label>Ranking Points:
-        <input type="text" name="ranking" placeholder={"Ex: 6"} />
-      </label>
-
+      <h5>Put good notes (psst, SNS knows where you live):</h5>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          name="notes"
+          placeholder="Ex: robot blew up, injured 6 or 7 people"
+          class="notes"
+        />
       </form>
-    </>
-  )
-}
 
-export default Submit
+      <h2>---------------</h2>
+      <button className={"buttons"}>Create QR Code with Results</button>
+    </>
+  );
+};
+
+export default Submit;

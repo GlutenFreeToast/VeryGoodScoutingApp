@@ -6,8 +6,8 @@ export interface MainpageProps {
   setmainpageData?: (v: { [key: string]: any }) => void;
 }
 
-const Teleop: FunctionalComponent<MainpageProps> = () => {
+const Auton: FunctionalComponent<MainpageProps> = () => {
   return <></>;
 };
 
-export default Teleop;
+export default Auton;
