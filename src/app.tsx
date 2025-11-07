@@ -3,7 +3,7 @@ import "./app.css";
 import Match from "./pages/match/match.tsx";
 import Teleop from "./pages/teleop/teleop.tsx";
 import Results from "./pages/results/results.tsx";
-import Submit from "./pages/submit/submit.tsx";
+import Finalize from "./pages/finalize/finalize.tsx";
 import build from "../buildInfo.json";
 import Auton from "./pages/auton/auton.tsx";
 import logo from "./FRCRebuilt.png"
@@ -13,7 +13,7 @@ export const PageType = {
   AUTON: 1,
   TELEOP: 2,
   RESULTS: 3,
-  SUBMIT: 4,
+  FINALIZE: 4,
 } as const;
 
 export type PageType = (typeof PageType)[keyof typeof PageType];
@@ -78,16 +78,16 @@ export function App() {
           <div></div>
 
           <button
-            className={`buttons submit-button ${
-              page === PageType.RESULTS || page === PageType.SUBMIT ? "visible" : ""
+            className={`buttons finalize-button ${
+              page === PageType.RESULTS || page === PageType.FINALIZE ? "visible" : ""
             }`}
-            data-active={page === PageType.SUBMIT}
+            data-active={page === PageType.FINALIZE}
             onClick={() => {
-              setPage(PageType.SUBMIT);
-              console.log("Clicked on Submit");
+              setPage(PageType.FINALIZE);
+              console.log("Clicked on Finalize");
             }}
           >
-            Submit
+            Finalize
           </button>
 
 
@@ -100,7 +100,7 @@ export function App() {
           {page === PageType.AUTON && <Auton />}
           {page === PageType.TELEOP && <Teleop />}
           {page === PageType.RESULTS && <Results />}
-          {page === PageType.SUBMIT && <Submit />}
+          {page === PageType.FINALIZE && <Finalize />}
         </div>
       </div>
     </>

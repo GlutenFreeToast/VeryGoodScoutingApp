@@ -6,7 +6,7 @@ export interface MainpageProps {
   setmainpageData?: (v: { [key: string]: any }) => void;
 }
 
-const Submit: FunctionalComponent<MainpageProps> = () => {
+const Finalize: FunctionalComponent<MainpageProps> = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -23,9 +23,9 @@ const Submit: FunctionalComponent<MainpageProps> = () => {
       </form>
 
       <h2>---------------</h2>
-      <button className={"buttons"}>Create QR Code with Results</button>
+      <button className={"buttons"}>Submit</button>
     </>
   );
 };
 
-export default Submit;
+export default Finalize;
