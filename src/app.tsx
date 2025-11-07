@@ -6,6 +6,7 @@ import Results from "./pages/results/results.tsx";
 import Submit from "./pages/submit/submit.tsx";
 import build from "../buildInfo.json";
 import Auton from "./pages/auton/auton.tsx";
+import logo from "./FRCRebuilt.png"
 
 export const PageType = {
   MATCH: 0,
@@ -25,8 +26,8 @@ export function App() {
     <>
 
       <div>
-        <div style="height: 50px;"></div>
-        <img src="FRCRebuilt.png" alt="" width={300} />
+        <div style="height: 50px;"></div>  
+        <img src={logo} alt="Logo" width={300}/>
         <div className="version">{`Build # ${build.buildRevision}`}</div>
         <div style="height: 50px;"></div>
         <div className={"buttonthing"}>
