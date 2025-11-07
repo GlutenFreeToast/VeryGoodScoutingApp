@@ -14,10 +14,11 @@ const Submit: FunctionalComponent<MainpageProps> = () => {
     <>
       <h5>Put good notes (psst, SNS knows where you live):</h5>
       <form onSubmit={handleSubmit}>
+
         <textarea
+          className={"notes"}
           name="notes"
           placeholder="Ex: robot blew up, injured 6 or 7 people"
-          class="notes"
         />
       </form>
 

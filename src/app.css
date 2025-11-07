@@ -17,10 +17,6 @@
   min-width: 200px;
 }
 
-body {
-  transform: scale(1.00);
-}
-
 body, html {
   margin: 0;
   padding: 0;
@@ -32,22 +28,28 @@ body, html {
 }
 
 .buttonthing {
-  min-width: 900px;
+  width: 100vw;
+  padding-left: 5vw;
+  padding-right:5vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .buttons {
-  text-align: center;
-  font-size: large;
-  position:relative;
   z-index: 5;
+  font-size: 3.5vw;
+  text-align: center;
   align-items: center;
   align-content: center;
-  margin: 2vw;
-  padding: 0.5em 1.5em;
-  width: 20vw;
-  max-width: 150px;
+  position:relative;
+  width: 5.5em;
+  margin: 1.8vw;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 65px;
   transition: ease-in-out, transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s;
-  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.6);
   background-color:rgb(197, 197, 197);
 }
 
@@ -64,9 +66,22 @@ body, html {
   background-color: #7a0085;
   color: white;
   transform: scale(1.25);
-  width: 25vw;
+  width: 6.5em;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
 }
+
+.submit-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.submit-button.visible {
+  transition: ease-in-out, transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s, opacity 0.5s;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 .title {
   color:rgb(37, 37, 37)
@@ -83,8 +98,15 @@ body, html {
   width: 70vw;
   height: 30vh;
 }
-
+  width: 100vw;
+  padding-left: 5vw;
+  padding-right:5vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 .field {
   border-radius: 10px;
   margin: 5%;
+  font-size: 1.5em;
 }

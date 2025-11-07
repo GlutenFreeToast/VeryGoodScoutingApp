@@ -1,9 +1,9 @@
 import { useState } from "preact/hooks";
 import "./app.css";
 import Match from "./pages/match/match.tsx";
-import Teleop from "./pages/match/teleop.tsx";
-import Results from "./pages/match/results.tsx";
-import Submit from "./pages/match/submit.tsx";
+import Teleop from "./pages/teleop/teleop.tsx";
+import Results from "./pages/results/results.tsx";
+import Submit from "./pages/submit/submit.tsx";
 import build from "../buildInfo.json";
 import Auton from "./pages/auton/auton.tsx";
 
@@ -23,69 +23,75 @@ export function App() {
 
   return (
     <>
-      <div style="height: 50px;"></div>
-      <img src="FRCRebuilt.png" alt="" width={300} />
-      <div className="version">{`Build # ${build.buildRevision}`}</div>
-      <div style="height: 50px;"></div>
-      <div className={"buttonthing"}>
-        <button
-          className="buttons"
-          data-active={page === PageType.MATCH}
-          onClick={() => {
-            setPage(PageType.MATCH);
-            console.log("Clicked on Match");
-          }}
-        >
-          Match
-        </button>
 
-        <button
-          className="buttons"
-          data-active={page === PageType.AUTON}
-          onClick={() => {
-            setPage(PageType.AUTON);
-            console.log("Clicked on Auton");
-          }}
-        >
-          Auton
-        </button>
+      <div>
+        <div style="height: 50px;"></div>
+        <img src="FRCRebuilt.png" alt="" width={300} />
+        <div className="version">{`Build # ${build.buildRevision}`}</div>
+        <div style="height: 50px;"></div>
+        <div className={"buttonthing"}>
+          <button
+            className="buttons"
+            data-active={page === PageType.MATCH}
+            onClick={() => {
+              setPage(PageType.MATCH);
+              console.log("Clicked on Match");
+            }}
+          >
+            Match
+          </button>
 
-        <button
-          className="buttons"
-          data-active={page === PageType.TELEOP}
-          onClick={() => {
-            setPage(PageType.TELEOP);
-            console.log("Clicked on Teleop");
-          }}
-        >
-          TeleOP
-        </button>
+          <button
+            className="buttons"
+            data-active={page === PageType.AUTON}
+            onClick={() => {
+              setPage(PageType.AUTON);
+              console.log("Clicked on Auton");
+            }}
+          >
+            Auton
+          </button>
 
-        <button
-          className="buttons"
-          data-active={page === PageType.RESULTS}
-          onClick={() => {
-            setPage(PageType.RESULTS);
-            console.log("Clicked on Results");
-          }}
-        >
-          Results
-        </button>
+          <button
+            className="buttons"
+            data-active={page === PageType.TELEOP}
+            onClick={() => {
+              setPage(PageType.TELEOP);
+              console.log("Clicked on Teleop");
+            }}
+          >
+            TeleOP
+          </button>
 
-        <div></div>
+          <button
+            className="buttons"
+            data-active={page === PageType.RESULTS}
+            onClick={() => {
+              setPage(PageType.RESULTS);
+              console.log("Clicked on Results");
+            }}
+          >
+            Results
+          </button>
 
-        <button
-          className="buttons"
-          data-active={page === PageType.SUBMIT}
-          onClick={() => {
-            setPage(PageType.SUBMIT);
-            console.log("Clicked on Submit");
-          }}
-        >
-          Submit
-        </button>
+          <div></div>
+
+          <button
+            className={`buttons submit-button ${
+              page === PageType.RESULTS || page === PageType.SUBMIT ? "visible" : ""
+            }`}
+            data-active={page === PageType.SUBMIT}
+            onClick={() => {
+              setPage(PageType.SUBMIT);
+              console.log("Clicked on Submit");
+            }}
+          >
+            Submit
+          </button>
+
+
+        </div>
       </div>
-      <div style="height: 100px;"></div>
       <div style={{ padding: 0 }} className={"responsive"}>
         <div>{note}</div>
         <div style={{ marginTop: 8 }}>

@@ -7,7 +7,14 @@ export interface MainpageProps {
 }
 
 const Auton: FunctionalComponent<MainpageProps> = () => {
-  return <></>;
+  return <>
+    
+
+    
+    
+    
+    
+    </>;
 };
 
 export default Auton;
