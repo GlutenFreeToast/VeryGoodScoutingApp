@@ -6,7 +6,7 @@ export interface MainpageProps {
   setmainpageData?: (v: { [key: string]: any }) => void;
 }
 
-const Submit: FunctionalComponent<MainpageProps> = () => {
+const Finalize: FunctionalComponent<MainpageProps> = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -14,17 +14,18 @@ const Submit: FunctionalComponent<MainpageProps> = () => {
     <>
       <h5>Put good notes (psst, SNS knows where you live):</h5>
       <form onSubmit={handleSubmit}>
+
         <textarea
+          className={"notes"}
           name="notes"
           placeholder="Ex: robot blew up, injured 6 or 7 people"
-          class="notes"
         />
       </form>
 
       <h2>---------------</h2>
-      <button className={"buttons"}>Create QR Code with Results</button>
+      <button className={"buttons"}>Submit</button>
     </>
   );
 };
 
-export default Submit;
+export default Finalize;
