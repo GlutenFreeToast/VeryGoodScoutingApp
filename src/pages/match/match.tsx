@@ -13,10 +13,10 @@ const Match: FunctionalComponent<MainpageProps> = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset className="fieldset">
           <legend>Set Once:</legend>
 
-          <label>
+          <label className="fieldcontainer">
             Enter Your Name:
             <input
               type="text"
@@ -28,7 +28,7 @@ const Match: FunctionalComponent<MainpageProps> = () => {
 
           <div></div>
 
-          <label>
+          <label className="fieldcontainer">
             Comp Name:
             <input
               type="text"
@@ -39,7 +39,8 @@ const Match: FunctionalComponent<MainpageProps> = () => {
           </label>
         </fieldset>
 
-        <label>
+        <div className={"fieldset"}>
+        <label className={"fieldcontainer"}>
           Team #:
           <input
             type="text"
@@ -49,7 +50,7 @@ const Match: FunctionalComponent<MainpageProps> = () => {
           />
         </label>
 
-        <label>
+        <label className={"fieldcontainer"}>
           Match #:
           <input
             type="text"
@@ -58,6 +59,7 @@ const Match: FunctionalComponent<MainpageProps> = () => {
             className={"field"}
           />
         </label>
+        </div>
       </form>
     </>
   );

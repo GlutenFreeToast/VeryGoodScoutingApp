@@ -15,6 +15,7 @@
   flex-wrap: wrap;
   width: 80%;
   min-width: 200px;
+  font-size: 2vw;
 }
 
 body, html {
@@ -102,5 +103,24 @@ body, html {
 .field {
   border-radius: 10px;
   margin: 5%;
-  font-size: 1.5em;
+  font-size: 1.5vw;
+  height: 3vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
+}
+
+.fieldcontainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1vw;
 }
