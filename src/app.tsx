@@ -20,6 +20,15 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
   const [note] = useState();
+  const [formData, setFormData] = useState({
+    name: "",
+    comp: "",
+    team: "",
+    match: ""
+  });
+
+  // Debug: Log state changes
+  console.log('Current form data:', formData);
 
   return (
     <>
@@ -74,26 +83,42 @@ export function App() {
 
         <div></div>
 
-        <button
-          className="buttons"
-          data-active={page === PageType.SUBMIT}
-          onClick={() => {
-            setPage(PageType.SUBMIT);
-            console.log("Clicked on Submit");
-          }}
-        >
-          Submit
-        </button>
+        
       </div>
       <div style="height: 100px;"></div>
       <div style={{ padding: 0 }} className={"responsive"}>
         <div>{note}</div>
         <div style={{ marginTop: 8 }}>
-          {page === PageType.MATCH && <Match />}
-          {page === PageType.AUTON && <Auton />}
-          {page === PageType.TELEOP && <Teleop />}
-          {page === PageType.RESULTS && <Results />}
-          {page === PageType.SUBMIT && <Submit />}
+          {page === PageType.MATCH && (
+            <Match 
+              mainpageData={formData} 
+              setmainpageData={(newData) => setFormData(newData as typeof formData)} 
+            />
+          )}
+          {page === PageType.AUTON && (
+            <Auton 
+              mainpageData={formData} 
+              setmainpageData={(newData) => setFormData(newData as typeof formData)}
+            />
+          )}
+          {page === PageType.TELEOP && (
+            <Teleop 
+              mainpageData={formData} 
+              setmainpageData={(newData) => setFormData(newData as typeof formData)}
+            />
+          )}
+          {page === PageType.RESULTS && (
+            <Results 
+              mainpageData={formData} 
+              setmainpageData={(newData) => setFormData(newData as typeof formData)}
+            />
+          )}
+          {page === PageType.SUBMIT && (
+            <Submit 
+              mainpageData={formData} 
+              setmainpageData={(newData) => setFormData(newData as typeof formData)}
+            />
+          )}
         </div>
       </div>
     </>
