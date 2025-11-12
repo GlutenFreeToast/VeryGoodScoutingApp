@@ -21,7 +21,7 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
   const [note] = useState();
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     name: "",
     comp: "",
     team: "",

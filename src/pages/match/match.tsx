@@ -60,7 +60,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             />
           </label>
         </fieldset>
-
+        <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>
           Team #:
@@ -87,14 +87,6 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
         </label>
         </div>
       </form>
-      
-      {/* Debug section to show current values */}
-      <div style={{ marginTop: "20px", padding: "10px", backgroundColor: "#f0f0f0" }}>
-        <h4>Current Data:</h4>
-        <pre>
-          {JSON.stringify(mainpageData, null, 2)}
-        </pre>
-      </div>
     </>
   );
 };
