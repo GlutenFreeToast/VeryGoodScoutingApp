@@ -1,4 +1,4 @@
-import "../../app.css";
+import "../global.css";
 import type { FunctionalComponent } from "preact";
 import type { JSX } from "preact/jsx-runtime";
 

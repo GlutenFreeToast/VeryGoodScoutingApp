@@ -11,13 +11,6 @@
   text-align: center;
 }
 
-.responsive {
-  flex-wrap: wrap;
-  width: 80%;
-  min-width: 200px;
-  font-size: 2vw;
-}
-
 body, html {
   margin: 0;
   padding: 0;
@@ -38,90 +31,14 @@ body, html {
   justify-content: center;
 }
 
-.buttons {
-  z-index: 5;
-  font-size: 3.5vw;
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  position:relative;
-  width: 5.5em;
-  margin: 1.8vw;
-  padding-left: 0;
-  padding-right: 0;
-  min-width: 65px;
-  transition: ease-in-out, transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s;
-  background-color:rgb(51, 51, 51);
-}
-
-.buttons:active {
-  z-index: 10;
-  color: white;
-  transform: scale(2.00);
-  background-color: #00BFFF;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
-}
-
-.buttons[data-active="true"] {
-  z-index: 8;
-  background-color: #7a0085;
-  color: white;
-  transform: scale(1.25);
-  width: 6.5em;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
-}
-
 .finalize-button {
-  opacity: 0;
-  pointer-events: none;
-  transition: ease-in-out, transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s, opacity 0.5s;
+  /* remove pointer-events */
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s;
 }
-
-.finalize-button.visible {
-  transition: ease-in-out, transform 0.2s, background-color 0.2s, box-shadow 0.2s, width 0.2s, opacity 0.5s;
-  opacity: 1;
-  pointer-events: auto;
-}
-
 
 .title {
   color:rgb(37, 37, 37)
 }
 
-.notes {
-  font-size: 2.5vw;
-  width: 30vw;
-  height: 5vh;
-  transition: width 0.4s, height 0.4s;
-  resize: none
-}
 
-.notes:focus {
-  width: 70vw;
-  height: 30vh;
-}
 
-.field {
-  border-radius: 10px;
-  margin: 5%;
-  font-size: 2.5vw;
-  height: 3vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-}
-
-.fieldcontainer {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-}
-
-.fieldset {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  align-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 1vw;
-}

@@ -1,5 +1,7 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "preact/hooks";
 import "./app.css";
+import "./pages/global.css"
 import Match from "./pages/match/match.tsx";
 import Teleop from "./pages/teleop/teleop.tsx";
 import Results from "./pages/results/results.tsx";
@@ -86,30 +88,43 @@ export function App() {
 
           <div></div>
 
-          <button
-            className={`buttons finalize-button ${
-              page === PageType.RESULTS || page === PageType.FINALIZE ? "visible" : ""
-            }`}
-            data-active={page === PageType.FINALIZE}
-            onClick={() => {
-              setPage(PageType.FINALIZE);
-              console.log("Clicked on Finalize");
-            }}
-          >
-            Finalize
-          </button>
+          <AnimatePresence>
+            {(page === PageType.RESULTS || page === PageType.FINALIZE) && (
+              <motion.button
+                className="buttons finalize-button"
+                data-active={page === PageType.FINALIZE}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setPage(PageType.FINALIZE)}
+              >
+                Finalize
+              </motion.button>
+            )}
+          </AnimatePresence>
 
 
         </div>
       </div>
       <div style={{ padding: 0 }} className={"responsive"}>
         <div>{note}</div>
-        <div style={{ marginTop: 8 }}>
-          {page === PageType.MATCH && <Match />}
-          {page === PageType.AUTON && <Auton />}
-          {page === PageType.TELEOP && <Teleop />}
-          {page === PageType.RESULTS && <Results />}
-          {page === PageType.FINALIZE && <Finalize />}
+        <div style={{ marginTop: 8 }} className={"page-container"}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, y: -40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.18, ease: "easeInOut" }}
+            >
+              {page === PageType.MATCH && <Match />}
+              {page === PageType.AUTON && <Auton />}
+              {page === PageType.TELEOP && <Teleop />}
+              {page === PageType.RESULTS && <Results />}
+              {page === PageType.FINALIZE && <Finalize />}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </>

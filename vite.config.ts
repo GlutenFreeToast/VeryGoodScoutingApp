@@ -3,16 +3,29 @@ import preact from "@preact/preset-vite";
 import { execSync } from "child_process";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
-//Increment Build Number
+// Increment Build Number
 execSync("node ./makeBuildInfo.js", { stdio: "inherit" });
 
 export default defineConfig({
   plugins: [
     preact(),
-    viteSingleFile(), //Puts EVERYTHING into a single HTML, disable later?
+    viteSingleFile(),
   ],
-  build: {
-    assetsInlineLimit: Infinity, // Inline assets
+  resolve: {
+    alias: {
+      // Make React imports resolve to Preact compatibility layer
+      react: "preact/compat",
+      "react-dom": "preact/compat",
+    },
   },
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
+  build: {
+    assetsInlineLimit: Infinity,
+  },
+  assetsInclude: [
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.gif",
+    "**/*.svg",
+  ],
 });

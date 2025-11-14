@@ -1,4 +1,5 @@
-import "../../app.css";
+import "../global.css";
+import "./finalize.css"
 import type { FunctionalComponent } from "preact";
 
 export interface MainpageProps {
@@ -12,7 +13,7 @@ const Finalize: FunctionalComponent<MainpageProps> = () => {
   };
   return (
     <>
-      <h5>Put good notes (psst, SNS knows where you live):</h5>
+      <h3>Put good notes (psst, SNS knows where you live):</h3>
       <form onSubmit={handleSubmit}>
 
         <textarea
