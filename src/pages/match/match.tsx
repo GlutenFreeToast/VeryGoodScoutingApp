@@ -1,4 +1,4 @@
-import "../../app.css";
+import "../global.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 
@@ -67,7 +67,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             />
           </label>
         </fieldset>
-
+        <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>
           Team #:

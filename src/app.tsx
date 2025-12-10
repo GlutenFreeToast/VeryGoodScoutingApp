@@ -1,5 +1,7 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "preact/hooks";
 import "./app.css";
+import "./pages/global.css"
 import Match from "./pages/match/match.tsx";
 import Teleop from "./pages/teleop/teleop.tsx";
 import Results from "./pages/results/results.tsx";
@@ -21,7 +23,7 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
   const [note] = useState();
-  const [MatchData, setMatchData] = useState({
+  const [MatchData,setMatchData] = useState({
     name: "",
     comp: "",
     team: "",
@@ -98,18 +100,21 @@ export function App() {
 
           <div></div>
 
-          <button
-            className={`buttons finalize-button ${
-              page === PageType.RESULTS || page === PageType.FINALIZE ? "visible" : ""
-            }`}
-            data-active={page === PageType.FINALIZE}
-            onClick={() => {
-              setPage(PageType.FINALIZE);
-              console.log("Clicked on Finalize");
-            }}
-          >
-            Finalize
-          </button>
+          <AnimatePresence>
+            {(page === PageType.RESULTS || page === PageType.FINALIZE) && (
+              <motion.button
+                className="buttons finalize-button"
+                data-active={page === PageType.FINALIZE}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setPage(PageType.FINALIZE)}
+              >
+                Finalize
+              </motion.button>
+            )}
+          </AnimatePresence>
 
 
         </div>
