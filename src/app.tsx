@@ -21,15 +21,27 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
   const [note] = useState();
-  const [formData, setFormData] = useState({
+  const [MatchData, setMatchData] = useState({
     name: "",
     comp: "",
     team: "",
-    match: ""
+    match: "",
+  });
+  const [autonData, setautonData] = useState({
+    L1: 0,
+    L2: 0,
+    L3: 0,
+    L4: 0,
+    CoralMissed: 0,
+    DeAlgae: 0,
+    Algaenet: 0,
+    Processor: 0,
+    LeftStart: false,
+
   });
 
   // Debug: Log state changes
-  console.log('Current form data:', formData);
+  
 
   return (
     <>
@@ -105,8 +117,8 @@ export function App() {
       <div style={{ padding: 0 }} className={"responsive"}>
         <div>{note}</div>
         <div style={{ marginTop: 8 }}>
-          {page === PageType.MATCH && <Match />}
-          {page === PageType.AUTON && <Auton />}
+          {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
+          {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
           {page === PageType.TELEOP && <Teleop />}
           {page === PageType.RESULTS && <Results />}
           {page === PageType.FINALIZE && <Finalize />}

@@ -1,18 +1,25 @@
 import "../../app.css";
 import type { FunctionalComponent } from "preact";
-import type { JSX } from "preact/jsx-runtime";
+import type { StateUpdater, Dispatch } from "preact/hooks";
 
-export interface MainpageProps {
-  mainpageData?: { [key: string]: any };
-  setmainpageData?: (v: { [key: string]: any }) => void;
+export interface FormData {
+  name: string;
+  comp: string;
+  team: string;
+  match: string;
 }
 
-const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageData }) => {
+export interface MainpageProps {
+  mainpageData: FormData;
+  setmainpageData: Dispatch<StateUpdater<FormData>>;
+}
+
+const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageData}) => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
 
-  const handleChange = (event: JSX.TargetedEvent<HTMLInputElement>) => {
+  const handleChange = (event: Event & { currentTarget: HTMLInputElement }) => {
     const { name, value } = event.currentTarget;
     console.log('Input changed:', name, value);
     if (setmainpageData && mainpageData) {
@@ -88,13 +95,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
         </div>
       </form>
       
-      {/* Debug section to show current values */}
-      <div style={{ marginTop: "20px", padding: "10px", backgroundColor: "#f0f0f0" }}>
-        <h4>Current Data:</h4>
-        <pre>
-          {JSON.stringify(mainpageData, null, 2)}
-        </pre>
-      </div>
+      
     </>
   );
 };
