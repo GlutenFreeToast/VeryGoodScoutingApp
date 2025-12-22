@@ -1,4 +1,5 @@
 import "../global.css";
+import "xp.css/dist/XP.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 
@@ -38,8 +39,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset">
-          <legend>Set Once:</legend>
+
 
           <label className="fieldcontainer">
             Enter Your Name:
@@ -66,7 +66,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
               className={"field"}
             />
           </label>
-        </fieldset>
+
         <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>
@@ -80,8 +80,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             className={"field"}
           />
         </label>
-
-        <label className={"fieldcontainer"}>
+        <label className={"title-bar-controls fieldcontainer"}>
           Match #:
           <input
             type="text"
@@ -89,9 +88,10 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             value={mainpageData?.match || ""}
             onChange={handleChange}
             placeholder={"Ex: 67"}
-            className={"field"}
+            className={"title-bar-text"}
           />
         </label>
+
         </div>
       </form>
       
