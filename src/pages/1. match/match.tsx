@@ -53,8 +53,6 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             />
           </label>
 
-          <div></div>
-
           <label className="fieldcontainer">
             Comp Name:
             <input
@@ -80,7 +78,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             className={"field"}
           />
         </label>
-        <label className={"title-bar-controls fieldcontainer"}>
+        <label className={"fieldcontainer"}>
           Match #:
           <input
             type="text"
@@ -88,7 +86,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             value={mainpageData?.match || ""}
             onChange={handleChange}
             placeholder={"Ex: 67"}
-            className={"title-bar-text"}
+            className={"field"}
           />
         </label>
 

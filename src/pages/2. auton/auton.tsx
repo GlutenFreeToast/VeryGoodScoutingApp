@@ -21,7 +21,9 @@ export interface autonData{
 }     
 
 
-const Auton: FunctionalComponent<MainpageProps> = (autonData, _setautonData ) => {
+const Auton: FunctionalComponent<MainpageProps> = (
+  // autonData,
+   _setautonData ) => {
 
   
 

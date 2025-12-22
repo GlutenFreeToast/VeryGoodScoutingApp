@@ -1,14 +1,16 @@
-import { motion, AnimatePresence } from "framer-motion";
+
 import { useState } from "preact/hooks";
 import "./app.css";
 import "./pages/global.css"
-import Match from "./pages/match/match.tsx";
-import Teleop from "./pages/teleop/teleop.tsx";
-import Results from "./pages/results/results.tsx";
-import Finalize from "./pages/finalize/finalize.tsx";
 import build from "../buildInfo.json";
-import Auton from "./pages/auton/auton.tsx";
-import logo from "./FRCRebuilt.png"
+import Match from "./pages/1. match/match.tsx";
+import Teleop from "./pages/3. teleop/teleop.tsx";
+import Results from "./pages/4. results/results.tsx";
+import Finalize from "./pages/5. finalize/finalize.tsx";
+import Auton from "./pages/2. auton/auton.tsx";
+import Help from "./pages/9. help/help.tsx";
+import logo from "./rebuilt.svg"
+import "xp.css/dist/XP.css";
 
 export const PageType = {
   MATCH: 0,
@@ -16,6 +18,7 @@ export const PageType = {
   TELEOP: 2,
   RESULTS: 3,
   FINALIZE: 4,
+  HELP: 9,
 } as const;
 
 export type PageType = (typeof PageType)[keyof typeof PageType];
@@ -47,86 +50,98 @@ export function App() {
 
   return (
     <>
-
-      <div>
-        <div style="height: 50px;"></div>  
-        <img src={logo} alt="Logo" width={300}/>
-        <div className="version">{`Build # ${build.buildRevision}`}</div>
-        <div style="height: 50px;"></div>
-        <div className={"buttonthing"}>
-          <button
-            className="buttons"
-            data-active={page === PageType.MATCH}
-            onClick={() => {
-              setPage(PageType.MATCH);
-              console.log("Clicked on Match");
-            }}
-          >
-            Match
-          </button>
-
-          <button
-            className="buttons"
-            data-active={page === PageType.AUTON}
-            onClick={() => {
-              setPage(PageType.AUTON);
-              console.log("Clicked on Auton");
-            }}
-          >
-            Auton
-          </button>
-
-          <button
-            className="buttons"
-            data-active={page === PageType.TELEOP}
-            onClick={() => {
-              setPage(PageType.TELEOP);
-              console.log("Clicked on Teleop");
-            }}
-          >
-            TeleOP
-          </button>
-
-          <button
-            className="buttons"
-            data-active={page === PageType.RESULTS}
-            onClick={() => {
-              setPage(PageType.RESULTS);
-              console.log("Clicked on Results");
-            }}
-          >
-            Results
-          </button>
-
-          <div></div>
-
-          <AnimatePresence>
-            {(page === PageType.RESULTS || page === PageType.FINALIZE) && (
-              <motion.button
-                className="buttons finalize-button"
-                data-active={page === PageType.FINALIZE}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                onClick={() => setPage(PageType.FINALIZE)}
-              >
-                Finalize
-              </motion.button>
-            )}
-          </AnimatePresence>
-
-
+      <div className="window" style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
+        <div className="title-bar">
+          <div className="title-bar-text">Scouting App 2026</div>
+          <div className="title-bar-controls">
+            <button aria-label="Help" 
+            aria-selected={page === PageType.HELP}
+              data-active={page === PageType.HELP}
+              onClick={() => {
+                setPage(PageType.HELP);
+                console.log("Clicked on Help");
+              }}
+            />
+          </div>
         </div>
-      </div>
-      <div style={{ padding: 0 }} className={"responsive"}>
-        <div>{note}</div>
-        <div style={{ marginTop: 8 }}>
-          {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
-          {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
-          {page === PageType.TELEOP && <Teleop />}
-          {page === PageType.RESULTS && <Results />}
-          {page === PageType.FINALIZE && <Finalize />}
+
+        <div className="window-body"></div>
+        <div>
+          <div style="height: 5vh;"></div>  
+          <img src={logo} alt="Logo" width={"300 vw"}/>
+          <div style="height: 5vh;"></div>
+
+
+          <section class="tabs" style="margin: 2vw">
+            <menu role="tablist" aria-label="Sample Tabs">
+              <button role="tab" aria-controls="tab-A"
+              aria-selected={page === PageType.MATCH}
+              data-active={page === PageType.MATCH}
+              onClick={() => {
+                setPage(PageType.MATCH);
+                console.log("Clicked on Match");
+              }}
+              >Match</button>
+
+              <button role="tab" aria-controls="tab-B"
+              aria-selected={page === PageType.AUTON}
+              data-active={page === PageType.AUTON}
+              onClick={() => {
+                setPage(PageType.AUTON);
+                console.log("Clicked on Auton");
+              }}
+              >Auton</button>
+
+              <button role="tab" aria-controls="tab-C"
+              aria-selected={page === PageType.TELEOP}
+              data-active={page === PageType.TELEOP}
+              onClick={() => {
+                setPage(PageType.TELEOP);
+                console.log("Clicked on Teleop");
+              }}
+              >TeleOp</button>
+
+              <button role="tab" aria-controls="tab-D"
+              aria-selected={page === PageType.RESULTS}
+              data-active={page === PageType.RESULTS}
+              onClick={() => {
+                setPage(PageType.RESULTS);
+                console.log("Clicked on Results");
+              }}
+              >Results</button>
+
+              <button role="tab" aria-controls="tab-E"
+              aria-selected={page === PageType.FINALIZE}
+              data-active={page === PageType.FINALIZE}
+              onClick={() => {
+                setPage(PageType.FINALIZE);
+                console.log("Clicked on Finalize");
+              }}
+              >Finalize</button>
+            </menu>
+
+            <article role="tabpanel" id="tab-A">
+              <div style={{ padding: 0 }} className={"responsive"}>
+                <div>{note}</div>
+                <div style={{ marginTop: 8, height: "68.4vh"}}>
+                  {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
+                  {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
+                  {page === PageType.TELEOP && <Teleop />}
+                  {page === PageType.RESULTS && <Results />}
+                  {page === PageType.FINALIZE && <Finalize />}
+                  {page === PageType.HELP && <Help />}
+                </div>
+              </div>
+            </article>
+          </section>
+          
+          <div class="status-bar" style={{ position: "absolute", bottom: 0, width: "100vw" }}>
+            <p class="status-bar-field">FRC Team 5431/5790 - "Titan Robotics"</p>
+            <p class="status-bar-field">2025-2026 Season</p>
+            <p class="status-bar-field" style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
+            <p class="status-bar-field">Jason & Kenny</p>
+          </div>
+
         </div>
       </div>
     </>

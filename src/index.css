@@ -1,11 +1,15 @@
+@font-face{
+  font-family: "Tahoma";
+  src:local("tahoma"),
+  url('./assets/fonts/tahoma.ttf') 
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Tahoma !important;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light;
-  color: linear-gradient(90deg,rgba(196, 236, 255, 1) 0%, rgba(237, 207, 255, 1) 100%);
-  color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,6 +27,7 @@ a:hover {
 }
 
 body {
+  font-family: Tahoma !important;
   margin: 0;
   display: flex;
   place-items: center;
