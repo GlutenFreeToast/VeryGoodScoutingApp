@@ -72,7 +72,7 @@ export function App() {
           <div style="height: 5vh;"></div>
 
 
-          <section class="tabs" style="margin: 2vw">
+          <section class="tabs" style={{ margin: "2vw", height: "68.4vh" }}>
             <menu role="tablist" aria-label="Sample Tabs">
               <button role="tab" aria-controls="tab-A"
               aria-selected={page === PageType.MATCH}
@@ -121,9 +121,9 @@ export function App() {
             </menu>
 
             <article role="tabpanel" id="tab-A">
-              <div style={{ padding: 0 }} className={"responsive"}>
+              <div style={{ padding: 0, alignContent: "center" }}>
                 <div>{note}</div>
-                <div style={{ marginTop: 8, height: "68.4vh"}}>
+                <div style={{ marginTop: 8}}>
                   {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
                   {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
                   {page === PageType.TELEOP && <Teleop />}

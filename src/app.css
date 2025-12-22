@@ -9,13 +9,8 @@
   top: 0;
   left: 0;
   text-align: center;
-}
-
-.responsive {
   flex-wrap: wrap;
-  width: 80%;
-  min-width: 200px;
-  font-size: 2vw;
+  font-size: 5vw !important;
 }
 
 body, html {
