@@ -1,106 +1,51 @@
 import "../../app.css";
-import { useState } from "preact/hooks";
 import type { FunctionalComponent } from "preact";
+import Counter from "../../Components/Counter/Counter";
+//import { count } from "console";
+import type { StateUpdater, Dispatch } from "preact/hooks"
 
 export interface MainpageProps {
-  mainpageData?: { [key: string]: any };
-  setmainpageData?: (v: { [key: string]: any }) => void;
+  mainpageData: teleopData;
+setmainpageData: Dispatch<StateUpdater<teleopData>>;
 }
+export interface teleopData{
+    L1: number,
+    L2: number,
+    L3: number,
+    L4: number,
+    CoralMissed: number,
+    DeAlgae: number,
+    Algaenet: number,
+    Processor: number,
+    LeftStart: boolean,
+}     
 
-const Teleop: FunctionalComponent<MainpageProps> = () => {
-    const [count, setCount] = useState(0);
+
+const TeleOp: FunctionalComponent<MainpageProps> = (
+  // teleopData,
+   _setteleopData ) => {
+
+  
+
   return <>
-   <div style={{ width: 250 }} className="window">
-      <div className="title-bar">
-        <div className="title-bar-text">Coral Score</div>
-        <div className="title-bar-controls">
-          <button aria-label="Minimize" />
-          <button aria-label="Maximize" />
-          <button aria-label="Close" />
-        </div>
-      </div>
+    <div className="pagecontainer">
+      <Counter name = "L1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "L2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "L3" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "C1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "C2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "C3" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "R1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+      <Counter name = "R2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>     
 
-      <div className="window-body">
-        <p style={{ textAlign: "center" }}>Level 1 Count:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Level 2 Count:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Level 3 Count:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Level 4 Count:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-      </div>
+      
     </div>
 
-
-    <div style={{ width: 250 }} className="window">
-      <div className="title-bar">
-        <div className="title-bar-text">Algae Net</div>
-        <div className="title-bar-controls">
-          <button aria-label="Minimize" />
-          <button aria-label="Maximize" />
-          <button aria-label="Close" />
-        </div>
-      </div>
-
-      <div className="window-body">
-        <p style={{ textAlign: "center" }}>Human Score:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Human Miss:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Robot Score:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-        <div style={{ height: 20 }}></div>
-        <p style={{ textAlign: "center" }}>Robot Miss:</p>
-        <p style={{ textAlign: "center" }}>{count}</p>
-        <div className="field-row" style={{ justifyContent: "center" }}>
-          <button onClick={() => setCount(count + 1)}>+</button>
-          <button onClick={() => setCount(count - 1)}>-</button>
-          {/* <button onClick={() => setCount(0)}>0</button> */}
-        </div>
-      </div>
-    </div>
-  </>;
+    
+    
+    
+    
+    </>;
 };
 
-export default Teleop;
+export default TeleOp;

@@ -9,6 +9,7 @@ import Results from "./pages/4. results/results.tsx";
 import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
 import Help from "./pages/9. help/help.tsx";
+import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import "xp.css/dist/XP.css";
 
@@ -19,6 +20,7 @@ export const PageType = {
   RESULTS: 3,
   FINALIZE: 4,
   HELP: 9,
+  PRANK: 10,
 } as const;
 
 export type PageType = (typeof PageType)[keyof typeof PageType];
@@ -42,7 +44,10 @@ export function App() {
     Algaenet: 0,
     Processor: 0,
     LeftStart: false,
+  });
 
+  const [finalizeData,setfinalizeData] = useState({
+    notes: "",
   });
 
   // Debug: Log state changes
@@ -128,8 +133,9 @@ export function App() {
                   {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
                   {page === PageType.TELEOP && <Teleop />}
                   {page === PageType.RESULTS && <Results />}
-                  {page === PageType.FINALIZE && <Finalize />}
-                  {page === PageType.HELP && <Help />}
+                  {page === PageType.FINALIZE && <Finalize mainpageData={finalizeData} setmainpageData={setfinalizeData} setPage={setPage}/>}
+                  {page === PageType.HELP && <Help setPage={setPage}/>}
+                  {page === PageType.PRANK && <Prank setPage={setPage}/>}
                 </div>
               </div>
             </article>

@@ -5,25 +5,29 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 
-export interface helpProps {
+// export interface MainpageProps {
+//   mainpageData?: { [key: string]: any };
+//   setmainpageData?: (v: { [key: string]: any }) => void;
+// }
+
+export interface prankProps {
     setPage: Dispatch<StateUpdater<PageType>>;
 }
 
-export interface MainpageProps {
-  mainpageData?: { [key: string]: any };
-  setmainpageData?: (v: { [key: string]: any }) => void;
+function ipnum() {
+    return Math.floor(Math.random() * 254) + 1;
 }
 
-const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {
+const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
     // const [count, setCount] = useState(0);
   return <>
    <div style={{ width: "92.5vw" }} className="window">
       <div className="title-bar">
-        <div className="title-bar-text">Scouting App 2026 - Help</div>
+        <div className="title-bar-text">!!Lazy Bum Alert!!</div>
         <div className="title-bar-controls">
           <button aria-label="Minimize" 
           onClick={() => {
-                setPage(PageType.MATCH);
+                setPage(PageType.FINALIZE);
                 console.log("Clicked on Minimize");
             }}
           />
@@ -36,15 +40,16 @@ const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {
         </div>
       </div>
 
+    <h3>
+        SNS does know where you live after all...
+    </h3>
     <h1>
-        Help Me!
+        IP: {ipnum()}.{ipnum()}.{ipnum()}.{ipnum()}
     </h1>
-    <h4>Here are some frequently asked questions to get you on your way.</h4>
-    <h5>------------------------------------</h5>
-    <p>q: Why is scouting app themed after something older than most people in robotics?</p>
-    <p>a: The real question is why not?</p>
-    <p>-</p>
-    <p>q: </p>
+    <h3>
+        Do your notes. For everyone's sake really
+    </h3>
+
 
       <div className="window-body">
 
@@ -53,4 +58,4 @@ const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {
   </>;
 };
 
-export default Help;
+export default prank;
