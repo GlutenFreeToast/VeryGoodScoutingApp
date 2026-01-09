@@ -87,7 +87,7 @@ export function App() {
                 setPage(PageType.MATCH);
                 console.log("Clicked on Match");
               }}
-              style={{fontSize: "2vh", height: "4vh", width: "15vw"}}
+              style={{fontSize: "2vh", height: "4vh", flex: "1"}}
               >Match</button>
 
               <button role="tab" aria-controls="tab-B"
@@ -97,7 +97,7 @@ export function App() {
                 setPage(PageType.AUTON);
                 console.log("Clicked on Auton");
               }}
-              style={{fontSize: "2vh", width: "15vw"}}
+              style={{fontSize: "2vh", flex: "1"}}
               >Auton</button>
 
               <button role="tab" aria-controls="tab-C"
@@ -107,7 +107,7 @@ export function App() {
                 setPage(PageType.TELEOP);
                 console.log("Clicked on Teleop");
               }}
-              style={{fontSize: "2vh", width: "15vw"}}
+              style={{fontSize: "2vh", flex: "1"}}
               >TeleOp</button>
 
               <button role="tab" aria-controls="tab-D"
@@ -117,7 +117,7 @@ export function App() {
                 setPage(PageType.RESULTS);
                 console.log("Clicked on Results");
               }}
-              style={{fontSize: "2vh", width: "15vw"}}
+              style={{fontSize: "2vh", flex: "1"}}
               >Results</button>
 
               <button role="tab" aria-controls="tab-E"
@@ -127,7 +127,7 @@ export function App() {
                 setPage(PageType.FINALIZE);
                 console.log("Clicked on Finalize");
               }}
-              style={{fontSize: "2vh", width: "15vw"}}
+              style={{fontSize: "2vh", flex: "1"}}
               >Finalize</button>
             </menu>
 
