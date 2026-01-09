@@ -1,5 +1,6 @@
 import "../global.css";
 import "xp.css/dist/XP.css";
+import "../../app.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 
@@ -40,7 +41,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
     <>
       <form onSubmit={handleSubmit}>
 
-
+      <div className={"fieldset"}>
           <label className="fieldcontainer">
             Enter Your Name:
             <input
@@ -64,7 +65,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
               className={"field"}
             />
           </label>
-
+          </div>
         <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>

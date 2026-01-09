@@ -5,13 +5,12 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 
-export interface helpProps {
-    setPage: Dispatch<StateUpdater<PageType>>;
-}
+
 
 export interface MainpageProps {
   mainpageData?: { [key: string]: any };
   setmainpageData?: (v: { [key: string]: any }) => void;
+  setPage: Dispatch<StateUpdater<PageType>>;
 }
 
 const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {

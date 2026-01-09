@@ -5,14 +5,13 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 
-// export interface MainpageProps {
-//   mainpageData?: { [key: string]: any };
-//   setmainpageData?: (v: { [key: string]: any }) => void;
-// }
-
-export interface prankProps {
-    setPage: Dispatch<StateUpdater<PageType>>;
+ export interface MainpageProps {
+   mainpageData?: { [key: string]: any };
+   setmainpageData?: (v: { [key: string]: any }) => void;
+   setPage: Dispatch<StateUpdater<PageType>>;
 }
+
+
 
 function ipnum() {
     return Math.floor(Math.random() * 254) + 1;

@@ -10,7 +10,7 @@
   left: 0;
   text-align: center;
   flex-wrap: wrap;
-  font-size: 5vw !important;
+  font-size: 5vw;
 }
 
 body, html {
