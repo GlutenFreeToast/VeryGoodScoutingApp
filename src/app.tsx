@@ -56,10 +56,11 @@ export function App() {
   return (
     <>
       <div className="window" style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
-        <div className="title-bar">
-          <div className="title-bar-text">Scouting App 2026</div>
+        <div className="title-bar" style={{height: "5vh"}}>
+          <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
           <div className="title-bar-controls">
             <button aria-label="Help" 
+            style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
               data-active={page === PageType.HELP}
               onClick={() => {
@@ -86,6 +87,7 @@ export function App() {
                 setPage(PageType.MATCH);
                 console.log("Clicked on Match");
               }}
+              style={{fontSize: "2vh", height: "4vh", width: "15vw"}}
               >Match</button>
 
               <button role="tab" aria-controls="tab-B"
@@ -95,6 +97,7 @@ export function App() {
                 setPage(PageType.AUTON);
                 console.log("Clicked on Auton");
               }}
+              style={{fontSize: "2vh", width: "15vw"}}
               >Auton</button>
 
               <button role="tab" aria-controls="tab-C"
@@ -104,6 +107,7 @@ export function App() {
                 setPage(PageType.TELEOP);
                 console.log("Clicked on Teleop");
               }}
+              style={{fontSize: "2vh", width: "15vw"}}
               >TeleOp</button>
 
               <button role="tab" aria-controls="tab-D"
@@ -113,6 +117,7 @@ export function App() {
                 setPage(PageType.RESULTS);
                 console.log("Clicked on Results");
               }}
+              style={{fontSize: "2vh", width: "15vw"}}
               >Results</button>
 
               <button role="tab" aria-controls="tab-E"
@@ -122,6 +127,7 @@ export function App() {
                 setPage(PageType.FINALIZE);
                 console.log("Clicked on Finalize");
               }}
+              style={{fontSize: "2vh", width: "15vw"}}
               >Finalize</button>
             </menu>
 
@@ -141,7 +147,7 @@ export function App() {
             </article>
           </section>
           
-          <div class="status-bar" style={{ position: "absolute", bottom: 0, width: "100vw" }}>
+          <div class="status-bar" style={{ position: "absolute", bottom: 0, width: "100vw"}}>
             <p class="status-bar-field">FRC Team 5431/5790 - "Titan Robotics"</p>
             <p class="status-bar-field">2025-2026 Season</p>
             <p class="status-bar-field" style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>

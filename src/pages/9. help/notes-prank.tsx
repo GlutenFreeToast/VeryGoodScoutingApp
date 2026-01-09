@@ -25,15 +25,9 @@ const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
       <div className="title-bar">
         <div className="title-bar-text">!!Lazy Bum Alert!!</div>
         <div className="title-bar-controls">
-          <button aria-label="Minimize" 
-          onClick={() => {
-                setPage(PageType.FINALIZE);
-                console.log("Clicked on Minimize");
-            }}
-          />
           <button aria-label="Close" 
           onClick={() => {
-                setPage(PageType.null);
+                setPage(PageType.FINALIZE);
                 console.log("Clicked on Close");
             }}
           />

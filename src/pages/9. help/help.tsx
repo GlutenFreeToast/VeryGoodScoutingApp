@@ -21,15 +21,9 @@ const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {
       <div className="title-bar">
         <div className="title-bar-text">Scouting App 2026 - Help</div>
         <div className="title-bar-controls">
-          <button aria-label="Minimize" 
-          onClick={() => {
-                setPage(PageType.MATCH);
-                console.log("Clicked on Minimize");
-            }}
-          />
           <button aria-label="Close" 
           onClick={() => {
-                setPage(PageType.null);
+                setPage(PageType.MATCH);
                 console.log("Clicked on Close");
             }}
           />
