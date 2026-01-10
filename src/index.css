@@ -27,7 +27,7 @@ a:hover {
 }
 
 body {
-  font-family: Tahoma !important;
+  font-family: Tahoma;
   margin: 0;
   display: flex;
   place-items: center;

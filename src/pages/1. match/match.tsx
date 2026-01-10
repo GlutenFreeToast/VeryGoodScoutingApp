@@ -41,57 +41,63 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
     <>
       <form onSubmit={handleSubmit}>
 
-      <div className={"fieldset"}>
-          <label className="fieldcontainer">
-            Enter Your Name:
-            <input
-              type="text"
-              name="name"
-              value={mainpageData?.name || ""}
-              onChange={handleChange}
-              placeholder={"Ex: John Pork"}
-              className={"field"}
-            />
-          </label>
-
-          <label className="fieldcontainer">
-            Comp Name:
-            <input
-              type="text"
-              name="comp"
-              value={mainpageData?.comp || ""}
-              onChange={handleChange}
-              placeholder={"Ex: Plano"}
-              className={"field"}
-            />
-          </label>
-          </div>
-        <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
-        <label className={"fieldcontainer"}>
-          Team #:
-          <input
-            type="text"
-            name="team"
-            value={mainpageData?.team || ""}
-            onChange={handleChange}
-            placeholder={"Ex: 5431"}
-            className={"field"}
-          />
-        </label>
-        <label className={"fieldcontainer"}>
-          Match #:
-          <input
-            type="text"
-            name="match"
-            value={mainpageData?.match || ""}
-            onChange={handleChange}
-            placeholder={"Ex: 67"}
-            className={"field"}
-          />
-        </label>
+            <label className="fieldcontainer">
+              Enter Your Name:
+              <input
+                type="text"
+                name="name"
+                value={mainpageData?.name || ""}
+                onChange={handleChange}
+                placeholder={"Ex: John Pork"}
+                className={"field"}
+              />
+            </label>
 
+            <label className="fieldcontainer">
+              Comp Name:
+              <input
+                type="text"
+                name="comp"
+                value={mainpageData?.comp || ""}
+                onChange={handleChange}
+                placeholder={"Ex: Plano"}
+                className={"field"}
+              />
+            </label>
+            </div>
+          <div style={"margin: 5vh;"}></div>
+          <div className={"fieldset"}>
+          <label className={"fieldcontainer"}>
+            Team #:
+            <input
+              type="text"
+              name="team"
+              value={mainpageData?.team || ""}
+              onChange={handleChange}
+              placeholder={"Ex: 5431"}
+              className={"field"}
+            />
+          </label>
+          <label className={"fieldcontainer"}>
+            Match #:
+            <input
+              type="text"
+              name="match"
+              value={mainpageData?.match || ""}
+              onChange={handleChange}
+              placeholder={"Ex: 67"}
+              className={"field"}
+            />
+          </label>
+
+          </div>
+          
+        <div class="field-row">
+          <input type="checkbox" id="preload"></input>
+          <label for="preload">Fuel Preloaded?</label>
         </div>
+
       </form>
       
       

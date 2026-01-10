@@ -9,15 +9,8 @@ export interface MainpageProps {
   setmainpageData: Dispatch<StateUpdater<autonData>>;
 }
 export interface autonData{
-    L1: number,
-    L2: number,
-    L3: number,
-    L4: number,
-    CoralMissed: number,
-    DeAlgae: number,
-    Algaenet: number,
-    Processor: number,
-    LeftStart: boolean,
+    FuelScored: number,
+
 }     
 
 
@@ -29,15 +22,15 @@ const Auton: FunctionalComponent<MainpageProps> = (
 
   return <>
     <div className="pagecontainer">
-      <Counter name = "L1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "L2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "L3" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "C1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "C2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "C3" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "R1" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "R2" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>     
+      <Counter name = "Fuel Scored" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
+   
 
+      <select>
+        <option>No Climb</option>
+        <option>L1 Climb</option>
+        <option>L2 Climb</option>
+        <option>L3 Climb</option>
+      </select>
       
     </div>
 

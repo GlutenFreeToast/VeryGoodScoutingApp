@@ -43,7 +43,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
     <>
       <div class="field-row">
         <input checked disabled type="checkbox" id="FakeChoice"></input>
-        <label for="example4">Scouting Notes</label>
+        <label for="FakeChoice">Scouting Notes</label>
       </div>
       <h3>Put good notes (psst, SNS knows where you live):</h3>
       <form onSubmit={handleSubmit}>
