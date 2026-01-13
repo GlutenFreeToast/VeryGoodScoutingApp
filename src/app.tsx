@@ -1,5 +1,5 @@
 
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import "./app.css";
 import "./pages/global.css"
 import build from "../buildInfo.json";
@@ -12,6 +12,7 @@ import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import "xp.css/dist/XP.css";
+import PageReveal from "./PageReveal.tsx";
 
 export const PageType = {
   MATCH: 0,
@@ -27,6 +28,7 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
+  const [theme, setTheme] = useState<'femboy' | 'dark' | 'xp'>('xp');
   const [note] = useState();
   const [MatchData,setMatchData] = useState({
     name: "",
@@ -35,30 +37,35 @@ export function App() {
     match: "",
   });
   const [autonData, setautonData] = useState({
-    L1: 0,
-    L2: 0,
-    L3: 0,
-    L4: 0,
-    CoralMissed: 0,
-    DeAlgae: 0,
-    Algaenet: 0,
-    Processor: 0,
-    LeftStart: false,
+    FuelScored: 0
   });
 
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
   });
 
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'xp' ? 'femboy' : prev === 'femboy' ? 'dark' : 'xp');
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   // Debug: Log state changes
   
 
   return (
     <>
-      <div className="window" style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
+   {/* <PageReveal />*/}
+      <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
         <div className="title-bar" style={{height: "5vh"}}>
           <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
           <div className="title-bar-controls">
+            <button aria-label="Theme Switcher" 
+            style={{transform: "scale(2)", margin: "3vw"}}
+            onClick={toggleTheme}
+            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}

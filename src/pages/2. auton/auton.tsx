@@ -1,7 +1,6 @@
 import "../../app.css";
 import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
-//import { count } from "console";
 import type { StateUpdater, Dispatch } from "preact/hooks"
 
 export interface MainpageProps {
@@ -14,9 +13,7 @@ export interface autonData{
 }     
 
 
-const Auton: FunctionalComponent<MainpageProps> = (
-  // autonData,
-   _setautonData ) => {
+const Auton: FunctionalComponent<MainpageProps> = (_setautonData ) => {
 
   
 

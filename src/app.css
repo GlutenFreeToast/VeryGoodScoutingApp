@@ -150,3 +150,70 @@ body, html {
         border-right: none;
     }
 }
+
+/* Theme styles */
+.femboy {
+    --bg-color: #f7c9f2;
+    --text-color: #000000;
+    --title-bg: linear-gradient(90deg,	#f7c9f2 0%, #c8f4ff 100%);
+    --window-bg: url('./assets/feminineboy.jpg');
+    --border-color: #c8f4ff;
+}
+
+.femboy .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #ffffff, inset -2px -2px #c0c0c0, inset 2px 2px #e0e0e0;
+}
+
+.femboy .title-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.femboy .window-body {
+    background: var(--window-bg);
+}
+
+.femboy .status-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.dark {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --title-bg: linear-gradient(180deg, #333333 0%, #222222 100%);
+    --window-bg: #2a2a2a;
+    --border-color: #555555;
+}
+
+.dark .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #444444, inset -2px -2px #333333, inset 2px 2px #555555;
+}
+
+.dark .title-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.dark .window-body {
+    background: var(--window-bg);
+}
+
+.dark .status-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.dark body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.femboy body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}

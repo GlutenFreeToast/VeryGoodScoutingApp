@@ -11,6 +11,7 @@ export interface FormData {
   match: string;
 }
 
+
 export interface MainpageProps {
   mainpageData: FormData;
   setmainpageData: Dispatch<StateUpdater<FormData>>;
@@ -40,7 +41,6 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
   return (
     <>
       <form onSubmit={handleSubmit}>
-
         <div className={"fieldset"}>
             <label className="fieldcontainer">
               Enter Your Name:
@@ -102,6 +102,7 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
       
       
     </>
+    
   );
 };
 export default Match;

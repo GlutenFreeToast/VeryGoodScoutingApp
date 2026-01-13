@@ -1,0 +1,81 @@
+
+/* Solid cover */
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: black;
+  pointer-events: none;
+    animation: animate 10s cubic-bezier(0.42, 0, 1.0, 1.0) forwards;
+
+}
+.outline{
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background-color: red;
+  pointer-events: none;
+    animation: outed 10s cubic-bezier(0.42, 0, 1.0, 1.0) forwards;
+}
+
+.underneath{
+  position: fixed;
+  inset: 0;
+  opacity: 100%;
+  background: black;
+  z-index: 9997;
+  pointer-events: none;
+}
+
+
+@keyframes animate{
+  0%{
+    
+    clip-path: inset(400px 200px);
+  }
+  2%{background:white;}
+  4%{background:black;}
+  8%{ background:white;}
+  10%{background:black;}
+  100%{
+    
+    clip-path: inset(0px 0px);
+    
+  }
+}
+@keyframes outed{
+  0%{
+    background: #f06800;
+    clip-path: inset(385px 192px round 0 350px);
+      }
+  100%{
+    clip-path: inset(0px 0px round 0 350px);
+    
+  }
+}
+
+
+.text-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  pointer-events: none;
+  font-family: 'Matisse EB', sans-serif;
+  
+}
+
+
+@font-face {
+  font-family: 'Matisse EB';
+  src: url('./assets/fonts/FOT-Matisse Pro EB.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
