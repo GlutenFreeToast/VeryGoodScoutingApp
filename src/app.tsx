@@ -28,7 +28,13 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
-  const [theme, setTheme] = useState<'femboy' | 'dark' | 'xp'>('xp');
+  const [theme, setTheme] = useState<string>(() => {
+    try {
+      return localStorage.getItem('theme') ?? 'xp';
+    } catch (e) {
+      return 'xp';
+    }
+  });
   const [note] = useState();
   const [MatchData,setMatchData] = useState({
     name: "",
@@ -44,12 +50,15 @@ export function App() {
     notes: "",
   });
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'xp' ? 'femboy' : prev === 'femboy' ? 'dark' : 'xp');
-  };
+  
 
   useEffect(() => {
     document.body.className = theme;
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {
+      // ignore
+    }
   }, [theme]);
 
   // Debug: Log state changes
@@ -61,11 +70,28 @@ export function App() {
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
         <div className="title-bar" style={{height: "5vh"}}>
           <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
+            
+            
           <div className="title-bar-controls">
-            <button aria-label="Theme Switcher" 
+            <select
+              style={{ fontSize: "1vh", margin: "3vw" }}
+              value={theme}
+              onChange={(e) => setTheme((e.currentTarget as HTMLSelectElement).value)}
+              aria-label="Theme selector"
+            >
+              <option value="xp">XP</option>
+              <option value="femboy">Femboy</option>
+              <option value="dark">Dark</option>
+              <option value="sigma">sigma</option>
+              <option value="mcdonalds">mcdonalds</option>
+              <option value="drought">drought</option>
+              <option value="cats">cats</option>
+            </select>
+
+            {/*<button aria-label="Theme Switcher" 
             style={{transform: "scale(2)", margin: "3vw"}}
             onClick={toggleTheme}
-            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>
+            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>*/}
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
