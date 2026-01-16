@@ -86,12 +86,10 @@ export function App() {
               <option value="mcdonalds">mcdonalds</option>
               <option value="drought">drought</option>
               <option value="cats">cats</option>
+              <option value="confetti">confetti</option>
             </select>
 
-            {/*<button aria-label="Theme Switcher" 
-            style={{transform: "scale(2)", margin: "3vw"}}
-            onClick={toggleTheme}
-            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>*/}
+          
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
