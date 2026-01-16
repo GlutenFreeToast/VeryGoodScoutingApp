@@ -11,6 +11,7 @@ import Auton from "./pages/2. auton/auton.tsx";
 import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
+import weed from "../src/assets/tumble.png"
 import "xp.css/dist/XP.css";
 import PageReveal from "./PageReveal.tsx";
 
@@ -67,6 +68,13 @@ export function App() {
   return (
     <>
    {/* <PageReveal />*/}
+   {theme === "drought" && (
+      <div className="flier">
+        <img src={weed} />
+      </div>
+   )}
+
+   
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
         <div className="title-bar" style={{height: "5vh"}}>
           <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
@@ -80,12 +88,9 @@ export function App() {
               aria-label="Theme selector"
             >
               <option value="xp">XP</option>
-              <option value="femboy">Femboy</option>
-              <option value="dark">Dark</option>
-              <option value="sigma">sigma</option>
-              <option value="mcdonalds">mcdonalds</option>
-              <option value="drought">drought</option>
-              <option value="cats">cats</option>
+              <option value="drought">Drought</option>
+              <option value="mcdonalds">McDonalds</option>
+              <option value="cats">Cats</option>
               <option value="confetti">confetti</option>
             </select>
 

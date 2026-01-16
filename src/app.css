@@ -151,13 +151,48 @@ body, html {
     }
 }
 
+.flier{
+
+  bottom: 0;
+  display: block;
+  z-index: 1;
+  display: inline-block;
+  position:absolute;
+  background-size: contain;
+  animation: 
+            moveAnim 5s linear infinite,
+            bounceAnim 3s cubic-bezier(.63,.09,.75,.46) infinite alternate,
+            spinAnim 5s linear infinite;
+}
+
+@keyframes moveAnim {
+  from {
+    left: -120vw;
+  }
+  to {
+    left: 120vw;
+  }
+}
+@keyframes bounceAnim{
+  0%, 10% { bottom: 80%; }
+
+  100% { bottom: 0%; }
+}
+@keyframes spinAnim{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
 /* Theme styles */
 
 .drought {
-    
-    --bg-color: #f7c9f2;
+    --bg-color: hsl(0, 0%, 100%);
     --text-color: #000000;
-    --title-bg: #0050ee;
+    --title-bg: #ffcf40;
     --window-bg: url('./assets/sandy.jpg');
     --border-color: #0050ee;
     --border:2px solid #001ea0;
@@ -168,8 +203,6 @@ body, html {
     color: var(--text-color);
     box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
 }
-
-
 
 .drought .window-body {
     background: var(--window-bg);
