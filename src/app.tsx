@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "preact/hooks";
 import "./app.css";
+import "xp.css/dist/XP.css";
 import "./pages/global.css"
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
@@ -12,7 +13,9 @@ import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
-import "xp.css/dist/XP.css";
+import kitty from "../src/assets/cat-jump.png"
+
+
 import PageReveal from "./PageReveal.tsx";
 
 export const PageType = {
@@ -73,11 +76,16 @@ export function App() {
         <img src={weed} />
       </div>
    )}
+  {theme === "cats" && (
+      <div className="flier">
+        <img src={kitty} />
+      </div>
+   )}
 
-   
+
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
         <div className="title-bar" style={{height: "5vh"}}>
-          <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
+          <div className="title-bar-text" style={{fontSize: "2.8vh", margin: "1vw"}}>Scouting App 2026</div>
             
             
           <div className="title-bar-controls">
@@ -89,9 +97,10 @@ export function App() {
             >
               <option value="xp">XP</option>
               <option value="drought">Drought</option>
-              <option value="mcdonalds">McDonalds</option>
               <option value="cats">Cats</option>
-              <option value="confetti">confetti</option>
+              <option value="mcdonalds">McDonalds</option>
+
+              <option value="classic">Classic</option>
             </select>
 
           

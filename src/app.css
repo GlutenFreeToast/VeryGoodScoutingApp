@@ -54,7 +54,7 @@ body, html {
     border-left: 1px solid #0831d9;
     border-right: 1px solid #001ea0;
     border-top-left-radius: 8px;
-    border-top-right-radius: 7px;
+    border-top-right-radius: 8px;
     font-size: 13px;
     text-shadow: 1px 1px #0f1089;
     height: 28px;
@@ -160,9 +160,9 @@ body, html {
   position:absolute;
   background-size: contain;
   animation: 
-            moveAnim 5s linear infinite,
+            moveAnim 8s linear infinite,
             bounceAnim 3s cubic-bezier(.63,.09,.75,.46) infinite alternate,
-            spinAnim 5s linear infinite;
+            spinAnim 8s linear infinite;
 }
 
 @keyframes moveAnim {
@@ -174,7 +174,7 @@ body, html {
   }
 }
 @keyframes bounceAnim{
-  0%, 10% { bottom: 80%; }
+  0%, 10% { bottom: 75%; }
 
   100% { bottom: 0%; }
 }
@@ -189,13 +189,24 @@ body, html {
 
 /* Theme styles */
 
+.title-bar {
+    border-top-left-radius: 1.4em !important; 
+    border-top-right-radius: 1.4em !important; 
+    text-shadow: 3px 3px #0f1089 !important;
+    border-width: 0.2em !important;
+}
+.window {
+    border-top-left-radius: 1.4em !important;
+    border-top-right-radius: 1.4em !important;
+}
+
 .drought {
     --bg-color: hsl(0, 0%, 100%);
     --text-color: #000000;
     --title-bg: #ffcf40;
     --window-bg: url('./assets/sandy.jpg');
     --border-color: #0050ee;
-    --border:2px solid #001ea0;
+    --border:20px solid #001ea0;
 }
 
 .drought .window {
@@ -213,6 +224,58 @@ body, html {
     color: var(--text-color);
 }
 
+.mcdonalds {
+    --bg-color: #db1020;
+    --text-color: #000000;
+    --title-bg: #ffd700;
+    --window-bg: #db1020;
+    --border-color: #0050ee;
+    --border:2px solid #001ea0;
+}
+
+.mcdonalds .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.mcdonalds .window-body {
+    background: var(--window-bg);
+}
+
+.mcdonalds .status-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.mcdonalds .title-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.cats {
+    --bg-color: url('./assets/Cats.jpg');
+    --text-color: url('./assets/Cats.jpg');
+    --title-bg: #218d00;
+    --window-bg: url('./assets/Cats.jpg')0;
+    --border-color: url('./assets/Cats.jpg');
+    --border:2px solid url('./assets/Cats.jpg');
+}
+
+.cats .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.cats .window-body {
+    background: var(--window-bg);
+}
+
+.cats .status-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
 
 .select {
 
