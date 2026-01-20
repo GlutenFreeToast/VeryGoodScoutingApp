@@ -156,7 +156,7 @@ body, html {
     --bg-color: #f7c9f2;
     --text-color: #000000;
     --title-bg: linear-gradient(90deg,	#f7c9f2 0%, #c8f4ff 100%);
-    --window-bg: url('./assets/feminineboy.jpg');
+    --window-bg: white;
     --border-color: #c8f4ff;
 }
 

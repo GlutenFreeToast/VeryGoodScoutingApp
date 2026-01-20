@@ -4,7 +4,7 @@ import "./app.css";
 import "./pages/global.css"
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
-import Teleop from "./pages/3. teleop/teleop.tsx";
+import TransitionalShift from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import Results from "./pages/4. results/results.tsx";
 import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
@@ -13,11 +13,12 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import "xp.css/dist/XP.css";
 import PageReveal from "./PageReveal.tsx";
+import { Shield } from "@mui/icons-material";
 
 export const PageType = {
   MATCH: 0,
   AUTON: 1,
-  TELEOP: 2,
+  TransitionalShift: 2,
   RESULTS: 3,
   FINALIZE: 4,
   HELP: 9,
@@ -45,7 +46,12 @@ export function App() {
   const [autonData, setautonData] = useState({
     FuelScored: 0
   });
-
+  const [ShiftData, setShiftData] = useState({
+    shift1: [0,0,0,0],
+    shift2: [0,0,0,0],
+    shift3: [0,0,0,0],
+    shift4: [0,0,0,0]
+  });
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
   });
@@ -88,10 +94,7 @@ export function App() {
               <option value="cats">cats</option>
             </select>
 
-            {/*<button aria-label="Theme Switcher" 
-            style={{transform: "scale(2)", margin: "3vw"}}
-            onClick={toggleTheme}
-            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>*/}
+            
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
@@ -134,14 +137,14 @@ export function App() {
               >Auton</button>
 
               <button role="tab" aria-controls="tab-C"
-              aria-selected={page === PageType.TELEOP}
-              data-active={page === PageType.TELEOP}
+              aria-selected={page === PageType.TransitionalShift}
+              data-active={page === PageType.TransitionalShift}
               onClick={() => {
-                setPage(PageType.TELEOP);
-                console.log("Clicked on Teleop");
+                setPage(PageType.TransitionalShift);
+                console.log("Clicked on TransitionalShift");
               }}
               style={{fontSize: "2vh", flex: "1"}}
-              >TeleOp</button>
+              >Transitional Shift</button>
 
               <button role="tab" aria-controls="tab-D"
               aria-selected={page === PageType.RESULTS}
@@ -170,7 +173,7 @@ export function App() {
                 <div style={{ marginTop: 8}}>
                   {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
                   {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
-                  {page === PageType.TELEOP && <Teleop />}
+                  {page === PageType.TransitionalShift && <TransitionalShift mainpageData={ShiftData} setmainpageData={setShiftData}/>}
                   {page === PageType.RESULTS && <Results />}
                   {page === PageType.FINALIZE && <Finalize mainpageData={finalizeData} setmainpageData={setfinalizeData} setPage={setPage}/>}
                   {page === PageType.HELP && <Help setPage={setPage}/>}
