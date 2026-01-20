@@ -14,7 +14,9 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
-
+import McBoy from "../src/assets/RonnieMcdonnie.webp"
+import ad from "../src/assets/bannerad.webp"
+import robot from "../src/assets/hyperion.png"
 
 import PageReveal from "./PageReveal.tsx";
 
@@ -81,6 +83,21 @@ export function App() {
         <img src={kitty} />
       </div>
    )}
+  {theme === "mcdonalds" && (
+      <div className="flier">
+        <img src={McBoy} />
+      </div>
+   )}
+  {theme === "ads" && (
+      <div className="flier">
+        <img src={ad} />
+      </div>
+   )}
+  {theme === "robotics" && (
+      <div className="flier">
+        <img src={robot} />
+      </div>
+   )}
 
 
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
@@ -99,7 +116,8 @@ export function App() {
               <option value="drought">Drought</option>
               <option value="cats">Cats</option>
               <option value="mcdonalds">McDonalds</option>
-
+              <option value="ads">Ads</option>
+              <option value="robotics">5431</option>
               <option value="classic">Classic</option>
             </select>
 
