@@ -54,7 +54,7 @@ body, html {
     border-left: 1px solid #0831d9;
     border-right: 1px solid #001ea0;
     border-top-left-radius: 8px;
-    border-top-right-radius: 7px;
+    border-top-right-radius: 8px;
     font-size: 13px;
     text-shadow: 1px 1px #0f1089;
     height: 28px;
@@ -151,69 +151,180 @@ body, html {
     }
 }
 
+.flier{
+
+  bottom: 0;
+  display: block;
+  z-index: 1;
+  display: inline-block;
+  position:absolute;
+  background-size: contain;
+  animation: 
+            moveAnim 8s linear infinite,
+            bounceAnim 2s cubic-bezier(.63,.09,.75,.46) infinite alternate,
+            spinAnim 8s linear infinite;
+}
+
+@keyframes moveAnim {
+  from {
+    left: -120vw;
+  }
+  to {
+    left: 120vw;
+  }
+}
+@keyframes bounceAnim{
+  0%, 10% { bottom: 75%; }
+
+  100% { bottom: 0%; }
+}
+@keyframes spinAnim{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
 /* Theme styles */
-.femboy {
-    --bg-color: #f7c9f2;
+
+.title-bar {
+    border-top-left-radius: 1.4em !important; 
+    border-top-right-radius: 1.4em !important; 
+    text-shadow: 3px 3px #0f1089 !important;
+    border-width: 0.2em !important;
+}
+.window {
+    border-top-left-radius: 1.4em !important;
+    border-top-right-radius: 1.4em !important;
+}
+
+.drought {
+    --bg-color: hsl(0, 0%, 100%);
     --text-color: #000000;
-    --title-bg: linear-gradient(90deg,	#f7c9f2 0%, #c8f4ff 100%);
-    --window-bg: white;
-    --border-color: #c8f4ff;
+    --title-bg: #ffcf40;
+    --window-bg: url('./assets/sandy.jpg');
+    --border-color: #0050ee;
+    --border:20px solid #001ea0;
 }
 
-.femboy .window {
+.drought .window {
     background: var(--window-bg);
     color: var(--text-color);
-    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #ffffff, inset -2px -2px #c0c0c0, inset 2px 2px #e0e0e0;
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
 }
 
-.femboy .title-bar {
+.drought .window-body {
+    background: var(--window-bg);
+}
+
+.drought .status-bar {
     background: var(--title-bg);
     color: var(--text-color);
 }
 
-.femboy .window-body {
+.mcdonalds {
+    --bg-color: #db1020;
+    --text-color: #000000;
+    --title-bg: #ffd700;
+    --window-bg: #db1020;
+    --border-color: #0050ee;
+    --border:2px solid #001ea0;
+}
+
+.mcdonalds .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.mcdonalds .window-body {
     background: var(--window-bg);
 }
 
-.femboy .status-bar {
+.mcdonalds .status-bar {
     background: var(--title-bg);
     color: var(--text-color);
 }
 
-.dark {
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
-    --title-bg: linear-gradient(180deg, #333333 0%, #222222 100%);
-    --window-bg: #2a2a2a;
-    --border-color: #555555;
-}
-
-.dark .window {
-    background: var(--window-bg);
-    color: var(--text-color);
-    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #444444, inset -2px -2px #333333, inset 2px 2px #555555;
-}
-
-.dark .title-bar {
+.mcdonalds .title-bar {
     background: var(--title-bg);
     color: var(--text-color);
 }
 
-.dark .window-body {
+.cats {
+    --bg-color: url('./assets/Cats.jpg');
+    --text-color: url('./assets/Cats.jpg');
+    --title-bg: #218d00;
+    --window-bg: url('./assets/Cats.jpg')0;
+    --border-color: url('./assets/Cats.jpg');
+    --border:2px solid url('./assets/Cats.jpg');
+}
+
+.cats .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.cats .window-body {
     background: var(--window-bg);
 }
 
-.dark .status-bar {
+.cats .status-bar {
     background: var(--title-bg);
     color: var(--text-color);
 }
 
-.dark body {
-    background: var(--bg-color);
+.ads {
+    --bg-color: url('./assets/bannerad.webp');
+    --text-color: url('./assets/ads.jpg');
+    --title-bg: #00f7ff;
+    --window-bg: url('./assets/ads.jpg')0;
+    --border-color: url('./assets/ads.jpg');
+    --border:2px solid url('./assets/ads.jpg');
+}
+
+.ads .window {
+    background: var(--window-bg);
+    color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.ads .window-body {
+    background: var(--window-bg);
+}
+
+.ads .status-bar {
+    background: var(--title-bg);
     color: var(--text-color);
 }
 
-.femboy body {
-    background: var(--bg-color);
+.robotics {
+    --bg-color: url('./assets/bannerad.webp');
+    --text-color: url('./assets/ads.jpg');
+    --title-bg: #00f7ff;
+    --window-bg: url('./assets/logo.jpg')0;
+    --border-color: url('./assets/ads.jpg');
+    --border:2px solid url('./assets/ads.jpg');
+}
+
+.robotics .window {
+    background: var(--window-bg);
     color: var(--text-color);
+    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
+}
+
+.robotics .window-body {
+    background: var(--window-bg);
+}
+
+.robotics .status-bar {
+    background: var(--title-bg);
+    color: var(--text-color);
+}
+
+.select {
+
 }

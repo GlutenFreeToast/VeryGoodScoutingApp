@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "preact/hooks";
 import "./app.css";
+import "xp.css/dist/XP.css";
 import "./pages/global.css"
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
@@ -11,7 +12,12 @@ import Auton from "./pages/2. auton/auton.tsx";
 import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
-import "xp.css/dist/XP.css";
+import weed from "../src/assets/tumble.png"
+import kitty from "../src/assets/cat-jump.png"
+import McBoy from "../src/assets/RonnieMcdonnie.webp"
+import ad from "../src/assets/bannerad.webp"
+import robot from "../src/assets/hyperion.png"
+
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
 
@@ -73,9 +79,36 @@ export function App() {
   return (
     <>
    {/* <PageReveal />*/}
+   {theme === "drought" && (
+      <div className="flier">
+        <img src={weed} />
+      </div>
+   )}
+  {theme === "cats" && (
+      <div className="flier">
+        <img src={kitty} />
+      </div>
+   )}
+  {theme === "mcdonalds" && (
+      <div className="flier">
+        <img src={McBoy} />
+      </div>
+   )}
+  {theme === "ads" && (
+      <div className="flier">
+        <img src={ad} />
+      </div>
+   )}
+  {theme === "robotics" && (
+      <div className="flier">
+        <img src={robot} />
+      </div>
+   )}
+
+
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
         <div className="title-bar" style={{height: "5vh"}}>
-          <div className="title-bar-text" style={{fontSize: "2vh", margin: "3vw"}}>Scouting App 2026</div>
+          <div className="title-bar-text" style={{fontSize: "2.8vh", margin: "1vw"}}>Scouting App 2026</div>
             
             
           <div className="title-bar-controls">
@@ -86,15 +119,18 @@ export function App() {
               aria-label="Theme selector"
             >
               <option value="xp">XP</option>
-              <option value="femboy">Femboy</option>
-              <option value="dark">Dark</option>
-              <option value="sigma">sigma</option>
-              <option value="mcdonalds">mcdonalds</option>
-              <option value="drought">drought</option>
-              <option value="cats">cats</option>
+              <option value="drought">Drought</option>
+              <option value="cats">Cats</option>
+              <option value="mcdonalds">McDonalds</option>
+              <option value="ads">Ads</option>
+              <option value="robotics">5431</option>
+              <option value="classic">Classic</option>
             </select>
 
-            
+            {/*<button aria-label="Theme Switcher" 
+            style={{transform: "scale(2)", margin: "3vw"}}
+            onClick={toggleTheme}
+            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>*/}
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
