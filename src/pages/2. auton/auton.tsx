@@ -13,7 +13,7 @@ export interface autonData{
 }     
 
 
-const Auton: FunctionalComponent<MainpageProps> = (_setautonData ) => {
+const Auton: FunctionalComponent<MainpageProps> = (setautonData ) => {
 
   
 
