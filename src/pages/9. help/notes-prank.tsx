@@ -20,7 +20,7 @@ function ipnum() {
 const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
     // const [count, setCount] = useState(0);
   return <>
-   <div style={{ width: "92.5vw" }} className="window">
+   <div style={{ width: "92.5vw", borderTopRightRadius: "5px !important", borderTopLeftRadius: "5px !important" }} className="window subwindow">
       <div className="title-bar">
         <div className="title-bar-text">!!Lazy Bum Alert!!</div>
         <div className="title-bar-controls">
