@@ -12,10 +12,8 @@ export interface MainpageProps {
 {/*the first number represent a different shift*/}
 let count = {shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]};
 
-export type numberarray=number[];
 export interface TransitionalShiftData {
   shift: Array<Array<number>>;
-  
 }
 
 

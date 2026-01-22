@@ -1,7 +1,7 @@
 import "../../app.css";
 import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
-import type { StateUpdater, Dispatch } from "preact/hooks"
+import { type StateUpdater, type Dispatch, useState } from "preact/hooks"
 
 export interface MainpageProps {
   mainpageData: autonData;
@@ -9,25 +9,28 @@ export interface MainpageProps {
 }
 export interface autonData{
     FuelScored: number,
-
+    FuelMissed: number,
+    climb: number
 }     
 
 
-const Auton: FunctionalComponent<MainpageProps> = (setautonData ) => {
+
+
+
+
+const Auton: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageData }) => {
+
+  
 
   
 
   return <>
     <div className="pagecontainer">
-      <Counter name = "Fuel Scored" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-      <Counter name = "Fuel Miseed" count={0} onButtonDown={() => {}} onButtonUp={() => {}}></Counter>
-
-      
-      <select>
-        <option>No Climb</option>
-        <option>L1 Climb</option>
-        <option>L2 Climb</option>
-        <option>L3 Climb</option>
+      <Counter name="Fuel Scored" count={mainpageData.FuelScored} onButtonDown={() => setmainpageData({ ...mainpageData, FuelScored: mainpageData.FuelScored - 1 })} onButtonUp={() => setmainpageData({ ...mainpageData, FuelScored: mainpageData.FuelScored + 1 })} />
+      <Counter name="Fuel Missed" count={mainpageData.FuelMissed} onButtonDown={() => setmainpageData({ ...mainpageData, FuelMissed: mainpageData.FuelMissed - 1 })} onButtonUp={() => setmainpageData({ ...mainpageData, FuelMissed: mainpageData.FuelMissed + 1 })} />
+      <select value={mainpageData.climb} onChange={(e) => setmainpageData({ ...mainpageData, climb: parseInt(e.currentTarget.value) })}>
+        <option value="0">No Climb</option>
+        <option value="1">L1 Climb</option>
       </select>
       
     </div>

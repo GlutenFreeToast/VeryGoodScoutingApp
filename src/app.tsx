@@ -50,13 +50,12 @@ export function App() {
     match: "",
   });
   const [autonData, setautonData] = useState({
-    FuelScored: 0
+    FuelScored: 0,
+    FuelMissed: 0,
+    climb:0
   });
   const [ShiftData, setShiftData] = useState({
-    shift1: [0,0,0,0],
-    shift2: [0,0,0,0],
-    shift3: [0,0,0,0],
-    shift4: [0,0,0,0]
+    shift: Array<Array<number>>
   });
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
@@ -104,6 +103,12 @@ export function App() {
         <img src={robot} />
       </div>
    )}
+   {theme === "Bizzare" && (
+      <div className="flier">
+        
+      </div>
+   )}
+
 
 
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
@@ -125,12 +130,10 @@ export function App() {
               <option value="ads">Ads</option>
               <option value="robotics">5431</option>
               <option value="classic">Classic</option>
+              <option value="Bizzare">Bizzare??</option>
             </select>
 
-            {/*<button aria-label="Theme Switcher" 
-            style={{transform: "scale(2)", margin: "3vw"}}
-            onClick={toggleTheme}
-            >{theme === 'xp' ? '🌙' : theme === 'femboy' ? '🎌' : '💻'}</button>*/}
+            
             <button aria-label="Help" 
             style={{transform: "scale(2)", margin: "3vw"}}
             aria-selected={page === PageType.HELP}
