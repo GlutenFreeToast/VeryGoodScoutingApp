@@ -14,8 +14,6 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
-import McBoy from "../src/assets/RonnieMcdonnie.webp"
-import ad from "../src/assets/bannerad.webp"
 import robot from "../src/assets/hyperion.png"
 
 import PageReveal from "./PageReveal.tsx";
@@ -88,16 +86,6 @@ export function App() {
         <img src={kitty} />
       </div>
    )}
-  {theme === "mcdonalds" && (
-      <div className="flier">
-        <img src={McBoy} />
-      </div>
-   )}
-  {theme === "ads" && (
-      <div className="flier">
-        <img src={ad} />
-      </div>
-   )}
   {theme === "robotics" && (
       <div className="flier">
         <img src={robot} />
@@ -112,7 +100,7 @@ export function App() {
 
 
       <div className={`window ${theme}`} style={{ width: "100vw", height: "100vh", fontSize: "15px"}}>
-        <div className="title-bar" style={{height: "5vh"}}>
+        <div className="title-bar main-title-bar" style={{height: "5vh"}}>
           <div className="title-bar-text" style={{fontSize: "2.8vh", margin: "1vw"}}>Scouting App 2026</div>
             
             
@@ -126,8 +114,6 @@ export function App() {
               <option value="xp">XP</option>
               <option value="drought">Drought</option>
               <option value="cats">Cats</option>
-              <option value="mcdonalds">McDonalds</option>
-              <option value="ads">Ads</option>
               <option value="robotics">5431</option>
               <option value="classic">Classic</option>
               <option value="Bizzare">Bizzare??</option>
@@ -204,6 +190,7 @@ export function App() {
               }}
               style={{fontSize: "2vh", flex: "1"}}
               >Finalize</button>
+
             </menu>
 
             <article role="tabpanel" id="tab-A">

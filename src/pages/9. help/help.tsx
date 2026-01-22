@@ -16,7 +16,7 @@ export interface MainpageProps {
 const Help: FunctionalComponent<MainpageProps> = ({ setPage }) => {
     // const [count, setCount] = useState(0);
   return <>
-   <div style={{ width: "92.5vw" }} className="window">
+   <div style={{ width: "92.5vw" }} className="window subwindow">
       <div className="title-bar">
         <div className="title-bar-text">Scouting App 2026 - Help</div>
         <div className="title-bar-controls">
