@@ -1,14 +1,17 @@
 import "../global.css";
 import "xp.css/dist/XP.css";
 import "../../app.css";
+import { triggerConfetti } from "../../Components/triggerConfetti";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
+import { blue } from "@mui/material/colors";
 
 export interface FormData {
   name: string;
   comp: string;
   team: string;
   match: string;
+  preload: number;
 }
 
 
@@ -91,12 +94,22 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             />
           </label>
 
+          <div>
+            <button onClick={()=>{triggerConfetti('cannon','red')}} style={"color: red"}>Red</button>
+            <button onClick={()=>{triggerConfetti('cannon','blue')}} style={"color: blue"}>Blue</button>
           </div>
+         <div className="field-row" style="width: 700px">
+          <label for="range25">Preloaded Fuel:</label>
+          <label for="range26">0</label>
+          <input id="range26" type="range" min="0" max="8" value={mainpageData?.preload || 0} />
+          <label for="range27">8</label>
+
           
-        <div class="field-row">
-          <input type="checkbox" id="preload"></input>
-          <label for="preload">Fuel Preloaded?</label>
         </div>
+          </div>
+
+        
+
 
       </form>
       

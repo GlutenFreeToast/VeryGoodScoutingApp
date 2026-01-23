@@ -42,26 +42,14 @@ const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
     </select>
     <div className="pagecontainer"  style= "display:flex; flex-direction: row;">
     <Counter name = "Shot Made" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
-    <Counter name = "Shot not missed" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
+    <Counter name = "Shot not made" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
     
     </div>
     <div className="pagecontainer" style= "display:flex; flex-direction: row;">
     <Counter name = "Shot missed" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
 
     </div>
-      <select>
-        <option>No Climb</option>
-        <option>L1 Climb</option>
-        <option>L2 Climb</option>
-        <option>L3 Climb</option>
-      </select>
-      
     </div>
-
-    
-    
-    
-    
     </>;
 };
 

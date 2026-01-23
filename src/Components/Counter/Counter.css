@@ -27,20 +27,20 @@
 .counterdisplay {
   display:flex;
   font-size: 1.45em;
-  width: 1.8em;
+  width: 4em;
   text-align: center;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
   padding-left: 20px;
-  margin-left: -10px;
+  margin-left: -5px;
   padding-right: 20px;
-  margin-right: -10px;
+  margin-right: -5px;
   box-sizing: border-box; 
-  border-radius: 10px;
   background-color: var(--background-color);
   filter: brightness(1.2) contrast(120%) saturate(150%);
   padding: 0.1em;
+  z-index: 1;
 }
 
 .leftbutton {
@@ -52,6 +52,7 @@
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
+  z-index: 2;
 }
 
 .rightbutton {
@@ -63,6 +64,7 @@
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
+  z-index: 2;
 }
 
 /* 

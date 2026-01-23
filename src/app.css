@@ -224,35 +224,6 @@ body, html {
     color: var(--text-color);
 }
 
-.mcdonalds {
-    --bg-color: #db1020;
-    --text-color: #000000;
-    --title-bg: #ffd700;
-    --window-bg: #db1020;
-    --border-color: #0050ee;
-    --border:2px solid #001ea0;
-}
-
-.mcdonalds .window {
-    background: var(--window-bg);
-    color: var(--text-color);
-    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
-}
-
-.mcdonalds .window-body {
-    background: var(--window-bg);
-}
-
-.mcdonalds .status-bar {
-    background: var(--title-bg);
-    color: var(--text-color);
-}
-
-.mcdonalds .title-bar {
-    background: var(--title-bg);
-    color: var(--text-color);
-}
-
 .cats {
     --bg-color: url('./assets/Cats.jpg');
     --text-color: url('./assets/Cats.jpg');
@@ -273,30 +244,6 @@ body, html {
 }
 
 .cats .status-bar {
-    background: var(--title-bg);
-    color: var(--text-color);
-}
-
-.ads {
-    --bg-color: url('./assets/bannerad.webp');
-    --text-color: url('./assets/ads.jpg');
-    --title-bg: #00f7ff;
-    --window-bg: url('./assets/ads.jpg')0;
-    --border-color: url('./assets/ads.jpg');
-    --border:2px solid url('./assets/ads.jpg');
-}
-
-.ads .window {
-    background: var(--window-bg);
-    color: var(--text-color);
-    box-shadow: inset -1px -1px var(--border-color), inset 1px 1px #0050ee, inset -2px -2px #0050ee, inset 2px 2px #0050ee;
-}
-
-.ads .window-body {
-    background: var(--window-bg);
-}
-
-.ads .status-bar {
     background: var(--title-bg);
     color: var(--text-color);
 }
