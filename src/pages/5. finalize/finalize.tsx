@@ -4,6 +4,7 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import prank from "../9. help/notes-prank";
 import { PageType } from "../../app.tsx";
+import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
 
 
 
@@ -62,7 +63,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
       <button className={"buttons"}
       onClick={() => {
         console.log("Clicked Submit");
-
+        triggerConfetti('burst','5431')
         if (mainpageData.notes === "") {
           console.log("Notes are empty");
           setPage(PageType.PRANK);

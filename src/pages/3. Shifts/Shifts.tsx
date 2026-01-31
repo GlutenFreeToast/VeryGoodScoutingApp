@@ -79,11 +79,6 @@ const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
     
       
     </div>
-
-    
-    
-    
-    
     </>;
 };
 

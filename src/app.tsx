@@ -46,6 +46,7 @@ export function App() {
     comp: "",
     team: "",
     match: "",
+    preload: 0
   });
   const [autonData, setautonData] = useState({
     FuelScored: 0,
@@ -122,7 +123,6 @@ export function App() {
               <option value="drought">Drought</option>
               <option value="cats">Cats</option>
               <option value="robotics">5431</option>
-              <option value="classic">Classic</option>
               <option value="Bizzare">Bizzare??</option>
             </select>
 
@@ -173,10 +173,10 @@ export function App() {
               data-active={page === PageType.TransitionalShift}
               onClick={() => {
                 setPage(PageType.TransitionalShift);
-                console.log("Clicked on TransitionalShift");
+                console.log("Clicked on Shifts");
               }}
               style={{fontSize: "2vh", flex: "1"}}
-              >Transitional Shift</button>
+              >Shifts</button>
 
               <button role="tab" aria-controls="tab-D"
               aria-selected={page === PageType.ENDGAME}
