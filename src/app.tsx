@@ -6,7 +6,7 @@ import "./pages/global.css"
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
 import TransitionalShift from "./pages/3. TransitionalShift/TransitionalShift.tsx";
-import Results from "./pages/4. results/results.tsx";
+import ENDGAME from "./pages/4. endGame/endGame.tsx";
 import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
 import Help from "./pages/9. help/help.tsx";
@@ -23,7 +23,7 @@ export const PageType = {
   MATCH: 0,
   AUTON: 1,
   TransitionalShift: 2,
-  RESULTS: 3,
+  ENDGAME: 3,
   FINALIZE: 4,
   HELP: 9,
   PRANK: 10,
@@ -53,10 +53,17 @@ export function App() {
     climb:0
   });
   const [ShiftData, setShiftData] = useState({
-    shift: Array<Array<number>>
+    shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
   });
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
+  });
+  const[endGameData, setendGameData] = useState({
+    climbLevel: 0,
+    Scoring: 0,
+    Misses: 0,
+    HumanScore: 0,
+    HumanMisses: 0
   });
 
   
@@ -172,14 +179,14 @@ export function App() {
               >Transitional Shift</button>
 
               <button role="tab" aria-controls="tab-D"
-              aria-selected={page === PageType.RESULTS}
-              data-active={page === PageType.RESULTS}
+              aria-selected={page === PageType.ENDGAME}
+              data-active={page === PageType.ENDGAME}
               onClick={() => {
-                setPage(PageType.RESULTS);
-                console.log("Clicked on Results");
+                setPage(PageType.ENDGAME);
+                console.log("Clicked on End Game");
               }}
               style={{fontSize: "2vh", flex: "1"}}
-              >Results</button>
+              >End Game</button>
 
               <button role="tab" aria-controls="tab-E"
               aria-selected={page === PageType.FINALIZE}
@@ -200,7 +207,7 @@ export function App() {
                   {page === PageType.MATCH && <Match mainpageData={MatchData} setmainpageData={setMatchData}/>}
                   {page === PageType.AUTON && <Auton mainpageData={autonData} setmainpageData={setautonData}/>}
                   {page === PageType.TransitionalShift && <TransitionalShift mainpageData={ShiftData} setmainpageData={setShiftData}/>}
-                  {page === PageType.RESULTS && <Results />}
+                  {page === PageType.ENDGAME && <ENDGAME mainpageData={endGameData} setmainpageData={setendGameData}/>}
                   {page === PageType.FINALIZE && <Finalize mainpageData={finalizeData} setmainpageData={setfinalizeData} setPage={setPage}/>}
                   {page === PageType.HELP && <Help setPage={setPage}/>}
                   {page === PageType.PRANK && <Prank setPage={setPage}/>}
