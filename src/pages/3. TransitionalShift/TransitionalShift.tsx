@@ -18,16 +18,9 @@ export interface ShiftData {
   shift: number[][];
 }
 
-interface Props {
-  name: string;
-  count: number;
-  onButtonUp: () => void;
-  onButtonDown: () => void;
-}
 
 
-
-const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
+const Shift: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
 
   const [activeShift, setActiveShift] = useState(0);
   const [shotMade, setshotmade]= useState(count.shift[activeShift][0]);
@@ -50,10 +43,11 @@ const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
       sethumanmade(count.shift[shiftIndex][2]);
       sethumanmiss(count.shift[shiftIndex][3]);
     }}>
-      <option value = "0" selected>Shift 1</option>
-      <option value = "1">Shift 2</option>
-      <option value = "2">Shift 3</option>
-      <option value = "3">Shift 4</option>
+      <option value = "0" selected>Transition Shift</option>
+      <option value = "1">Shift 1</option>
+      <option value = "2">Shift 2</option>
+      <option value = "3">Shift 3</option>
+      <option value = "4">Shift 4</option>
     </select>
 
 
@@ -67,7 +61,7 @@ const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
     <div className="button_container"  style={{ position: 'relative', left: 230, top: -160}}>
     <Counter name = "Human Player Score" count={humanmade} onButtonDown={() => {count.shift[activeShift][2]--; sethumanmade(count.shift[activeShift][2]);}} onButtonUp={() => {count.shift[activeShift][2]++; sethumanmade(count.shift[activeShift][2]);}}></Counter>
     <Counter name = "Human Player misses" count={humanmiss} onButtonDown={() => {count.shift[activeShift][3]--; sethumanmiss(count.shift[activeShift][3]);}} onButtonUp={() => {count.shift[activeShift][3]++; sethumanmiss(count.shift[activeShift][3]);}}></Counter>
-    
+
     </div>
     <div>
   <img src={map} alt="map" style={{ position: 'relative', width: '100%', height: 'auto'}}></img>
@@ -79,7 +73,12 @@ const Teleop: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
     
       
     </div>
+
+    
+    
+    
+    
     </>;
 };
 
-export default Teleop;
+export default Shift;

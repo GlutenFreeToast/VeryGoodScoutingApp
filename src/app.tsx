@@ -16,6 +16,7 @@ import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
 
+
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
 
@@ -54,7 +55,7 @@ export function App() {
     climb:0
   });
   const [ShiftData, setShiftData] = useState({
-    shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
+    shift: [[0,0,0,0,0],[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
   });
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
@@ -220,8 +221,8 @@ export function App() {
             <p class="status-bar-field">FRC Team 5431/5790 - "Titan Robotics"</p>
             <p class="status-bar-field">2025-2026 Season</p>
             <p class="status-bar-field" style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
-            <p class="status-bar-field">Jason & Kenny</p>
-          </div>
+            <p class="status-bar-field">Jason & Kenny </p>
+            </div>
 
         </div>
       </div>
