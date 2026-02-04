@@ -15,6 +15,8 @@ import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
+import QRcode from "react-qr-code"
+import { v4 as uuidv4 } from "uuid";
 
 
 import PageReveal from "./PageReveal.tsx";
