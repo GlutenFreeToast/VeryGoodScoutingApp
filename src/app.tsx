@@ -59,6 +59,10 @@ export function App() {
   });
   const [finalizeData,setfinalizeData] = useState({
     notes: "",
+    red:0,
+    blue:0,
+    penalties:0,
+    ranking:0,
   });
   const[endGameData, setendGameData] = useState({
     climbLevel: 0,
@@ -219,7 +223,7 @@ export function App() {
           
           <div class="status-bar" style={{ position: "absolute", bottom: 0, width: "100vw"}}>
             <p class="status-bar-field">FRC Team 5431/5790 - "Titan Robotics"</p>
-            <p class="status-bar-field">2025-2026 Season</p>
+            <p class="status-bar-field">2026 Season</p>
             <p class="status-bar-field" style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
             <p class="status-bar-field">Jason & Kenny </p>
             </div>

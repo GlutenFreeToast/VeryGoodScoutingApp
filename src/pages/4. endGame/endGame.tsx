@@ -1,6 +1,6 @@
 import "../global.css";
 import type { FunctionalComponent } from "preact";
-import type { StateUpdater, Dispatch } from "preact/hooks"
+import type { Dispatch, StateUpdater } from "preact/hooks";
 import Counter from "../../Components/Counter/Counter.tsx";
 export interface endGameData {
     climbLevel: number;
@@ -10,7 +10,7 @@ export interface endGameData {
     HumanMisses: number;
 }
 export interface MainpageProps {
-  mainpageData?: endGameData;
+  mainpageData: endGameData;
   setmainpageData?: Dispatch<StateUpdater<endGameData>>;
 }
 
@@ -27,10 +27,10 @@ const endGame: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpage
           <option>L3 Climb</option>
       </select>
 
-      <Counter name="Score" count={mainpageData?.Scoring ?? 0} onButtonDown={() => {}} onButtonUp={() => {}} />
-      <Counter name="Misses" count={mainpageData?.Misses ?? 0} onButtonDown={() => {}} onButtonUp={() => {}} />
-      <Counter name="Human Score" count={mainpageData?.HumanScore ?? 0} onButtonDown={() => {}} onButtonUp={() => {}} />
-      <Counter name="Human Misses" count={mainpageData?.HumanMisses ?? 0} onButtonDown={() => {}} onButtonUp={() => {}} />
+      <Counter name="Score" count={mainpageData.Scoring} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring + 1 })} />
+      <Counter name="Misses" count={mainpageData.Misses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses + 1 })} />
+      <Counter name="Human Score" count={mainpageData.HumanScore} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore + 1 })} />
+      <Counter name="Human Misses" count={mainpageData.HumanMisses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses + 1 })} />
     
     </div>
     </>

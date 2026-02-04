@@ -19,6 +19,7 @@
     "preact": "^10.27.0",
     "react-qr-code": "^2.0.18",
     "react-router-dom": "^7.9.4",
+    "uuid": "^13.0.0",
     "xp.css": "^0.2.6"
   },
   "devDependencies": {

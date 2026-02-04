@@ -10,6 +10,10 @@ import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
 
 export interface FormData {
   notes: string;
+  red:number;
+  blue:number;
+  penalties:number;
+  ranking:number;
 }
 
 export interface FinalizeProps {
@@ -85,6 +89,10 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
             name="red"
             placeholder={"Ex: 57"}
             className={"field"}
+            value={mainpageData.red || ""}
+            onChange={(e) => {
+              setmainpageData({...mainpageData, red: parseInt(e.currentTarget.value) || 0});
+            }}
           />
         </label>
 
@@ -95,6 +103,10 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
             name="blue"
             placeholder={"Ex: 90"}
             className={"field"}
+            value={mainpageData.blue || ""}
+            onChange={(e) => {
+              setmainpageData({...mainpageData, blue: parseInt(e.currentTarget.value) || 0});
+            }}
           />
         </label>
         </div>
@@ -102,11 +114,15 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>
           Penalties:
-          <input
+          <input          
             type="text"
             name="penalties"
             placeholder={"Ex: 296"}
             className={"field"}
+            value={mainpageData.penalties || ""}
+            onChange={(e) => {
+              setmainpageData({...mainpageData, penalties: parseInt(e.currentTarget.value)});
+            }}
           />
         </label>
 
@@ -117,6 +133,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
             name="ranking"
             placeholder={"Ex: 6"}
             className={"field"}
+            value={mainpageData.ranking || ""}
+            onChange={(e) => {
+              setmainpageData({...mainpageData, ranking: parseInt(e.currentTarget.value)});
+            }}
+          
           />
         </label>
         </div>
