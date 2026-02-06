@@ -46,39 +46,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
 
   return (
     <>
-      <div class="field-row">
-        <input checked disabled type="checkbox" id="FakeChoice"></input>
-        <label for="FakeChoice">Scouting Notes</label>
-      </div>
-      <h3>Put good notes (psst, SNS knows where you live):</h3>
-      <form onSubmit={handleSubmit}>
-
-        <textarea
-          className={"notes"}
-          name="notes"
-          value={mainpageData?.notes || ""}
-          onChange={handleChange}
-          placeholder="Ex: robot blew up, injured 6 or 7 people"
-        />
-
-      </form>
-
-      <h2>---------------</h2>
-      <button className={"buttons"}
-      onClick={() => {
-        console.log("Clicked Submit");
-        triggerConfetti('burst','5431')
-        if (mainpageData.notes === "") {
-          console.log("Notes are empty");
-          setPage(PageType.PRANK);
-          return;
-
-        } else {
-          console.log("Notes submitted:", mainpageData.notes);
-        }
-
-      }}
-      >Submit</button>
+      
       <div style={"margin: 5vh;"}></div>
       <form onSubmit={handleSubmit}>
         <div className={"fieldset"}>
@@ -140,7 +108,44 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
           
           />
         </label>
-        </div>
+
+
+
+        <div class="field-row">
+        <input checked disabled type="checkbox" id="FakeChoice"></input>
+        <label for="FakeChoice">Scouting Notes</label>
+      </div>
+      <h3>Put good notes (psst, SNS knows where you live):</h3>
+      <form onSubmit={handleSubmit}>
+
+        <textarea
+          className={"notes"}
+          name="notes"
+          value={mainpageData?.notes || ""}
+          onChange={handleChange}
+          placeholder="Ex: robot blew up, injured 6 or 7 people"
+        />
+
+      </form>
+      </div>
+      <h2>---------------</h2>
+      <button className={"buttons"}
+      onClick={() => {
+        console.log("Clicked Submit");
+        triggerConfetti('burst','5431')
+        if (mainpageData.notes === "") {
+          console.log("Notes are empty");
+          setPage(PageType.PRANK);
+          return;
+
+        } else {
+          console.log("Notes submitted:", mainpageData.notes);
+        }
+
+      }}
+      >Submit</button>
+
+        
       </form>
     </>
   );
