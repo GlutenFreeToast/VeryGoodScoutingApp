@@ -7,7 +7,7 @@
   background-color: black;
   opacity: 50%;
   /* Example: Place 20 pixels from the top and 50 pixels from the left */
-  top:  300px; 
+  top:  500px; 
   left: 160px; 
   width: 75px;
   height: 190px;
@@ -21,9 +21,11 @@
 }
 
 .button_container {
-  display: grid;
-  flex-direction: column;
-  width: 40%;
-  margin:auto;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 8vw;
 }

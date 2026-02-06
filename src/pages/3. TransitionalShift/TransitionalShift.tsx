@@ -4,7 +4,7 @@ import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import type { StateUpdater, Dispatch } from "preact/hooks"
 import { useState } from "preact/hooks";
-import map from "../../assets/map.jpg";
+import map from "../../assets/field.png";
 import "./TransitionalShift.css"
 
 export interface MainpageProps {
@@ -18,7 +18,7 @@ export interface ShiftData {
   shift: number[][];
 }
 
-
+ 
 
 const Shift: FunctionalComponent<MainpageProps> = (mainpageData, setmainpageData ) => {
 
@@ -31,9 +31,10 @@ const Shift: FunctionalComponent<MainpageProps> = (mainpageData, setmainpageData
 
   return <>
 
-
+    <div style="height: 1vh;"></div> 
     <div className="pagecontainer">
       <select  
+      className={"dropdown"}
     value = {activeShift}
     onChange =   {(e) => {
       const shiftIndex = parseInt((e.target as HTMLSelectElement).value);
@@ -50,20 +51,23 @@ const Shift: FunctionalComponent<MainpageProps> = (mainpageData, setmainpageData
       <option value = "4">Shift 4</option>
     </select>
 
+    <div style="height: 5vh;"></div> 
 
-
-    <div className="button_container"  style={{ position: 'relative', left: -150, top: 50}}>
-    <Counter name = "Shot Made" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
-    <Counter name = "Shot not missed" count={misses} onButtonDown={() => {count.shift[activeShift][1]--; setmisses(count.shift[activeShift][1]);}} onButtonUp={() => {count.shift[activeShift][1]++; setmisses(count.shift[activeShift][1]);}}></Counter>
-    
-    
+    <div className="button_container">
+    <Counter name = "🤖Robot Score" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
+    <Counter name = "🤖Robot Missed" count={misses} onButtonDown={() => {count.shift[activeShift][1]--; setmisses(count.shift[activeShift][1]);}} onButtonUp={() => {count.shift[activeShift][1]++; setmisses(count.shift[activeShift][1]);}}></Counter>
     </div>
-    <div className="button_container"  style={{ position: 'relative', left: 230, top: -160}}>
-    <Counter name = "Human Player Score" count={humanmade} onButtonDown={() => {count.shift[activeShift][2]--; sethumanmade(count.shift[activeShift][2]);}} onButtonUp={() => {count.shift[activeShift][2]++; sethumanmade(count.shift[activeShift][2]);}}></Counter>
-    <Counter name = "Human Player misses" count={humanmiss} onButtonDown={() => {count.shift[activeShift][3]--; sethumanmiss(count.shift[activeShift][3]);}} onButtonUp={() => {count.shift[activeShift][3]++; sethumanmiss(count.shift[activeShift][3]);}}></Counter>
 
+    <div style="height: 5vh;"></div> 
+
+    <div className="button_container">
+    <Counter name = "👱Human Score" count={humanmade} onButtonDown={() => {count.shift[activeShift][2]--; sethumanmade(count.shift[activeShift][2]);}} onButtonUp={() => {count.shift[activeShift][2]++; sethumanmade(count.shift[activeShift][2]);}}></Counter>
+    <Counter name = "👱Human Missed" count={humanmiss} onButtonDown={() => {count.shift[activeShift][3]--; sethumanmiss(count.shift[activeShift][3]);}} onButtonUp={() => {count.shift[activeShift][3]++; sethumanmiss(count.shift[activeShift][3]);}}></Counter>
+
+      
     </div>
     <div>
+      <div style="height: 5vh;"></div> 
   <img src={map} alt="map" style={{ position: 'relative', width: '100%', height: 'auto'}}></img>
   <button  className="bibby"></button>
 

@@ -16,10 +16,10 @@
 
 
 .countertitle {
-  max-width: 20vw;
+  max-width: 50vw;
   margin-bottom: -20px;
   margin-top: 0px;
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -27,6 +27,7 @@
   display:flex;
   font-size: 1.45em;
   width: 4em;
+  height: 3em;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -46,24 +47,28 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
   z-index: 2;
+  width: 4em;
+  height: 5.5em;
 }
 
 .rightbutton {
   display:flex;
   justify-content: center;
   align-items: center;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
   z-index: 2;
+  width: 4em;
+  height: 5.5em;
 }
 
 /* 
