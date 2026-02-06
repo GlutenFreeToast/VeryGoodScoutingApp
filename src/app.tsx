@@ -9,14 +9,14 @@ import TransitionalShift from "./pages/3. TransitionalShift/TransitionalShift.ts
 import ENDGAME from "./pages/4. endGame/endGame.tsx";
 import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
+import QR from "./pages/10. QR/QR.tsx";
 import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
-import QRcode from "react-qr-code"
-import { v4 as uuidv4 } from "uuid";
+import {count} from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 
 
 import PageReveal from "./PageReveal.tsx";
@@ -28,6 +28,7 @@ export const PageType = {
   TransitionalShift: 2,
   ENDGAME: 3,
   FINALIZE: 4,
+  QR: 5,
   HELP: 9,
   PRANK: 10,
 } as const;
@@ -205,6 +206,16 @@ export function App() {
               style={{fontSize: "2vh", flex: "1"}}
               >Finalize</button>
 
+              <button role="tab" aria-controls="tab-F"
+              aria-selected={page === PageType.QR}
+              data-active={page === PageType.QR}
+              onClick={() => {
+                setPage(PageType.QR);
+                console.log("Clicked on QR");
+              }}
+              style={{fontSize: "2vh", flex: "1"}}
+              >QR</button>
+
             </menu>
 
             <article role="tabpanel" id="tab-A">
@@ -216,6 +227,7 @@ export function App() {
                   {page === PageType.TransitionalShift && <TransitionalShift mainpageData={ShiftData} setmainpageData={setShiftData}/>}
                   {page === PageType.ENDGAME && <ENDGAME mainpageData={endGameData} setmainpageData={setendGameData}/>}
                   {page === PageType.FINALIZE && <Finalize mainpageData={finalizeData} setmainpageData={setfinalizeData} setPage={setPage}/>}
+                  {page === PageType.QR && <QR matchData={MatchData} autonData={autonData} shiftData={count} finalizeData={finalizeData} endGameData={endGameData} />}
                   {page === PageType.HELP && <Help setPage={setPage}/>}
                   {page === PageType.PRANK && <Prank setPage={setPage}/>}
                 </div>

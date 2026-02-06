@@ -20,7 +20,7 @@ export interface ShiftData {
 
 
 
-const Shift: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
+const Shift: FunctionalComponent<MainpageProps> = (mainpageData, setmainpageData ) => {
 
   const [activeShift, setActiveShift] = useState(0);
   const [shotMade, setshotmade]= useState(count.shift[activeShift][0]);
@@ -80,5 +80,5 @@ const Shift: FunctionalComponent<MainpageProps> = (_setteleopData ) => {
     
     </>;
 };
-
+export {count};
 export default Shift;
