@@ -48,9 +48,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
 
   return (
     <>
-      
-      
-      <div style={"margin: 5vh;"}></div>
       <form onSubmit={handleSubmit}>
         <div className={"fieldset"}>
         <label className={"fieldcontainer"}>
@@ -115,8 +112,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
 
 
         <div class="field-row">
-        <input checked disabled type="checkbox" id="FakeChoice"></input>
-        <label for="FakeChoice">Scouting Notes</label>
       </div>
       <h3>Put good notes (psst, SNS knows where you live):</h3>
       <form onSubmit={handleSubmit}>

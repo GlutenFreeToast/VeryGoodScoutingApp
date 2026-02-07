@@ -271,10 +271,6 @@ body, html {
     background: var(--title-bg);
     color: var(--text-color);
 }
-
-.select {
-
-}
 .Bizzare{
     --bg-color: url('./assets/bannerad.webp');
     --text-color: url('./assets/ads.jpg');

@@ -1,5 +1,5 @@
 .field {
-  border-radius: 10px;
+  border-radius: 2em;
   margin: 5%;
   font-size: 2.5vw;
   height: 5vh !important;
@@ -29,4 +29,15 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+}
+
+.dropdown {
+transform: scale(2.5);
+ font-family: Tahoma !important;
+ border-radius: 0.3em;
+}
+
+.button {
+  transform: scale(2);
+  gap: 90vw;
 }

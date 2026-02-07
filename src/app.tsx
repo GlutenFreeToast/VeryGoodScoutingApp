@@ -12,7 +12,6 @@ import Auton from "./pages/2. auton/auton.tsx";
 import QR from "./pages/10. QR/QR.tsx";
 import Help from "./pages/9. help/help.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
-import logo from "./rebuilt.svg"
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
@@ -150,7 +149,9 @@ export function App() {
 
         <div className="window-body"></div>
         <div>
-      
+          <div style="height: 5vh;"></div>  
+          <img src={logo} alt="Logo" width={"300 vw"}/>
+          <div style="height: 5vh;"></div>
 
 
           <section class="tabs" style={{ margin: "2vw", height: "68.4vh" }}>
@@ -162,7 +163,7 @@ export function App() {
                 setPage(PageType.MATCH);
                 console.log("Clicked on Match");
               }}
-              style={{fontSize: "2vh", height: "4vh", flex: "1"}}
+              style={{fontSize: "2vh", height: "5.5vh", flex: "1"}}
               >Match</button>
 
               <button role="tab" aria-controls="tab-B"
