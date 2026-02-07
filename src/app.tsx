@@ -17,6 +17,7 @@ import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
 import {count} from "./pages/3. TransitionalShift/TransitionalShift.tsx";
+import { triggerConfetti } from "./Components/triggerConfetti.tsx";
 
 
 import PageReveal from "./PageReveal.tsx";
@@ -149,9 +150,7 @@ export function App() {
 
         <div className="window-body"></div>
         <div>
-          <div style="height: 5vh;"></div>  
-          <img src={logo} alt="Logo" width={"300 vw"}/>
-          <div style="height: 5vh;"></div>
+      
 
 
           <section class="tabs" style={{ margin: "2vw", height: "68.4vh" }}>
@@ -206,15 +205,9 @@ export function App() {
               style={{fontSize: "2vh", flex: "1"}}
               >Finalize</button>
 
-              <button role="tab" aria-controls="tab-F"
-              aria-selected={page === PageType.QR}
-              data-active={page === PageType.QR}
-              onClick={() => {
-                setPage(PageType.QR);
-                console.log("Clicked on QR");
-              }}
-              style={{fontSize: "2vh", flex: "1"}}
-              >QR</button>
+              
+              
+              
 
             </menu>
 
@@ -227,7 +220,7 @@ export function App() {
                   {page === PageType.TransitionalShift && <TransitionalShift mainpageData={ShiftData} setmainpageData={setShiftData}/>}
                   {page === PageType.ENDGAME && <ENDGAME mainpageData={endGameData} setmainpageData={setendGameData}/>}
                   {page === PageType.FINALIZE && <Finalize mainpageData={finalizeData} setmainpageData={setfinalizeData} setPage={setPage}/>}
-                  {page === PageType.QR && <QR matchData={MatchData} autonData={autonData} shiftData={count} finalizeData={finalizeData} endGameData={endGameData} />}
+                  {page === PageType.QR && <QR matchData={MatchData} autonData={autonData} shiftData={ShiftData} finalizeData={finalizeData} endGameData={endGameData}/>}
                   {page === PageType.HELP && <Help setPage={setPage}/>}
                   {page === PageType.PRANK && <Prank setPage={setPage}/>}
                 </div>

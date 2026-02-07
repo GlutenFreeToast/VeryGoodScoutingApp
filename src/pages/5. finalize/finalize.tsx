@@ -2,7 +2,6 @@ import "../global.css";
 import "./finalize.css"
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
-import prank from "../9. help/notes-prank";
 import { PageType } from "../../app.tsx";
 import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
 
@@ -20,9 +19,11 @@ export interface FinalizeProps {
   mainpageData: FormData;
   setmainpageData: Dispatch<StateUpdater<FormData>>;
   setPage: Dispatch<StateUpdater<PageType>>;
+  
 }
 
-const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpageData, setPage }) => {
+
+const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpageData, setPage ,}) => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -42,7 +43,8 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
     }
   };
 
-
+  
+  
 
   return (
     <>
@@ -132,18 +134,14 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({ mainpageData, setmainpag
       <h2>---------------</h2>
       <button className={"buttons"}
       onClick={() => {
-        console.log("Clicked Submit");
-        triggerConfetti('burst','5431')
-        if (mainpageData.notes === "") {
-          console.log("Notes are empty");
-          setPage(PageType.PRANK);
-          return;
-
-        } else {
-          console.log("Notes submitted:", mainpageData.notes);
-        }
-
-      }}
+      console.log("Clicked Submit");
+      triggerConfetti('burst','5431')
+      if (mainpageData.notes === "") {
+       console.log("Notes are empty");
+       setPage(PageType.PRANK);
+       return;}
+       else {
+      setPage(PageType.QR);}}}
       >Submit</button>
 
         

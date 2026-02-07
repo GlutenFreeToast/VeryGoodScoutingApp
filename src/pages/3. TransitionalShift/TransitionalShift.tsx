@@ -12,7 +12,7 @@ export interface MainpageProps {
   setmainpageData: Dispatch<StateUpdater<ShiftData>>;
 }
 {/*the first number represent a different shift*/}
-let count = {shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]};
+let count = {shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]};
 
 export interface ShiftData {
   shift: number[][];
@@ -53,14 +53,14 @@ const Shift: FunctionalComponent<MainpageProps> = (mainpageData, setmainpageData
 
 
     <div className="button_container"  style={{ position: 'relative', left: -150, top: 50}}>
-    <Counter name = "Shot Made" count={shotMade} onButtonDown={() => {count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
-    <Counter name = "Shot not missed" count={misses} onButtonDown={() => {count.shift[activeShift][1]--; setmisses(count.shift[activeShift][1]);}} onButtonUp={() => {count.shift[activeShift][1]++; setmisses(count.shift[activeShift][1]);}}></Counter>
+    <Counter name = "Shot Made" count={shotMade} onButtonDown={() => {if (count.shift[activeShift][2] > 0) count.shift[activeShift][0]--; setshotmade(count.shift[activeShift][0]);}} onButtonUp={() => {count.shift[activeShift][0]++; setshotmade(count.shift[activeShift][0]);}}></Counter>
+    <Counter name = "Shot not missed" count={misses} onButtonDown={() => {if (count.shift[activeShift][2] > 0)count.shift[activeShift][1]--; setmisses(count.shift[activeShift][1]);}} onButtonUp={() => {count.shift[activeShift][1]++; setmisses(count.shift[activeShift][1]);}}></Counter>
     
     
     </div>
     <div className="button_container"  style={{ position: 'relative', left: 230, top: -160}}>
-    <Counter name = "Human Player Score" count={humanmade} onButtonDown={() => {count.shift[activeShift][2]--; sethumanmade(count.shift[activeShift][2]);}} onButtonUp={() => {count.shift[activeShift][2]++; sethumanmade(count.shift[activeShift][2]);}}></Counter>
-    <Counter name = "Human Player misses" count={humanmiss} onButtonDown={() => {count.shift[activeShift][3]--; sethumanmiss(count.shift[activeShift][3]);}} onButtonUp={() => {count.shift[activeShift][3]++; sethumanmiss(count.shift[activeShift][3]);}}></Counter>
+    <Counter name = "Human Player Score" count={humanmade} onButtonDown={() => {if (count.shift[activeShift][2] > 0) {count.shift[activeShift][2]--; sethumanmade(count.shift[activeShift][2]);}}} onButtonUp={() => {count.shift[activeShift][2]++; sethumanmade(count.shift[activeShift][2]);}}></Counter>
+    <Counter name = "Human Player misses" count={humanmiss} onButtonDown={() => {if (count.shift[activeShift][3] > 0) {count.shift[activeShift][3]--; sethumanmiss(count.shift[activeShift][3]);}}} onButtonUp={() => {count.shift[activeShift][3]++; sethumanmiss(count.shift[activeShift][3]);}}></Counter>
 
     </div>
     <div>
