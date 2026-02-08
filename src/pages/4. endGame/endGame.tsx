@@ -21,10 +21,10 @@ const endGame: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpage
     <>
       <div className={"button_container"}>
       
-      <Counter name="Score" count={mainpageData.Scoring} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring + 1 })} />
-      <Counter name="Misses" count={mainpageData.Misses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses + 1 })} />
-      <Counter name="Human Score" count={mainpageData.HumanScore} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore + 1 })} />
-      <Counter name="Human Misses" count={mainpageData.HumanMisses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses + 1 })} />
+      <Counter name="🤖Robot Score" count={mainpageData.Scoring} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Scoring: mainpageData.Scoring + 1 })} />
+      <Counter name="🤖Robot Misses" count={mainpageData.Misses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, Misses: mainpageData.Misses + 1 })} />
+      <Counter name="🙆‍♂️Human Score" count={mainpageData.HumanScore} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanScore: mainpageData.HumanScore + 1 })} />
+      <Counter name="🙎‍♂️Human Misses" count={mainpageData.HumanMisses} onButtonDown={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses - 1 })} onButtonUp={() => setmainpageData && setmainpageData({ ...mainpageData, HumanMisses: mainpageData.HumanMisses + 1 })} />
     
     </div>
 
@@ -37,6 +37,7 @@ const endGame: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpage
         <option>L3 Climb</option>
     </select>
 
+    <div style="height: 5vh;"></div> 
       
     </>
   );
