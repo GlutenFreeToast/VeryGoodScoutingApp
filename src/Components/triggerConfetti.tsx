@@ -67,7 +67,7 @@ export const triggerConfetti = (type: 'basic' | 'burst' | 'cannon' | 'fireworks'
   
     
     case 'cannon':
-      const end = Date.now() + (1 * 1000);
+      const end = Date.now() + (1 * 100);
 
       (function frame() {
         confetti({

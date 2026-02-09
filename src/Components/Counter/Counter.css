@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+.counterinrow2 {
+  display:flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+}
+
 .countercontainer {
   display: flex;
   flex-direction: column;
@@ -14,8 +21,24 @@
   justify-content: center;
 }
 
+.countercontainer2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  justify-content: center;
+}
 
 .countertitle {
+  max-width: 50vw;
+  margin-bottom: -20px;
+  margin-top: 0px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.countertitle2 {
   max-width: 50vw;
   margin-bottom: -20px;
   margin-top: 0px;
@@ -32,6 +55,7 @@
   justify-content: center;
   align-items: center;
   border: 2px solid black;
+  border-radius: 0.5em;
   padding-left: 20px;
   margin-left: -5px;
   padding-right: 20px;
@@ -43,33 +67,82 @@
   z-index: 1;
 }
 
+.counterdisplay2 {
+  display:flex;
+  font-size: 1.45em;
+  width: 3.5em;
+  height: 4.5em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  padding-left: 20px;
+  margin-left: -5px;
+  padding-right: 20px;
+  margin-right: -5px;
+  box-sizing: border-box; 
+  padding: 0.1em;
+  z-index: 1;
+}
+
 .leftbutton {
   display:flex;
   justify-content: center;
   align-items: center;
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
-  height: 5.5em;
+  height: 4em;
 }
 
 .rightbutton {
   display:flex;
   justify-content: center;
   align-items: center;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
   font-weight: black;
   font-size: .8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
-  height: 5.5em;
+  height: 4em;
 }
+
+
+.leftbutton2 {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 1em;
+  font-weight: black;
+  font-size: .8em;
+  padding: 0.6em 0.8em;
+  z-index: 2;
+  width: 4em;
+  height: 4em;
+}
+.rightbutton2 {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 1em;
+  font-weight: black;
+  font-size: .8em;
+  padding: 0.6em 0.8em;
+  z-index: 2;
+  width: 4em;
+  height: 4em;
+}
+
+
+
 
 /* 
 .counterbuttonfix {
