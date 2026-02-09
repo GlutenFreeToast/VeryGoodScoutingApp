@@ -95,12 +95,15 @@ const Match: FunctionalComponent<MainpageProps> = ({ mainpageData, setmainpageDa
             />
           </label>
 
+          
           <div className={"button_container"} style={{width: "100%"}}>
             <button className={"button"} onClick={()=>{triggerConfetti('cannon','red')}} style={"color: red"}>Red</button>
             <button className={"button"} onClick={()=>{triggerConfetti('cannon','blue')}} style={"color: blue"}>Blue</button>
           </div>
-         <div className="field-row" style="width: 700px">
+          <h2>PreLoaded</h2>
+         <div className="field-row" style="width: 600px; margin: 0 auto; height: 0px; ">
           
+
           <DiscreteSlider></DiscreteSlider>
           
         </div>

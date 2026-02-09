@@ -15,6 +15,7 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import weed from "../src/assets/tumble.png"
 import kitty from "../src/assets/cat-jump.png"
 import robot from "../src/assets/hyperion.png"
+import logo from "../src/assets/field.png"
 import {count} from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
 
