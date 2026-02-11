@@ -1,12 +1,12 @@
 .counterinrow {
-  display:flex;
+  display: flex;
   flex-direction: row;
   gap: 2px;
   align-items: center;
 }
 
 .counterinrow2 {
-  display:flex;
+  display: flex;
   flex-direction: row;
   gap: 2px;
   align-items: center;
@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -26,7 +26,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .counterdisplay {
-  display:flex;
+  display: flex;
   font-size: 1.45em;
   width: 4em;
   height: 3em;
@@ -60,15 +60,15 @@
   margin-left: -5px;
   padding-right: 20px;
   margin-right: -5px;
-  box-sizing: border-box; 
-  background-color: var(--background-color);
+  box-sizing: border-box;
+  background-color: yellow;
   filter: brightness(1.2) contrast(120%) saturate(150%);
   padding: 0.1em;
   z-index: 1;
 }
 
 .counterdisplay2 {
-  display:flex;
+  display: flex;
   font-size: 1.45em;
   width: 3.5em;
   height: 4.5em;
@@ -82,19 +82,19 @@
   margin-left: -5px;
   padding-right: 20px;
   margin-right: -5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   padding: 0.1em;
   z-index: 1;
 }
 
 .leftbutton {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
   font-weight: black;
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
@@ -102,47 +102,43 @@
 }
 
 .rightbutton {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
   font-weight: black;
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
   height: 4em;
 }
 
-
 .leftbutton2 {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-bottom-left-radius: 1em;
   font-weight: black;
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
   height: 4em;
 }
 .rightbutton2 {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-top-left-radius: 1em;
   font-weight: black;
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0.6em 0.8em;
   z-index: 2;
   width: 4em;
   height: 4em;
 }
-
-
-
 
 /* 
 .counterbuttonfix {

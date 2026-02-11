@@ -1,10 +1,10 @@
 .field {
-  border-radius: 2em;
+  border-radius: 5px !important;
   margin: 5%;
   font-size: 2.5vw;
   height: 5vh !important;
-  padding-left: 1vh;
-  padding-right: 1vh;
+  padding-left: 1vw !important;
+  padding-right: 1vw !important;
 }
 
 .fieldcontainer {
@@ -12,6 +12,7 @@
   flex-direction: column;
   width: 40%;
   font-size: xx-large;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .fieldset {
