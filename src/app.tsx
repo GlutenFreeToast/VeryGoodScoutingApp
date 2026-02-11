@@ -1,6 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
 import "./app.css";
-import "xp.css/dist/XP.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
@@ -13,9 +12,13 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import robot from "../src/assets/hyperion.png";
 import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
-
+import LiquidGlass from "liquid-glass-react";
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
+import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
+import teamlogo from "./assets/5431logo.png";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 export const PageType = {
   MATCH: 0,
@@ -24,7 +27,6 @@ export const PageType = {
   ENDGAME: 3,
   FINALIZE: 4,
   QR: 5,
-  HELP: 9,
   PRANK: 10,
 } as const;
 
@@ -32,13 +34,6 @@ export type PageType = (typeof PageType)[keyof typeof PageType];
 
 export function App() {
   const [page, setPage] = useState<PageType>(PageType.MATCH);
-  const [theme, setTheme] = useState<string>(() => {
-    try {
-      return localStorage.getItem("theme") ?? "xp";
-    } catch (e) {
-      return "xp";
-    }
-  });
   const [note] = useState();
   const [MatchData, setMatchData] = useState({
     name: "",
@@ -76,25 +71,13 @@ export function App() {
     HumanMisses: 0,
   });
 
-  useEffect(() => {
-    document.body.className = theme;
-    try {
-      localStorage.setItem("theme", theme);
-    } catch (e) {
-      // ignore
-    }
-  }, [theme]);
-
   // Debug: Log state changes
 
   return (
     <>
       {/* <PageReveal />*/}
-      {theme === "robotics" && (
-        <div className="flier">
-          <img src={robot} />
-        </div>
-      )}
+
+      <SpaceFlyingImages images={[robot, teamlogo]} count={8} speed={0.1} />
 
       <div
         className={`window robotics`}
@@ -102,78 +85,71 @@ export function App() {
       >
         <div className="window-body"></div>
         <div>
-          <section class="tabs" style={{ margin: "2vw", height: "68.4vh" }}>
-            <menu role="tablist" aria-label="Sample Tabs">
+          <section class="tabs" style={{ margin: "2.5vw", height: "68.4vh" }}>
+            <p style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
+            <div style={"height: 15vh"}>
               <button
-                role="tab"
-                aria-controls="tab-A"
-                aria-selected={page === PageType.MATCH}
+                className="buttons"
                 data-active={page === PageType.MATCH}
                 onClick={() => {
                   setPage(PageType.MATCH);
                   console.log("Clicked on Match");
                 }}
-                style={{ fontSize: "2vh", height: "5.5vh", flex: "1" }}
               >
                 Match
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-B"
-                aria-selected={page === PageType.AUTON}
+                className="buttons"
                 data-active={page === PageType.AUTON}
                 onClick={() => {
                   setPage(PageType.AUTON);
                   console.log("Clicked on Auton");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
                 Auton
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-C"
-                aria-selected={page === PageType.TransitionalShift}
+                className="buttons"
                 data-active={page === PageType.TransitionalShift}
                 onClick={() => {
                   setPage(PageType.TransitionalShift);
                   console.log("Clicked on Shifts");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
                 Shifts
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-D"
-                aria-selected={page === PageType.ENDGAME}
+                className="buttons"
                 data-active={page === PageType.ENDGAME}
                 onClick={() => {
                   setPage(PageType.ENDGAME);
-                  console.log("Clicked on End Game");
+                  console.log("Clicked on Endgame");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
-                End Game
+                Endgame
               </button>
 
-              <button
-                role="tab"
-                aria-controls="tab-E"
-                aria-selected={page === PageType.FINALIZE}
-                data-active={page === PageType.FINALIZE}
-                onClick={() => {
-                  setPage(PageType.FINALIZE);
-                  console.log("Clicked on Finalize");
-                }}
-                style={{ fontSize: "2vh", flex: "1" }}
-              >
-                Finalize
-              </button>
-            </menu>
+              <div></div>
+
+              <AnimatePresence>
+                {(page === PageType.ENDGAME || page === PageType.FINALIZE) && (
+                  <motion.button
+                    className="buttons finalize-button"
+                    data-active={page === PageType.FINALIZE}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    onClick={() => setPage(PageType.FINALIZE)}
+                  >
+                    Finalize
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
 
             <article role="tabpanel" className="" id="tab-A">
               <div style={{ padding: 0, alignContent: "center" }}>
@@ -219,27 +195,24 @@ export function App() {
                       endGameData={endGameData}
                     />
                   )}
-                  {page === PageType.HELP && <Help setPage={setPage} />}
                   {page === PageType.PRANK && <Prank setPage={setPage} />}
+
+                  {/* <LiquidGlass
+                    displacementScale={64}
+                    blurAmount={0.1}
+                    saturation={130}
+                    aberrationIntensity={2}
+                    elasticity={0.35}
+                    cornerRadius={100}
+                    padding="8px 16px"
+                    onClick={() => console.log("Button clicked!")}
+                  >
+                    <span className="text-white font-medium">Click Me</span>
+                  </LiquidGlass> */}
                 </div>
               </div>
             </article>
           </section>
-
-          <div
-            class="status-bar"
-            style={{ position: "absolute", bottom: 0, width: "100vw" }}
-          >
-            <p class="status-bar-field">
-              FRC Team 5431/5790 - "Titan Robotics"
-            </p>
-            <p class="status-bar-field">2026 Season</p>
-            <p
-              class="status-bar-field"
-              style={"color:#1e90ff"}
-            >{`Build # ${build.buildRevision}`}</p>
-            <p class="status-bar-field">Jason & Kenny </p>
-          </div>
         </div>
       </div>
     </>

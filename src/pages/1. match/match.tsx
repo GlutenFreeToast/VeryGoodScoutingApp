@@ -1,11 +1,10 @@
 import "../global.css";
-import "xp.css/dist/XP.css";
 import "../../app.css";
-import { triggerConfetti } from "../../Components/triggerConfetti";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
-import DiscreteSlider from "../../Components/Slider/Slider.tsx"
+import DiscreteSlider from "../../Components/Slider/Slider.tsx";
 import { blue } from "@mui/material/colors";
+import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 
 export interface FormData {
   name: string;
@@ -54,7 +53,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               name="name"
               value={mainpageData?.name || ""}
               onChange={handleChange}
-              placeholder={"Ex: John Pork"}
+              placeholder={"Ex: Dwayne Johnson"}
               className={"field"}
             />
           </label>
@@ -98,31 +97,12 @@ const Match: FunctionalComponent<MainpageProps> = ({
 
           <div
             className={"button_container"}
-            style={{ width: "75%", marginTop: "2vh" }}
+            style={{ width: "75%", marginTop: "5vh" }}
           >
-            <button
-              className={"button"}
-              onClick={() => {
-                triggerConfetti("cannon", "red");
-              }}
-              style={"color: red"}
-            >
-              Red
-            </button>
-            <button
-              className={"button"}
-              onClick={() => {
-                triggerConfetti("cannon", "blue");
-              }}
-              style={"color: blue"}
-            >
-              Blue
-            </button>
+            <AllianceSlider />
           </div>
 
-          <div style="height: 5vh;"></div>
-
-          <div className="field-row" style="width: 700px">
+          {/* <div className="field-row" style="width: 700px">
             <label for="range25">Preloaded Fuel:</label>
             <label for="range26">0</label>
             <input
@@ -133,7 +113,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               value={mainpageData?.preload || 0}
             />
             <label for="range27">8</label>
-          </div>
+          </div> */}
         </div>
       </form>
     </>

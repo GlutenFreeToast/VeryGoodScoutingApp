@@ -12,8 +12,18 @@ export interface MainpageProps {
   mainpageData: ShiftData;
   setmainpageData: Dispatch<StateUpdater<ShiftData>>;
 }
-{/*the first number represent a different shift*/}
-let count = {shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]};
+{
+  /*the first number represent a different shift*/
+}
+let count = {
+  shift: [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ],
+};
 
 export interface ShiftData {
   shift: number[][];
@@ -54,7 +64,7 @@ const Shift: FunctionalComponent<MainpageProps> = (
         <div style="height: 5vh;"></div>
 
         <div className="button_container">
-          <Counter
+          <Counter2
             name="🤖Robot Score"
             count={shotMade}
             onButtonDown={() => {
@@ -65,8 +75,8 @@ const Shift: FunctionalComponent<MainpageProps> = (
               count.shift[activeShift][0]++;
               setshotmade(count.shift[activeShift][0]);
             }}
-          ></Counter>
-          <Counter
+          ></Counter2>
+          <Counter2
             name="🤖Robot Missed"
             count={misses}
             onButtonDown={() => {
@@ -77,7 +87,7 @@ const Shift: FunctionalComponent<MainpageProps> = (
               count.shift[activeShift][1]++;
               setmisses(count.shift[activeShift][1]);
             }}
-          ></Counter>
+          ></Counter2>
         </div>
 
         <div style="height: 5vh;"></div>
@@ -116,30 +126,6 @@ const Shift: FunctionalComponent<MainpageProps> = (
             style={{ position: "relative", width: "100%", height: "auto" }}
           ></img>
           <button className="bibby"></button>
-          <Counter2
-            name="🤖Robot Score"
-            count={shotMade}
-            onButtonDown={() => {
-              count.shift[activeShift][0]--;
-              setshotmade(count.shift[activeShift][0]);
-            }}
-            onButtonUp={() => {
-              count.shift[activeShift][0]++;
-              setshotmade(count.shift[activeShift][0]);
-            }}
-          ></Counter2>
-          <Counter2
-            name="🤖Robot Missed"
-            count={misses}
-            onButtonDown={() => {
-              count.shift[activeShift][1]--;
-              setmisses(count.shift[activeShift][1]);
-            }}
-            onButtonUp={() => {
-              count.shift[activeShift][1]++;
-              setmisses(count.shift[activeShift][1]);
-            }}
-          ></Counter2>
         </div>
       </div>
     </>
