@@ -4,7 +4,7 @@ import "../../app.css";
 import { triggerConfetti } from "../../Components/triggerConfetti";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
-import DiscreteSlider from "../../Components/Slider/Slider.tsx"
+import CubeSlider from "../../Components/Slider/Slider.tsx";
 import { blue } from "@mui/material/colors";
 
 export interface FormData {
@@ -120,20 +120,8 @@ const Match: FunctionalComponent<MainpageProps> = ({
             </button>
           </div>
 
-          <div style="height: 5vh;"></div>
-
-          <div className="field-row" style="width: 700px">
-            <label for="range25">Preloaded Fuel:</label>
-            <label for="range26">0</label>
-            <input
-              id="range26"
-              type="range"
-              min="0"
-              max="8"
-              value={mainpageData?.preload || 0}
-            />
-            <label for="range27">8</label>
-          </div>
+          <div style="height: 200px"></div>
+          <CubeSlider></CubeSlider>
         </div>
       </form>
     </>

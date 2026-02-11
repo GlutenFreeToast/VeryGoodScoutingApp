@@ -13,7 +13,7 @@ export interface MainpageProps {
   setmainpageData: Dispatch<StateUpdater<ShiftData>>;
 }
 {/*the first number represent a different shift*/}
-let count = {shift: [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]};
+let count = {shift: [[0,0,0,0,0], [0,0,0,0,0]]};
 
 export interface ShiftData {
   shift: number[][];

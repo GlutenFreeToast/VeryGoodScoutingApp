@@ -4,3 +4,89 @@
 .css-1xcmt9q-MuiSlider-thumb.sliderBar{
   height:0px;
 }
+
+:root {
+  --track-u: 5em;
+  --track-h: 0.5em;
+  --track-c: #da974e;
+  --thumb-d: 2em;
+}
+
+/* page background */
+html {
+  height: 100%;
+  background:
+    radial-gradient(at 50% 0, #e9d7ab, rgba(233, 215, 171, 0))
+      no-repeat border-box #f78f01;
+  background-size: 100% 50%;
+}
+
+.cube-slider {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(6 * var(--track-u));
+  height: calc(2 * var(--thumb-d));
+  cursor: pointer;
+  opacity: 0.7;
+  border: none;
+  background: transparent;
+}
+
+/* TRACK */
+.cube-slider::-webkit-slider-runnable-track {
+  box-sizing: border-box;
+  border: 1px solid var(--track-c);
+  height: var(--track-h);
+  border-radius: calc(var(--track-h) / 2);
+  background:
+    linear-gradient(90deg, var(--track-c) 0.125em, transparent 0.125em)
+      -1px 0 border-box #f5f8eb;
+  background-size: var(--track-u) 100%;
+}
+
+.cube-slider::-moz-range-track {
+  box-sizing: border-box;
+  border: 1px solid var(--track-c);
+  height: var(--track-h);
+  border-radius: calc(var(--track-h) / 2);
+  background:
+    linear-gradient(90deg, var(--track-c) 0.125em, transparent 0.125em)
+      -1px 0 border-box #f5f8eb;
+  background-size: var(--track-u) 100%;
+}
+
+/* THUMB */
+.cube-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--track-u);
+  height: var(--track-u);
+  border-radius: 0.6em;
+  transform: translateY(-0.25em) rotate(30deg) skewY(30deg) scaleX(0.866);
+  box-shadow: inset -1px -1px #3a3534;
+  background: linear-gradient(-45deg,
+      #3a3534 20%,
+      #60858a 50%,
+      #3a3534 50%,
+      #3a3534 52%,
+      transparent 52%);
+}
+
+.cube-slider::-moz-range-thumb {
+  width: var(--track-u);
+  height: var(--track-u);
+  border-radius: 0.6em;
+  background: linear-gradient(-45deg,
+      #3a3534 20%,
+      #60858a 50%,
+      #3a3534 50%,
+      #3a3534 52%,
+      transparent 52%);
+}
+
+.cube-slider:focus {
+  outline: none;
+  opacity: 1;
+}
