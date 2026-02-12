@@ -101,8 +101,8 @@ const Match: FunctionalComponent<MainpageProps> = ({
           >
             <AllianceSlider />
           </div>
-
-          {/* <div className="field-row" style="width: 700px">
+          <h2>Preload</h2>
+          <div className="field-row" style="width: 700px">
             <label for="range25">Preloaded Fuel:</label>
             <label for="range26">0</label>
             <input
@@ -113,7 +113,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               value={mainpageData?.preload || 0}
             />
             <label for="range27">8</label>
-          </div> */}
+          </div>
         </div>
       </form>
     </>
