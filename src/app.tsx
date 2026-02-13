@@ -11,8 +11,8 @@ import Auton from "./pages/2. auton/auton.tsx";
 import QR from "./pages/10. QR/QR.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import robot from "../src/assets/hyperion.png";
-import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
+import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
@@ -54,9 +54,6 @@ export function App() {
   });
   const [ShiftData, setShiftData] = useState({
     shift: [
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
     ],
@@ -214,12 +211,11 @@ export function App() {
                     <QR
                       matchData={MatchData}
                       autonData={autonData}
-                      shiftData={ShiftData}
+                      count={count}
                       finalizeData={finalizeData}
                       endGameData={endGameData}
                     />
                   )}
-                  {page === PageType.HELP && <Help setPage={setPage} />}
                   {page === PageType.PRANK && <Prank setPage={setPage} />}
                 </div>
               </div>

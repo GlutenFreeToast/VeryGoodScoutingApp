@@ -6,7 +6,7 @@ import QRCode from "react-qr-code";
 export interface QRProps {
   matchData: any;
   autonData: any;
-  shiftData: any;
+  count: { shift: number[][] };
   finalizeData: any;
   endGameData: any;
 }
@@ -14,7 +14,7 @@ export interface QRProps {
 const QR: FunctionalComponent<QRProps> = ({
   matchData,
   autonData,
-  shiftData,
+  count,
   finalizeData,
   endGameData,
 }) => {
@@ -35,37 +35,36 @@ const QR: FunctionalComponent<QRProps> = ({
   const [FuelMissed, setFuelMissed] = useState(autonData.FuelMissed || 0);
   const [ClimbLevel, setClimbLevel] = useState(endGameData.climbLevel || 0);
   const [ActiveRobotMade, setActiveRobotMade] = useState(
-    shiftData.shift[0][0] || 0,
+    count.shift[0][0] || 0,
   );
   const [ActiveRobotMissed, setActiveRobotMissed] = useState(
-    shiftData.shift[0][1] || 0,
+    count.shift[0][1] || 0,
   );
   const [ActiveHumanMade, setActiveHumanMade] = useState(
-    shiftData.shift[0][2] || 0,
+    count.shift[0][2] || 0,
   );
   const [ActiveHumanMissed, setActiveHumanMissed] = useState(
-    shiftData.shift[0][3] || 0,
+    count.shift[0][3] || 0,
   );
 
   const [inActiveRobotMade, setinActiveRobotMade] = useState(
-    shiftData.shift[1][0] || 0,
+    count.shift[1][0] || 0,
   );
   const [inActiveRobotMissed, setinActiveRobotMissed] = useState(
-    shiftData.shift[1][1] || 0,
+    count.shift[1][1] || 0,
   );
   const [inActiveHumanMade, setinActiveHumanMade] = useState(
-    shiftData.shift[1][2] || 0,
+    count.shift[1][2] || 0,
   );
   const [inActiveHumanMissed, setinActiveHumanMissed] = useState(
-    shiftData.shift[1][3] || 0,
+    count.shift[1][3] || 0,
   );
-
   const payload = {
     version: 1,
     timestamp: new Date().toISOString(),
     match: matchData,
     auton: autonData,
-    shifts: shiftData,
+    shifts: count,
     finalize: finalizeData,
     endgame: endGameData,
   };
