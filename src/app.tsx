@@ -12,7 +12,6 @@ import Prank from "./pages/9. help/notes-prank.tsx";
 import robot from "../src/assets/hyperion.png";
 import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
-import LiquidGlass from "liquid-glass-react";
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
 import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
