@@ -75,8 +75,6 @@ export function App() {
 
   return (
     <>
-      {/* <PageReveal />*/}
-
       <SpaceFlyingImages images={[robot, teamlogo]} count={8} speed={0.1} />
 
       <div

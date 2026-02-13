@@ -1,6 +1,7 @@
 import "../global.css";
 import type { FunctionalComponent } from "preact";
 import QRCode from "react-qr-code";
+import { count } from "../3. TransitionalShift/TransitionalShift.tsx";
 
 export interface QRProps {
   matchData: any;
@@ -10,7 +11,13 @@ export interface QRProps {
   endGameData: any;
 }
 
-const QR: FunctionalComponent<QRProps> = ({ matchData, autonData, shiftData, finalizeData, endGameData }) => {
+const QR: FunctionalComponent<QRProps> = ({
+  matchData,
+  autonData,
+  shiftData,
+  finalizeData,
+  endGameData,
+}) => {
   const payload = {
     version: 1,
     timestamp: new Date().toISOString(),
@@ -24,7 +31,14 @@ const QR: FunctionalComponent<QRProps> = ({ matchData, autonData, shiftData, fin
   const json = JSON.stringify(payload);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 16,
+      }}
+    >
       <h2>Match Data QR</h2>
       <div style={{ background: "white", padding: 16 }}>
         <QRCode value={json} size={256} />

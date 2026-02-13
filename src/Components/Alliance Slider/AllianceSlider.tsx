@@ -3,6 +3,10 @@ import { triggerConfetti } from "../../Components/triggerConfetti";
 
 import { useRef, useEffect, useCallback } from "react";
 
+interface AllianceSliderProps {
+  // You can add props here if needed, such as a callback for when the alliance changes
+}
+
 const AllianceSlider = () => {
   const sliderRef = useRef<HTMLInputElement>(null);
 
