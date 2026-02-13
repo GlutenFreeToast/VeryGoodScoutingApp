@@ -19,7 +19,7 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
 
     intervalRef.current = window.setInterval(() => {
       setFuelhold((prev) => prev + 1);
-    }, 50);
+    }, 90);
   }
 
   function stopCounting() {

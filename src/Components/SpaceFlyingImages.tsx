@@ -89,44 +89,39 @@ export default function SpaceFlyingImages({
   speed = 1,
 }: SpaceFlyingImagesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dims, setDims] = useState({ w: 800, h: 600 });
+  const [dims, setDims] = useState({
+    w: typeof window !== "undefined" ? window.innerWidth : 800,
+    h: typeof window !== "undefined" ? window.innerHeight : 600,
+  });
   const [items, setItems] = useState<FlyingImage[]>([]);
-  const counterRef = useRef(0);
   const rafRef = useRef<number>(0);
 
-  // Measure parent so the overlay covers it exactly
+  // Measure viewport so the overlay covers entire screen
   useEffect(() => {
     const measure = () => {
-      if (containerRef.current?.parentElement) {
-        const { clientWidth: w, clientHeight: h } =
-          containerRef.current.parentElement;
-        setDims({ w, h });
-      }
+      setDims({ w: window.innerWidth, h: window.innerHeight });
     };
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []);
 
-  // Seed images
+  // Seed images ONCE on initial load only
+  const initializedRef = useRef(false);
   useEffect(() => {
-    if (!dims.w || images.length === 0) return;
-    const initial = Array.from({ length: count }, () => {
-      const img = createFlyingImage(
-        counterRef.current++,
-        images,
-        dims.w,
-        dims.h,
-      );
+    if (!dims.w || images.length === 0 || initializedRef.current) return;
+    const initial = Array.from({ length: count }, (_, i) => {
+      const img = createFlyingImage(i, images, dims.w, dims.h);
       // Start scattered across canvas instead of all at the edges
       img.x = randomBetween(0, dims.w);
       img.y = randomBetween(0, dims.h);
       return img;
     });
     setItems(initial);
-  }, [dims, images, count]);
+    initializedRef.current = true;
+  }, [dims.w, dims.h, images, count]); // Wait for dims to be measured, but only initialize once
 
-  // Animation loop
+  // Animation loop - images just keep flying, wrapping around edges
   useEffect(() => {
     if (items.length === 0) return;
     const tick = () => {
@@ -137,20 +132,13 @@ export default function SpaceFlyingImages({
           y += speedY * speed;
           rotation += rotationSpeed * speed;
 
+          // Wrap around edges instead of creating new images
           const margin = 200;
-          if (
-            x < -margin ||
-            x > dims.w + margin ||
-            y < -margin ||
-            y > dims.h + margin
-          ) {
-            return createFlyingImage(
-              counterRef.current++,
-              images,
-              dims.w,
-              dims.h,
-            );
-          }
+          if (x < -margin) x = dims.w + margin;
+          if (x > dims.w + margin) x = -margin;
+          if (y < -margin) y = dims.h + margin;
+          if (y > dims.h + margin) y = -margin;
+
           return { ...img, x, y, rotation };
         }),
       );
@@ -158,14 +146,14 @@ export default function SpaceFlyingImages({
     };
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [items.length > 0, dims, speed, images]);
+  }, [items.length, dims, speed]);
 
   return (
     <div
       ref={containerRef}
       style={{
-        // Sits on top of siblings, covers the parent, never blocks clicks
-        position: "absolute",
+        // Covers the entire viewport, never blocks clicks
+        position: "fixed",
         inset: 0,
         overflow: "hidden",
         pointerEvents: "none",
@@ -199,12 +187,10 @@ export default function SpaceFlyingImages({
 
 // ─── Usage ────────────────────────────────────────────────────────────────────
 //
-// Wrap your content in a relatively-positioned container, then drop
-// <SpaceFlyingImages> as a sibling — it'll float above everything.
+// Simply add <SpaceFlyingImages> anywhere in your component tree — it will cover
+// the entire screen with fixed positioning.
 //
-//   <div style={{ position: "relative" }}>
-//     <YourPageContent />
-//     <SpaceFlyingImages images={MY_IMAGES} count={12} speed={1} />
-//   </div>
+//   <YourPageContent />
+//   <SpaceFlyingImages images={MY_IMAGES} count={12} speed={1} />
 //
-// The parent MUST have `position: relative` (or absolute/fixed/sticky).
+// No need for a positioned parent container.
