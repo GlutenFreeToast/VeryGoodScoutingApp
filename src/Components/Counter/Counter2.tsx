@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "preact/hooks";
 import "./Counter.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -11,14 +11,13 @@ interface Props {
 }
 
 function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
-  const [fuelhold, setFuelhold] = useState(0);
   const intervalRef = useRef<number | null>(null);
 
   function startCounting() {
-    setFuelhold((prev) => prev + 1);
+    onButtonUp();
 
     intervalRef.current = window.setInterval(() => {
-      setFuelhold((prev) => prev + 1);
+      onButtonUp();
     }, 50);
   }
 
@@ -29,24 +28,16 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
     }
   }
 
-  function incrementFuel() {
-    setFuelhold((prev) => prev + 1);
-  }
-
-  function decrementFuel() {
-    setFuelhold((prev) => prev - 1);
-  }
-
   return (
     <>
       <div className="countercontainer2">
         <h2 className="countertitle2">{name}</h2>
         <div className="counterinrow2">
           <div>
-            <button onClick={incrementFuel} className="rightbutton2">
+            <button onClick={onButtonUp} className="rightbutton2">
               <KeyboardArrowUpIcon />
             </button>
-            <button onClick={decrementFuel} className="leftbutton2">
+            <button onClick={onButtonDown} className="leftbutton2">
               <KeyboardArrowDownIcon />
             </button>
           </div>
@@ -57,7 +48,7 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
               onMouseUp={stopCounting}
               onMouseLeave={stopCounting}
             >
-              {fuelhold}
+              {count}
             </button>
           </div>
         </div>

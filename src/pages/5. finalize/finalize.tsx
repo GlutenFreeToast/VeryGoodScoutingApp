@@ -17,7 +17,6 @@ export interface FinalizeProps {
   mainpageData: FormData;
   setmainpageData: Dispatch<StateUpdater<FormData>>;
   setPage: Dispatch<StateUpdater<PageType>>;
-  
 }
 
 const Finalize: FunctionalComponent<FinalizeProps> = ({
@@ -59,9 +58,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.red || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  red: parseInt(e.currentTarget.value) || 0,
+                  red: clamped,
                 });
               }}
             />
@@ -76,9 +77,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.blue || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  blue: parseInt(e.currentTarget.value) || 0,
+                  blue: clamped,
                 });
               }}
             />
@@ -95,9 +98,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.penalties || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  penalties: parseInt(e.currentTarget.value),
+                  penalties: clamped,
                 });
               }}
             />
@@ -112,45 +117,45 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.ranking || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(99, value));
                 setmainpageData({
                   ...mainpageData,
-                  ranking: parseInt(e.currentTarget.value),
+                  ranking: clamped,
                 });
               }}
             />
           </label>
 
-
-
-        <div class="field-row">
-      </div>
-      <h3>Put good notes (psst, SNS knows where you live):</h3>
-      <form onSubmit={handleSubmit}>
-
-        <textarea
-          className={"notes"}
-          name="notes"
-          value={mainpageData?.notes || ""}
-          onChange={handleChange}
-          placeholder="Ex: robot blew up, injured 6 or 7 people"
-        />
-
-      </form>
-      </div>
-      <h2>---------------</h2>
-      <button className={"buttons"}
-      onClick={() => {
-      console.log("Clicked Submit");
-      triggerConfetti('burst','5431')
-      if (mainpageData.notes === "") {
-       console.log("Notes are empty");
-       setPage(PageType.PRANK);
-       return;}
-       else {
-      setPage(PageType.QR);}}}
-      >Submit</button>
-
-        
+          <div class="field-row"></div>
+          <h3>Put good notes (psst, SNS knows where you live):</h3>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className={"notes"}
+              name="notes"
+              value={mainpageData?.notes || ""}
+              onChange={handleChange}
+              placeholder="Ex: robot blew up, injured 6 or 7 people"
+            />
+          </form>
+        </div>
+        <h2>---------------</h2>
+        <button
+          className={"buttons"}
+          onClick={() => {
+            console.log("Clicked Submit");
+            triggerConfetti("burst", "5431");
+            if (mainpageData.notes === "") {
+              console.log("Notes are empty");
+              setPage(PageType.PRANK);
+              return;
+            } else {
+              setPage(PageType.QR);
+            }
+          }}
+        >
+          Submit
+        </button>
       </form>
     </>
   );

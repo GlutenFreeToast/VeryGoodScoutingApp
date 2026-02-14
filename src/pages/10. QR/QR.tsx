@@ -1,12 +1,13 @@
 import "../global.css";
 import type { FunctionalComponent } from "preact";
+import { useState } from "preact/compat";
 import QRCode from "react-qr-code";
-import { count } from "../3. TransitionalShift/TransitionalShift.tsx";
+import type Shift from "../3. TransitionalShift/TransitionalShift";
 
 export interface QRProps {
   matchData: any;
   autonData: any;
-  shiftData: any;
+  shiftData: { shift: number[][] };
   finalizeData: any;
   endGameData: any;
 }
@@ -23,7 +24,7 @@ const QR: FunctionalComponent<QRProps> = ({
     timestamp: new Date().toISOString(),
     match: matchData,
     auton: autonData,
-    shifts: shiftData,
+    Shift: shiftData,
     finalize: finalizeData,
     endgame: endGameData,
   };
