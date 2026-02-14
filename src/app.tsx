@@ -237,7 +237,7 @@ export function App() {
                     <QR
                       matchData={MatchData}
                       autonData={autonData}
-                      shiftData={ShiftData}
+                      count={count}
                       finalizeData={finalizeData}
                       endGameData={endGameData}
                       setPage={setPage}

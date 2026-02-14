@@ -7,6 +7,8 @@ function valuetext(value: number) {
   return `${value}°C`;
 }
 const minimalSliderStyles = {
+
+    
   // Styles for the main slider elements to make the track and rail thicker
   "& .MuiSlider-track": {
     height: 40, // Increase track height (filled part)
@@ -15,8 +17,10 @@ const minimalSliderStyles = {
   },
   "& .MuiSlider-rail": {
     height: 40, // Increase rail height (unfilled part)
+    width: '110%', // Ensure the rail fills the entire width
     borderRadius: 4, // Add rounded corners
   },
+  
   // Styles to completely hide the slider thumb (the circle)
   "& .MuiSlider-thumb": {
     // Completely hide the thumb circle
@@ -47,6 +51,7 @@ const minimalSliderStyles = {
     "&.MuiSlider-markActive": {
       opacity: 1, // Full opacity when active
     },
+    
   },
 };
 
