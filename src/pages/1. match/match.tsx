@@ -117,7 +117,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
           >
             <AllianceSlider />
           </div>
-          <label className={"fieldcontainer"}>
+          <label className={"fieldcontainer"} style={"padding: 5vw"}>
             Preload:
             <DiscreteSlider
               value={mainpageData?.preload || 0}
