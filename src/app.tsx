@@ -1,6 +1,5 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import "./app.css";
-import "xp.css/dist/XP.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
 import Match from "./pages/1. match/match.tsx";
@@ -10,12 +9,15 @@ import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
 import QR from "./pages/10. QR/QR.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
-import robot from "../src/assets/hyperion.png";
+import hyperion from "../src/assets/hyperion.png";
+import orpheus from "../src/assets/Orpheus.png";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
-import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
-
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
+import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
+import teamlogo from "./assets/5431logo.png";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 export const PageType = {
   MATCH: 0,
@@ -24,27 +26,31 @@ export const PageType = {
   ENDGAME: 3,
   FINALIZE: 4,
   QR: 5,
-  HELP: 9,
   PRANK: 10,
 } as const;
 
 export type PageType = (typeof PageType)[keyof typeof PageType];
 
 export function App() {
-  const [page, setPage] = useState<PageType>(PageType.MATCH);
-  const [theme, setTheme] = useState<string>(() => {
-    try {
-      return localStorage.getItem("theme") ?? "xp";
-    } catch (e) {
-      return "xp";
-    }
-  });
+  const [page, setPageState] = useState<PageType>(PageType.MATCH);
+  const [previousPage, setPreviousPage] = useState<PageType>(PageType.MATCH);
+  const prevPageRef = useRef<PageType>(PageType.MATCH);
   const [note] = useState();
+
+  // Track page changes to update previousPage
+  useEffect(() => {
+    if (page !== prevPageRef.current) {
+      setPreviousPage(prevPageRef.current);
+      prevPageRef.current = page;
+    }
+  }, [page]);
+
+  const setPage = setPageState;
   const [MatchData, setMatchData] = useState({
     name: "",
     comp: "",
-    team: "",
-    match: "",
+    team: 0,
+    match: 0,
     preload: 0,
   });
   const [autonData, setautonData] = useState({
@@ -54,8 +60,8 @@ export function App() {
   });
   const [ShiftData, setShiftData] = useState({
     shift: [
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ],
   });
   const [finalizeData, setfinalizeData] = useState({
@@ -64,6 +70,7 @@ export function App() {
     blue: 0,
     penalties: 0,
     ranking: 0,
+    review: false,
   });
   const [endGameData, setendGameData] = useState({
     climbLevel: 0,
@@ -73,25 +80,51 @@ export function App() {
     HumanMisses: 0,
   });
 
-  useEffect(() => {
-    document.body.className = theme;
-    try {
-      localStorage.setItem("theme", theme);
-    } catch (e) {
-      // ignore
-    }
-  }, [theme]);
+  const resetAllData = () => {
+    setMatchData({
+      name: "",
+      comp: "",
+      team: 0,
+      match: 0,
+      preload: 0,
+    });
+    setautonData({
+      FuelScored: 0,
+      FuelMissed: 0,
+      climb: 0,
+    });
+    setShiftData({
+      shift: [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+      ],
+    });
+    setfinalizeData({
+      notes: "",
+      red: 0,
+      blue: 0,
+      penalties: 0,
+      ranking: 0,
+      review: false,
+    });
+    setendGameData({
+      climbLevel: 0,
+      Scoring: 0,
+      Misses: 0,
+      HumanScore: 0,
+      HumanMisses: 0,
+    });
+  };
 
   // Debug: Log state changes
 
   return (
     <>
-      {/* <PageReveal />*/}
-      {theme === "robotics" && (
-        <div className="flier">
-          <img src={robot} />
-        </div>
-      )}
+      <SpaceFlyingImages
+        images={[hyperion, orpheus, teamlogo]}
+        count={30}
+        speed={0.1}
+      />
 
       <div
         className={`window robotics`}
@@ -99,78 +132,71 @@ export function App() {
       >
         <div className="window-body"></div>
         <div>
-          <section class="tabs" style={{ margin: "2vw", height: "68.4vh" }}>
-            <menu role="tablist" aria-label="Sample Tabs">
+          <section class="tabs" style={{ margin: "2.5vw", height: "68.4vh" }}>
+            <p style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
+            <div style={"height: 25vw"}>
               <button
-                role="tab"
-                aria-controls="tab-A"
-                aria-selected={page === PageType.MATCH}
+                className="buttons"
                 data-active={page === PageType.MATCH}
                 onClick={() => {
                   setPage(PageType.MATCH);
                   console.log("Clicked on Match");
                 }}
-                style={{ fontSize: "2vh", height: "5.5vh", flex: "1" }}
               >
                 Match
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-B"
-                aria-selected={page === PageType.AUTON}
+                className="buttons"
                 data-active={page === PageType.AUTON}
                 onClick={() => {
                   setPage(PageType.AUTON);
                   console.log("Clicked on Auton");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
                 Auton
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-C"
-                aria-selected={page === PageType.TransitionalShift}
+                className="buttons"
                 data-active={page === PageType.TransitionalShift}
                 onClick={() => {
                   setPage(PageType.TransitionalShift);
                   console.log("Clicked on Shifts");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
                 Shifts
               </button>
 
               <button
-                role="tab"
-                aria-controls="tab-D"
-                aria-selected={page === PageType.ENDGAME}
+                className="buttons"
                 data-active={page === PageType.ENDGAME}
                 onClick={() => {
                   setPage(PageType.ENDGAME);
-                  console.log("Clicked on End Game");
+                  console.log("Clicked on Endgame");
                 }}
-                style={{ fontSize: "2vh", flex: "1" }}
               >
-                End Game
+                Endgame
               </button>
 
-              <button
-                role="tab"
-                aria-controls="tab-E"
-                aria-selected={page === PageType.FINALIZE}
-                data-active={page === PageType.FINALIZE}
-                onClick={() => {
-                  setPage(PageType.FINALIZE);
-                  console.log("Clicked on Finalize");
-                }}
-                style={{ fontSize: "2vh", flex: "1" }}
-              >
-                Finalize
-              </button>
-            </menu>
+              <div></div>
+
+              <AnimatePresence>
+                {(page === PageType.ENDGAME || page === PageType.FINALIZE) && (
+                  <motion.button
+                    className="buttons finalize-button"
+                    data-active={page === PageType.FINALIZE}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    onClick={() => setPage(PageType.FINALIZE)}
+                  >
+                    Finalize
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
 
             <article role="tabpanel" className="" id="tab-A">
               <div style={{ padding: 0, alignContent: "center" }}>
@@ -214,6 +240,9 @@ export function App() {
                       count={count}
                       finalizeData={finalizeData}
                       endGameData={endGameData}
+                      setPage={setPage}
+                      previousPage={previousPage}
+                      resetAllData={resetAllData}
                     />
                   )}
                   {page === PageType.PRANK && <Prank setPage={setPage} />}
@@ -221,21 +250,6 @@ export function App() {
               </div>
             </article>
           </section>
-
-          <div
-            class="status-bar"
-            style={{ position: "absolute", bottom: 0, width: "100vw" }}
-          >
-            <p class="status-bar-field">
-              FRC Team 5431/5790 - "Titan Robotics"
-            </p>
-            <p class="status-bar-field">2026 Season</p>
-            <p
-              class="status-bar-field"
-              style={"color:#1e90ff"}
-            >{`Build # ${build.buildRevision}`}</p>
-            <p class="status-bar-field">Jason & Kenny </p>
-          </div>
         </div>
       </div>
     </>

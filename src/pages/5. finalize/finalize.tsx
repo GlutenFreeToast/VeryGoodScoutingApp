@@ -4,6 +4,9 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
+import Checkbox from "@mui/material/Checkbox";
+import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
+import FlagIcon from "@mui/icons-material/Flag";
 
 export interface FormData {
   notes: string;
@@ -11,13 +14,13 @@ export interface FormData {
   blue: number;
   penalties: number;
   ranking: number;
+  review: boolean;
 }
 
 export interface FinalizeProps {
   mainpageData: FormData;
   setmainpageData: Dispatch<StateUpdater<FormData>>;
   setPage: Dispatch<StateUpdater<PageType>>;
-  
 }
 
 const Finalize: FunctionalComponent<FinalizeProps> = ({
@@ -46,6 +49,8 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
     }
   };
 
+  const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -59,9 +64,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.red || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  red: parseInt(e.currentTarget.value) || 0,
+                  red: clamped,
                 });
               }}
             />
@@ -76,9 +83,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.blue || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  blue: parseInt(e.currentTarget.value) || 0,
+                  blue: clamped,
                 });
               }}
             />
@@ -95,9 +104,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.penalties || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(999, value));
                 setmainpageData({
                   ...mainpageData,
-                  penalties: parseInt(e.currentTarget.value),
+                  penalties: clamped,
                 });
               }}
             />
@@ -112,45 +123,79 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               className={"field"}
               value={mainpageData.ranking || ""}
               onChange={(e) => {
+                const value = parseInt(e.currentTarget.value) || 0;
+                const clamped = Math.max(0, Math.min(99, value));
                 setmainpageData({
                   ...mainpageData,
-                  ranking: parseInt(e.currentTarget.value),
+                  ranking: clamped,
                 });
               }}
             />
           </label>
+          <div class="field-row"></div>
 
-
-
-        <div class="field-row">
-      </div>
-      <h3>Put good notes (psst, SNS knows where you live):</h3>
-      <form onSubmit={handleSubmit}>
-
-        <textarea
-          className={"notes"}
-          name="notes"
-          value={mainpageData?.notes || ""}
-          onChange={handleChange}
-          placeholder="Ex: robot blew up, injured 6 or 7 people"
-        />
-
-      </form>
-      </div>
-      <h2>---------------</h2>
-      <button className={"buttons"}
-      onClick={() => {
-      console.log("Clicked Submit");
-      triggerConfetti('burst','5431')
-      if (mainpageData.notes === "") {
-       console.log("Notes are empty");
-       setPage(PageType.PRANK);
-       return;}
-       else {
-      setPage(PageType.QR);}}}
-      >Submit</button>
-
-        
+          <div>
+            <div>
+              <Checkbox
+                name="review"
+                checked={mainpageData.review === true}
+                onChange={(event) => {
+                  setmainpageData({
+                    ...mainpageData,
+                    review: (event.target as HTMLInputElement).checked,
+                  });
+                }}
+                style={{
+                  background: "#241f68",
+                }}
+                {...label}
+                icon={
+                  <OutlinedFlagIcon
+                    style={{
+                      height: "80px",
+                      width: "80px",
+                      backgroundcolor: "red",
+                    }}
+                  />
+                }
+                checkedIcon={
+                  <FlagIcon
+                    style={{
+                      height: "80px",
+                      width: "80px",
+                    }}
+                  />
+                }
+              />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                className={"notes"}
+                name="notes"
+                value={mainpageData?.notes || ""}
+                onChange={handleChange}
+                placeholder="Ex: robot blew up, injured 6 or 7 people"
+              />
+            </form>
+          </div>
+        </div>
+        <h2>---------------</h2>
+        <button
+          className={"buttons"}
+          onClick={() => {
+            console.log("Clicked Submit");
+            triggerConfetti("burst", "5431");
+            if (mainpageData.notes === "") {
+              console.log("Notes are empty");
+              setPage(PageType.PRANK);
+              return;
+            } else {
+              setPage(PageType.QR);
+            }
+          }}
+        >
+          Submit
+        </button>
       </form>
     </>
   );

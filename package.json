@@ -16,11 +16,11 @@
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "canvas-confetti": "^1.9.4",
+    "liquid-glass-react": "^1.1.1",
     "preact": "^10.27.0",
     "react-qr-code": "^2.0.18",
     "react-router-dom": "^7.9.4",
-    "uuid": "^13.0.0",
-    "xp.css": "^0.2.6"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^7.4.4",

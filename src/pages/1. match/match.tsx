@@ -1,17 +1,15 @@
 import "../global.css";
-import "xp.css/dist/XP.css";
 import "../../app.css";
-import { triggerConfetti } from "../../Components/triggerConfetti";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
-import CubeSlider from "../../Components/Slider/Slider.tsx";
-import { blue } from "@mui/material/colors";
+import DiscreteSlider from "../../Components/Slider/Slider.tsx";
+import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 
 export interface FormData {
   name: string;
   comp: string;
-  team: string;
-  match: string;
+  team: number;
+  match: number;
   preload: number;
 }
 
@@ -32,9 +30,20 @@ const Match: FunctionalComponent<MainpageProps> = ({
     const { name, value } = event.currentTarget;
     console.log("Input changed:", name, value);
     if (setmainpageData && mainpageData) {
+      let processedValue: any = value;
+
+      // Handle number fields with limits
+      if (name === "team") {
+        const numValue = parseInt(value) || 0;
+        processedValue = Math.max(1, Math.min(99999, numValue));
+      } else if (name === "match") {
+        const numValue = parseInt(value) || 0;
+        processedValue = Math.max(1, Math.min(999, numValue));
+      }
+
       const newData = {
         ...mainpageData,
-        [name]: value,
+        [name]: processedValue,
       };
       console.log("Updating with:", newData);
       setmainpageData(newData);
@@ -54,7 +63,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               name="name"
               value={mainpageData?.name || ""}
               onChange={handleChange}
-              placeholder={"Ex: John Pork"}
+              placeholder={"Ex: Dwayne Johnson"}
               className={"field"}
             />
           </label>
@@ -64,6 +73,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
             <input
               type="text"
               name="comp"
+              maxlength={20}
               value={mainpageData?.comp || ""}
               onChange={handleChange}
               placeholder={"Ex: Plano"}
@@ -76,8 +86,10 @@ const Match: FunctionalComponent<MainpageProps> = ({
           <label className={"fieldcontainer"}>
             Team #:
             <input
-              type="text"
+              type="number"
               name="team"
+              step={1}
+              max={99999}
               value={mainpageData?.team || ""}
               onChange={handleChange}
               placeholder={"Ex: 5431"}
@@ -87,8 +99,11 @@ const Match: FunctionalComponent<MainpageProps> = ({
           <label className={"fieldcontainer"}>
             Match #:
             <input
-              type="text"
+              type="number"
               name="match"
+              step={1}
+              min={1}
+              max={999999}
               value={mainpageData?.match || ""}
               onChange={handleChange}
               placeholder={"Ex: 67"}
@@ -98,30 +113,22 @@ const Match: FunctionalComponent<MainpageProps> = ({
 
           <div
             className={"button_container"}
-            style={{ width: "75%", marginTop: "2vh" }}
+            style={{ width: "75%", marginTop: "5vh" }}
           >
-            <button
-              className={"button"}
-              onClick={() => {
-                triggerConfetti("cannon", "red");
-              }}
-              style={"color: red"}
-            >
-              Red
-            </button>
-            <button
-              className={"button"}
-              onClick={() => {
-                triggerConfetti("cannon", "blue");
-              }}
-              style={"color: blue"}
-            >
-              Blue
-            </button>
+            <AllianceSlider />
           </div>
-
-          <div style="height: 200px"></div>
-          <CubeSlider></CubeSlider>
+          <label className={"fieldcontainer"}>
+            Preload:
+            <DiscreteSlider
+              value={mainpageData?.preload || 0}
+              onChange={(value) => {
+                setmainpageData({
+                  ...mainpageData,
+                  preload: value,
+                });
+              }}
+            />
+          </label>
         </div>
       </form>
     </>
