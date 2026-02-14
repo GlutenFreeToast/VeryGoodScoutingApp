@@ -48,12 +48,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <select className={"dropdown"}>
-          <option>No Climb</option>
-          <option>L1 Climb</option>
-          <option>L2 Climb</option>
-          <option>L3 Climb</option>
-        </select>
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
             Red Points:

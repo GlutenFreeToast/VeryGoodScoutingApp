@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import "./app.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
@@ -11,7 +11,6 @@ import QR from "./pages/10. QR/QR.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import hyperion from "../src/assets/hyperion.png";
 import orpheus from "../src/assets/Orpheus.png";
-import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
@@ -33,8 +32,20 @@ export const PageType = {
 export type PageType = (typeof PageType)[keyof typeof PageType];
 
 export function App() {
-  const [page, setPage] = useState<PageType>(PageType.MATCH);
+  const [page, setPageState] = useState<PageType>(PageType.MATCH);
+  const [previousPage, setPreviousPage] = useState<PageType>(PageType.MATCH);
+  const prevPageRef = useRef<PageType>(PageType.MATCH);
   const [note] = useState();
+
+  // Track page changes to update previousPage
+  useEffect(() => {
+    if (page !== prevPageRef.current) {
+      setPreviousPage(prevPageRef.current);
+      prevPageRef.current = page;
+    }
+  }, [page]);
+
+  const setPage = setPageState;
   const [MatchData, setMatchData] = useState({
     name: "",
     comp: "",
@@ -67,6 +78,41 @@ export function App() {
     HumanScore: 0,
     HumanMisses: 0,
   });
+
+  const resetAllData = () => {
+    setMatchData({
+      name: "",
+      comp: "",
+      team: 0,
+      match: 0,
+      preload: 0,
+    });
+    setautonData({
+      FuelScored: 0,
+      FuelMissed: 0,
+      climb: 0,
+    });
+    setShiftData({
+      shift: [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+      ],
+    });
+    setfinalizeData({
+      notes: "",
+      red: 0,
+      blue: 0,
+      penalties: 0,
+      ranking: 0,
+    });
+    setendGameData({
+      climbLevel: 0,
+      Scoring: 0,
+      Misses: 0,
+      HumanScore: 0,
+      HumanMisses: 0,
+    });
+  };
 
   // Debug: Log state changes
 
@@ -192,22 +238,12 @@ export function App() {
                       shiftData={ShiftData}
                       finalizeData={finalizeData}
                       endGameData={endGameData}
+                      setPage={setPage}
+                      previousPage={previousPage}
+                      resetAllData={resetAllData}
                     />
                   )}
                   {page === PageType.PRANK && <Prank setPage={setPage} />}
-
-                  {/* <LiquidGlass
-                    displacementScale={64}
-                    blurAmount={0.1}
-                    saturation={130}
-                    aberrationIntensity={2}
-                    elasticity={0.35}
-                    cornerRadius={100}
-                    padding="8px 16px"
-                    onClick={() => console.log("Button clicked!")}
-                  >
-                    <span className="text-white font-medium">Click Me</span>
-                  </LiquidGlass> */}
                 </div>
               </div>
             </article>
