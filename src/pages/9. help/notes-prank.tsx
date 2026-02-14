@@ -26,17 +26,8 @@ const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
         }}
         className="window subwindow"
       >
-        <div className="title-bar">
-          <div className="title-bar-text">!!Lazy Bum Alert!!</div>
-          <div className="title-bar-controls">
-            <button
-              aria-label="Close"
-              onClick={() => {
-                setPage(PageType.FINALIZE);
-                console.log("Clicked on Close");
-              }}
-            />
-          </div>
+        <div>
+          <div>!!Do Notes Dingleberry!!</div>
         </div>
 
         <h3>SNS does know where you live after all...</h3>
@@ -45,7 +36,15 @@ const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
         </h1>
         <h3>Do your notes. For everyone's sake really</h3>
 
-        <div className="window-body"></div>
+        <button
+          className={"buttons"}
+          onClick={() => {
+            setPage(PageType.FINALIZE);
+            console.log("Clicked on Close");
+          }}
+        >
+          Close
+        </button>
       </div>
     </>
   );

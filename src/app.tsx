@@ -9,7 +9,9 @@ import Finalize from "./pages/5. finalize/finalize.tsx";
 import Auton from "./pages/2. auton/auton.tsx";
 import QR from "./pages/10. QR/QR.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
-import robot from "../src/assets/hyperion.png";
+import hyperion from "../src/assets/hyperion.png";
+import orpheus from "../src/assets/Orpheus.png";
+import { count } from "./pages/3. TransitionalShift/TransitionalShift.tsx";
 import { triggerConfetti } from "./Components/triggerConfetti.tsx";
 import PageReveal from "./PageReveal.tsx";
 import { Shield } from "@mui/icons-material";
@@ -70,7 +72,11 @@ export function App() {
 
   return (
     <>
-      <SpaceFlyingImages images={[robot, teamlogo]} count={8} speed={0.1} />
+      <SpaceFlyingImages
+        images={[hyperion, orpheus, teamlogo]}
+        count={30}
+        speed={0.1}
+      />
 
       <div
         className={`window robotics`}
@@ -80,7 +86,7 @@ export function App() {
         <div>
           <section class="tabs" style={{ margin: "2.5vw", height: "68.4vh" }}>
             <p style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
-            <div style={"height: 15vh"}>
+            <div style={"height: 25vw"}>
               <button
                 className="buttons"
                 data-active={page === PageType.MATCH}

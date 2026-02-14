@@ -48,6 +48,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <select className={"dropdown"}>
+          <option>No Climb</option>
+          <option>L1 Climb</option>
+          <option>L2 Climb</option>
+          <option>L3 Climb</option>
+        </select>
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
             Red Points:
@@ -128,16 +134,19 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           </label>
 
           <div class="field-row"></div>
-          <h3>Put good notes (psst, SNS knows where you live):</h3>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className={"notes"}
-              name="notes"
-              value={mainpageData?.notes || ""}
-              onChange={handleChange}
-              placeholder="Ex: robot blew up, injured 6 or 7 people"
-            />
-          </form>
+
+          <div>
+            <h3>Put good notes (psst, SNS knows where you live):</h3>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                className={"notes"}
+                name="notes"
+                value={mainpageData?.notes || ""}
+                onChange={handleChange}
+                placeholder="Ex: robot blew up, injured 6 or 7 people"
+              />
+            </form>
+          </div>
         </div>
         <h2>---------------</h2>
         <button
