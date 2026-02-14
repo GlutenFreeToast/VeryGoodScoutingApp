@@ -70,6 +70,7 @@ export function App() {
     blue: 0,
     penalties: 0,
     ranking: 0,
+    review: false,
   });
   const [endGameData, setendGameData] = useState({
     climbLevel: 0,
@@ -104,6 +105,7 @@ export function App() {
       blue: 0,
       penalties: 0,
       ranking: 0,
+      review: false,
     });
     setendGameData({
       climbLevel: 0,

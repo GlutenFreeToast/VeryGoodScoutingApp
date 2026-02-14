@@ -3,7 +3,6 @@ import "../../app.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
-import { blue } from "@mui/material/colors";
 import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 
 export interface FormData {
@@ -118,19 +117,18 @@ const Match: FunctionalComponent<MainpageProps> = ({
           >
             <AllianceSlider />
           </div>
-          <h2>Preload</h2>
-          <div className="field-row" style="width: 700px">
-            <label for="range25">Preloaded Fuel:</label>
-            <label for="range26">0</label>
-            <input
-              id="range26"
-              type="range"
-              min="0"
-              max="8"
+          <label className={"fieldcontainer"}>
+            Preload:
+            <DiscreteSlider
               value={mainpageData?.preload || 0}
+              onChange={(value) => {
+                setmainpageData({
+                  ...mainpageData,
+                  preload: value,
+                });
+              }}
             />
-            <label for="range27">8</label>
-          </div>
+          </label>
         </div>
       </form>
     </>

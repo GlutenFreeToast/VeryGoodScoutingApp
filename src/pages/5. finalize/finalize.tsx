@@ -4,6 +4,9 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
+import Checkbox from "@mui/material/Checkbox";
+import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
+import FlagIcon from "@mui/icons-material/Flag";
 
 export interface FormData {
   notes: string;
@@ -11,6 +14,7 @@ export interface FormData {
   blue: number;
   penalties: number;
   ranking: number;
+  review: boolean;
 }
 
 export interface FinalizeProps {
@@ -44,6 +48,8 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
       console.log("Warning: setmainpageData or mainpageData is undefined");
     }
   };
+
+  const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
 
   return (
     <>
@@ -126,11 +132,42 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               }}
             />
           </label>
-
           <div class="field-row"></div>
 
           <div>
-            <h3>Put good notes (psst, SNS knows where you live):</h3>
+            <div>
+              <Checkbox
+                name="review"
+                checked={mainpageData.review === true}
+                onChange={(event) => {
+                  setmainpageData({
+                    ...mainpageData,
+                    review: (event.target as HTMLInputElement).checked,
+                  });
+                }}
+                style={{
+                  background: "#241f68",
+                }}
+                {...label}
+                icon={
+                  <OutlinedFlagIcon
+                    style={{
+                      height: "80px",
+                      width: "80px",
+                      backgroundcolor: "red",
+                    }}
+                  />
+                }
+                checkedIcon={
+                  <FlagIcon
+                    style={{
+                      height: "80px",
+                      width: "80px",
+                    }}
+                  />
+                }
+              />
+            </div>
             <form onSubmit={handleSubmit}>
               <textarea
                 className={"notes"}
