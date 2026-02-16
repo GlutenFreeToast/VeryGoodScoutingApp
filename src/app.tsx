@@ -64,6 +64,7 @@ export function App() {
       [0, 0, 0, 0],
     ],
     location: [0, 0, 0, 0],
+    defense: false,
   });
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -100,6 +101,7 @@ export function App() {
         [0, 0, 0, 0],
       ],
       location: [0, 0, 0, 0],
+      defense: false,
     });
     setfinalizeData({
       notes: "",

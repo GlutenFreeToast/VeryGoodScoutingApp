@@ -13,6 +13,10 @@ import ToggleButtonGroup, {
   toggleButtonGroupClasses,
 } from "@mui/material/ToggleButtonGroup";
 import { styled } from "@mui/material/styles";
+import Checkbox from "@mui/material/Checkbox";
+import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
+import ShieldIcon from "@mui/icons-material/Shield";
+import { Shield } from "@mui/icons-material";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   gap: "4.2rem",
@@ -44,6 +48,7 @@ export interface MainpageProps {
 export interface ShiftData {
   shift: number[][];
   location: number[];
+  defense: boolean;
 }
 
 const Shift: FunctionalComponent<MainpageProps> = ({
@@ -61,6 +66,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
     mainpageData.shift[activeShift][3],
   );
   const [isActive, setIsActive] = useState(true);
+  const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
 
   useEffect(() => {
     setshotmade(mainpageData.shift[activeShift][0]);
@@ -299,7 +305,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
 
           <div className="button_container">
             <Counter2
-              name="🤖Robot Score"
+              name="Outpost Fed"
               count={shotMade}
               onButtonDown={() => {
                 const newData = { ...mainpageData };
@@ -319,7 +325,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               }}
             ></Counter2>
             <Counter2
-              name="🤖Robot Missed"
+              name="Shuttle Count"
               count={misses}
               onButtonDown={() => {
                 const newData = { ...mainpageData };
@@ -340,51 +346,40 @@ const Shift: FunctionalComponent<MainpageProps> = ({
             ></Counter2>
           </div>
 
-          <div style="height: 5vh;"></div>
-
-          <div className="button_container">
-            <Counter
-              name="👱Human Score"
-              count={humanmade}
-              onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][2] > 0) {
-                  newData.shift[activeShift][2]--;
-                  setmainpageData(newData);
-                  sethumanmade(newData.shift[activeShift][2]);
-                }
+          <div style="height: 5vh;">
+            <Checkbox
+              name="Defense"
+              checked={mainpageData.defense === true}
+              onChange={(event) => {
+                setmainpageData({
+                  ...mainpageData,
+                  defense: (event.target as HTMLInputElement).checked,
+                });
               }}
-              onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][2] < 99) {
-                  newData.shift[activeShift][2]++;
-                  setmainpageData(newData);
-                  sethumanmade(newData.shift[activeShift][2]);
-                }
+              style={{
+                background: "#241f68",
               }}
-            ></Counter>
-            <Counter
-              name="👱Human Missed"
-              count={humanmiss}
-              onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][3] > 0) {
-                  newData.shift[activeShift][3]--;
-                  setmainpageData(newData);
-                  sethumanmiss(newData.shift[activeShift][3]);
-                }
-              }}
-              onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][3] < 99) {
-                  newData.shift[activeShift][3]++;
-                  setmainpageData(newData);
-                  sethumanmiss(newData.shift[activeShift][3]);
-                  console.log("update " + JSON.stringify(newData));
-                }
-              }}
-            ></Counter>
+              {...label}
+              icon={
+                <RemoveModeratorIcon
+                  style={{
+                    height: "80px",
+                    width: "80px",
+                    backgroundcolor: "red",
+                  }}
+                />
+              }
+              checkedIcon={
+                <ShieldIcon
+                  style={{
+                    height: "80px",
+                    width: "80px",
+                  }}
+                />
+              }
+            />
           </div>
+
           <div>
             <div style={{ position: "relative", height: "5vh" }}></div>
             <img
