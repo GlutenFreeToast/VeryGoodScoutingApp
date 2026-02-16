@@ -35,10 +35,10 @@ const Match: FunctionalComponent<MainpageProps> = ({
       // Handle number fields with limits
       if (name === "team") {
         const numValue = parseInt(value) || 0;
-        processedValue = Math.max(1, Math.min(99999, numValue));
+        processedValue = Math.max(0, Math.min(99999, numValue));
       } else if (name === "match") {
         const numValue = parseInt(value) || 0;
-        processedValue = Math.max(1, Math.min(999, numValue));
+        processedValue = Math.max(0, Math.min(999, numValue));
       }
 
       const newData = {
@@ -102,7 +102,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               type="number"
               name="match"
               step={1}
-              min={1}
+              min={0}
               max={999999}
               value={mainpageData?.match || ""}
               onChange={handleChange}
@@ -117,7 +117,10 @@ const Match: FunctionalComponent<MainpageProps> = ({
           >
             <AllianceSlider />
           </div>
-          <label className={"fieldcontainer"}>
+          <label
+            className={"fieldcontainer"}
+            style={{ width: "65%", marginTop: "5vh" }}
+          >
             Preload:
             <DiscreteSlider
               value={mainpageData?.preload || 0}

@@ -63,6 +63,7 @@ export function App() {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
+    location: [0, 0, 0, 0],
   });
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -98,6 +99,7 @@ export function App() {
         [0, 0, 0, 0],
         [0, 0, 0, 0],
       ],
+      location: [0, 0, 0, 0],
     });
     setfinalizeData({
       notes: "",
@@ -237,7 +239,7 @@ export function App() {
                     <QR
                       matchData={MatchData}
                       autonData={autonData}
-                      count={count}
+                      shiftData={ShiftData}
                       finalizeData={finalizeData}
                       endGameData={endGameData}
                       setPage={setPage}

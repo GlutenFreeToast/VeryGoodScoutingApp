@@ -7,8 +7,6 @@ function valuetext(value: number) {
   return `${value}°C`;
 }
 const minimalSliderStyles = {
-
-    
   // Styles for the main slider elements to make the track and rail thicker
   "& .MuiSlider-track": {
     height: 40, // Increase track height (filled part)
@@ -17,10 +15,10 @@ const minimalSliderStyles = {
   },
   "& .MuiSlider-rail": {
     height: 40, // Increase rail height (unfilled part)
-    width: '110%', // Ensure the rail fills the entire width
+    width: "100%", // Ensure the rail fills the entire width
     borderRadius: 4, // Add rounded corners
   },
-  
+
   // Styles to completely hide the slider thumb (the circle)
   "& .MuiSlider-thumb": {
     // Completely hide the thumb circle
@@ -43,15 +41,15 @@ const minimalSliderStyles = {
     backgroundImage: `url(${gamePiece})`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundPosition: "left",
     backgroundColor: "black", // Ensure the background color doesn't interfere with the image
     opacity: 0.5, // Make them subtle
     top: "calc(100% + 24px)", // Vertically center the 8px mark on the 12px track
     // Remove the default vertical line appearance if any remained
+
     "&.MuiSlider-markActive": {
       opacity: 1, // Full opacity when active
     },
-    
   },
 };
 

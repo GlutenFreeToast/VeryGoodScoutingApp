@@ -1,23 +1,23 @@
 /* ButtonContainer.css */
 
-
 .bibby {
   /* This allows us to use top, left, etc., for specific placement */
-  position: absolute; 
-  background-color: black;
+  position: absolute;
   opacity: 50%;
   /* Example: Place 20 pixels from the top and 50 pixels from the left */
-  top:  500px; 
-  left: 160px; 
+  top: 585px;
+  left: 150px;
   width: 75px;
   height: 190px;
   /* Other styling */
   padding: 10px 20px;
-  background-color: blue;
   color: white;
   border: none;
   cursor: pointer;
-  
+  background-color: blue;
+}
+.bibby:selected {
+  background-color: rgb(198, 5, 5);
 }
 
 .button_container {

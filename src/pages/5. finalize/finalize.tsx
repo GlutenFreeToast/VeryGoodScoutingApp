@@ -184,7 +184,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           className={"buttons"}
           onClick={() => {
             console.log("Clicked Submit");
-            triggerConfetti("burst", "5431");
             if (mainpageData.notes === "") {
               console.log("Notes are empty");
               setPage(PageType.PRANK);

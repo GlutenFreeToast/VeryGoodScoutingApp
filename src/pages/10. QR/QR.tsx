@@ -5,6 +5,7 @@ import QRCode from "react-qr-code";
 import type Shift from "../3. TransitionalShift/TransitionalShift";
 import DoubleCheck from "./DoubleCheck/DoubleCheck";
 import type { PageType } from "../../app";
+import { triggerConfetti } from "../../Components/triggerConfetti";
 
 export interface QRProps {
   matchData: any;
@@ -51,7 +52,7 @@ const QR: FunctionalComponent<QRProps> = ({
     >
       <h2>Match Data QR</h2>
       <div style={{ background: "white", padding: 16 }}>
-        <QRCode value={json} size={256} />
+        <QRCode value={json} size={512} />
       </div>
       <div style={{ display: "flex", gap: 16 }}>
         <button
@@ -67,7 +68,9 @@ const QR: FunctionalComponent<QRProps> = ({
         </button>
         <button
           className="buttons"
-          onClick={() => setShowConfirm(true)}
+          onClick={() => {
+            (setShowConfirm(true), triggerConfetti("burst", "5431"));
+          }}
           style={"width: 200px; height: 100px;background-color: #D9544D;"}
         >
           Reset

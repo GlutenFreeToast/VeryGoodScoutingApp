@@ -2,6 +2,7 @@ import "../global.css";
 import type { FunctionalComponent } from "preact";
 import type { Dispatch, StateUpdater } from "preact/hooks";
 import Counter from "../../Components/Counter/Counter.tsx";
+import Counter2 from "../../Components/Counter/Counter2";
 export interface endGameData {
   climbLevel: number;
   Scoring: number;
@@ -21,7 +22,7 @@ const endGame: FunctionalComponent<MainpageProps> = ({
   return (
     <>
       <div className={"button_container"}>
-        <Counter
+        <Counter2
           name="🤖Robot Score"
           count={mainpageData.Scoring}
           onButtonDown={() =>
@@ -41,7 +42,7 @@ const endGame: FunctionalComponent<MainpageProps> = ({
             })
           }
         />
-        <Counter
+        <Counter2
           name="🤖Robot Misses"
           count={mainpageData.Misses}
           onButtonDown={() =>
@@ -105,13 +106,22 @@ const endGame: FunctionalComponent<MainpageProps> = ({
 
       <div style="height: 5vh;"></div>
 
-      <select className={"dropdown"}>
-        <option>No Climb</option>
-        <option>L1 Climb</option>
-        <option>L2 Climb</option>
-        <option>L3 Climb</option>
+      <select
+        className={"dropdown"}
+        value={mainpageData.climbLevel}
+        onChange={(e) =>
+          setmainpageData &&
+          setmainpageData({
+            ...mainpageData,
+            climbLevel: parseInt(e.currentTarget.value),
+          })
+        }
+      >
+        <option value="0">No Climb</option>
+        <option value="1">L1 Climb</option>
+        <option value="2">L2 Climb</option>
+        <option value="3">L3 Climb</option>
       </select>
-
       <div style="height: 5vh;"></div>
     </>
   );
