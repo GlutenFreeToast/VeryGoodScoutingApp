@@ -89,6 +89,10 @@
   box-sizing: border-box;
   padding: 0.1em;
   z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
 }
 
 .leftbutton {

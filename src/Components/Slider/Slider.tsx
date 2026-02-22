@@ -1,8 +1,8 @@
 import "./slider.css";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+// import Box from "@mui/material/Box";
+// import Slider from "@mui/material/Slider";
 import gamePiece from "../../assets/gamePiece.png";
-import { Height } from "@mui/icons-material";
+// import { Height } from "@mui/icons-material";
 function valuetext(value: number) {
   return `${value}°C`;
 }
@@ -70,31 +70,32 @@ export default function DiscreteSlider({
   };
 
   return (
-    <Box
-      sx={{
-        width: 500,
-        padding: "80px 0px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Slider
-        className="sliderBar"
-        aria-label="Preload"
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-        getAriaLabel={() => "Minimum distance"}
-        shiftStep={0}
-        step={1}
-        marks={true}
-        min={0}
-        max={8}
-        sx={minimalSliderStyles}
-        disableSwap
-      />
-    </Box>
+    // <Box
+    //   sx={{
+    //     width: 500,
+    //     padding: "80px 0px",
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //   }}
+    // >
+    //   <Slider
+    //     className="sliderBar"
+    //     aria-label="Preload"
+    //     value={value}
+    //     onChange={handleChange}
+    //     valueLabelDisplay="auto"
+    //     getAriaValueText={valuetext}
+    //     getAriaLabel={() => "Minimum distance"}
+    //     shiftStep={0}
+    //     step={1}
+    //     marks={true}
+    //     min={0}
+    //     max={8}
+    //     sx={minimalSliderStyles}
+    //     disableSwap
+    //   />
+    // </Box>
+    <div>Slider component disabled (MUI commented out)</div>
   );
 }

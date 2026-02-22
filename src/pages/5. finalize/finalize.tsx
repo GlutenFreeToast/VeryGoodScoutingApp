@@ -4,9 +4,9 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
-import Checkbox from "@mui/material/Checkbox";
-import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
-import FlagIcon from "@mui/icons-material/Flag";
+// import Checkbox from "@mui/material/Checkbox";
+// import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
+// import FlagIcon from "@mui/icons-material/Flag";
 
 export interface FormData {
   notes: string;
@@ -136,7 +136,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
 
           <div>
             <div>
-              <Checkbox
+              {/* <Checkbox
                 name="review"
                 checked={mainpageData.review === true}
                 onChange={(event) => {
@@ -166,7 +166,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
                     }}
                   />
                 }
-              />
+              /> */}
             </div>
             <form onSubmit={handleSubmit}>
               <textarea

@@ -1,6 +1,5 @@
 // Uses match.css for styling
 import type { FunctionalComponent } from "preact";
-import { useEffect, useState } from "preact/hooks";
 import "./PageReveal.css";
 
 const PageReveal: FunctionalComponent = () => {

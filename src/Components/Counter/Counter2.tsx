@@ -1,7 +1,7 @@
 import { useRef } from "preact/hooks";
 import "./Counter.css";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 interface Props {
   name: string;
@@ -35,18 +35,22 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
         <div className="counterinrow2">
           <div>
             <button onClick={onButtonUp} className="rightbutton2">
-              <KeyboardArrowUpIcon />
+              {/* <KeyboardArrowUpIcon /> */}
+              ▲
             </button>
             <button onClick={onButtonDown} className="leftbutton2">
-              <KeyboardArrowDownIcon />
+              {/* <KeyboardArrowDownIcon /> */}
+              ▼
             </button>
           </div>
           <div>
             <button
               className="counterdisplay2"
-              onMouseDown={startCounting}
+              onTouchStart={startCounting}
+              onTouchEnd={stopCounting}
               onMouseUp={stopCounting}
               onMouseLeave={stopCounting}
+              onContextMenu={(e) => e.preventDefault()}
             >
               {count}
             </button>

@@ -7,35 +7,34 @@ import type { StateUpdater, Dispatch } from "preact/hooks";
 import { useState, useEffect } from "preact/hooks";
 import map from "../../assets/field.png";
 import "./TransitionalShift.css";
-import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
-import ToggleButton, { toggleButtonClasses } from "@mui/material/ToggleButton";
-import ToggleButtonGroup, {
-  toggleButtonGroupClasses,
-} from "@mui/material/ToggleButtonGroup";
-import { styled } from "@mui/material/styles";
-import Checkbox from "@mui/material/Checkbox";
-import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
-import ShieldIcon from "@mui/icons-material/Shield";
-import { Shield } from "@mui/icons-material";
+// import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
+// import ToggleButton, { toggleButtonClasses } from "@mui/material/ToggleButton";
+// import ToggleButtonGroup, {
+//   toggleButtonGroupClasses,
+// } from "@mui/material/ToggleButtonGroup";
+// import { styled } from "@mui/material/styles";
+// import Checkbox from "@mui/material/Checkbox";
+// import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
+// import ShieldIcon from "@mui/icons-material/Shield";
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-  gap: "4.2rem",
-  [`& .${toggleButtonGroupClasses.firstButton}, & .${toggleButtonGroupClasses.middleButton}`]:
-    {
-      borderTopRightRadius: (theme.vars || theme).shape.borderRadius,
-      borderBottomRightRadius: (theme.vars || theme).shape.borderRadius,
-    },
-  [`& .${toggleButtonGroupClasses.lastButton}, & .${toggleButtonGroupClasses.middleButton}`]:
-    {
-      borderTopLeftRadius: (theme.vars || theme).shape.borderRadius,
-      borderBottomLeftRadius: (theme.vars || theme).shape.borderRadius,
-      borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`,
-    },
-  [`& .${toggleButtonGroupClasses.lastButton}.${toggleButtonClasses.disabled}, & .${toggleButtonGroupClasses.middleButton}.${toggleButtonClasses.disabled}`]:
-    {
-      borderLeft: `1px solid ${(theme.vars || theme).palette.action.disabledBackground}`,
-    },
-}));
+// const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+//   gap: "4.2rem",
+//   [`& .${toggleButtonGroupClasses.firstButton}, & .${toggleButtonGroupClasses.middleButton}`]:
+//     {
+//       borderTopRightRadius: (theme.vars || theme).shape.borderRadius,
+//       borderBottomRightRadius: (theme.vars || theme).shape.borderRadius,
+//     },
+//   [`& .${toggleButtonGroupClasses.lastButton}, & .${toggleButtonGroupClasses.middleButton}`]:
+//     {
+//       borderTopLeftRadius: (theme.vars || theme).shape.borderRadius,
+//       borderBottomLeftRadius: (theme.vars || theme).shape.borderRadius,
+//       borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`,
+//     },
+//   [`& .${toggleButtonGroupClasses.lastButton}.${toggleButtonClasses.disabled}, & .${toggleButtonGroupClasses.middleButton}.${toggleButtonClasses.disabled}`]:
+//     {
+//       borderLeft: `1px solid ${(theme.vars || theme).palette.action.disabledBackground}`,
+//     },
+// }));
 
 export interface MainpageProps {
   mainpageData: ShiftData;
@@ -208,7 +207,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               alt="map"
               style={{ position: "relative", width: "100%", height: "auto" }}
             ></img>
-            <StyledToggleButtonGroup
+            {/* <StyledToggleButtonGroup
               value={color}
               color="primary"
               exclusive
@@ -270,7 +269,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
             </StyledToggleButtonGroup>
             <ToggleButton value="justify" aria-label="justified" disabled>
               <FormatAlignJustifyIcon />
-            </ToggleButton>
+            </ToggleButton> */}
           </div>
         </div>
       </>
@@ -347,7 +346,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
           </div>
 
           <div style="height: 5vh;">
-            <Checkbox
+            {/* <Checkbox
               name="Defense"
               checked={mainpageData.defense === true}
               onChange={(event) => {
@@ -377,7 +376,7 @@ const Shift: FunctionalComponent<MainpageProps> = ({
                   }}
                 />
               }
-            />
+            /> */}
           </div>
 
           <div>

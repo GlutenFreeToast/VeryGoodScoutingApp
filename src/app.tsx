@@ -11,10 +11,7 @@ import QR from "./pages/10. QR/QR.tsx";
 import Prank from "./pages/9. help/notes-prank.tsx";
 import hyperion from "../src/assets/hyperion.png";
 import orpheus from "../src/assets/Orpheus.png";
-import { triggerConfetti } from "./Components/triggerConfetti.tsx";
-import PageReveal from "./PageReveal.tsx";
-import { Shield } from "@mui/icons-material";
-import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
+// import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
 import teamlogo from "./assets/5431logo.png";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -124,11 +121,11 @@ export function App() {
 
   return (
     <>
-      <SpaceFlyingImages
+      {/* <SpaceFlyingImages
         images={[hyperion, orpheus, teamlogo]}
         count={30}
         speed={0.1}
-      />
+      /> */}
 
       <div
         className={`window robotics`}
