@@ -2,21 +2,17 @@ import { useState, useEffect, useRef } from "preact/hooks";
 import "./app.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
-import Match from "./pages/1. match/match.tsx";
-import TransitionalShift from "./pages/3. TransitionalShift/TransitionalShift.tsx";
-import ENDGAME from "./pages/4. endGame/endGame.tsx";
-import Finalize from "./pages/5. finalize/finalize.tsx";
-import Auton from "./pages/2. auton/auton.tsx";
-import QR from "./pages/10. QR/QR.tsx";
-import Prank from "./pages/9. help/notes-prank.tsx";
+import Match from "./pages/match/match.tsx";
+import TransitionalShift, { Locations } from "./pages/TransitionalShift/TransitionalShift.tsx";
+import ENDGAME from "./pages/endGame/endGame.tsx";
+import Finalize from "./pages/finalize/finalize.tsx";
+import Auton from "./pages/auton/auton.tsx";
+import QR from "./pages/QR/QR.tsx";
+import Prank from "./pages/help/notes-prank.tsx";
 import hyperion from "../src/assets/hyperion.png";
 import orpheus from "../src/assets/Orpheus.png";
-import { triggerConfetti } from "./Components/triggerConfetti.tsx";
-import PageReveal from "./PageReveal.tsx";
-import { Shield } from "@mui/icons-material";
 import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
 import teamlogo from "./assets/5431logo.png";
-
 import { motion, AnimatePresence } from "framer-motion";
 
 export const PageType = {
@@ -59,10 +55,14 @@ export function App() {
     climb: 0,
   });
   const [ShiftData, setShiftData] = useState({
-    shift: [
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-    ],
+    shotMade: 0,
+    misses: 0,
+    humanMade: 0,
+    humanMiss: 0,
+    outpostFed: 0,
+    shuttleCount: 0,
+    location: Locations.NONE,
+    defense: false,
   });
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -72,7 +72,7 @@ export function App() {
     ranking: 0,
     review: false,
   });
-  const [endGameData, setendGameData] = useState({
+  const [endgameData, setEndgameData] = useState({
     climbLevel: 0,
     Scoring: 0,
     Misses: 0,
@@ -94,10 +94,14 @@ export function App() {
       climb: 0,
     });
     setShiftData({
-      shift: [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-      ],
+      shotMade: 0,
+      misses: 0,
+      humanMade: 0,
+      humanMiss: 0,
+      outpostFed: 0,
+      shuttleCount: 0,
+      location: Locations.NONE,
+      defense: false,
     });
     setfinalizeData({
       notes: "",
@@ -107,7 +111,7 @@ export function App() {
       ranking: 0,
       review: false,
     });
-    setendGameData({
+    setEndgameData({
       climbLevel: 0,
       Scoring: 0,
       Misses: 0,
@@ -140,7 +144,6 @@ export function App() {
                 data-active={page === PageType.MATCH}
                 onClick={() => {
                   setPage(PageType.MATCH);
-                  console.log("Clicked on Match");
                 }}
               >
                 Match
@@ -151,7 +154,6 @@ export function App() {
                 data-active={page === PageType.AUTON}
                 onClick={() => {
                   setPage(PageType.AUTON);
-                  console.log("Clicked on Auton");
                 }}
               >
                 Auton
@@ -162,7 +164,6 @@ export function App() {
                 data-active={page === PageType.TransitionalShift}
                 onClick={() => {
                   setPage(PageType.TransitionalShift);
-                  console.log("Clicked on Shifts");
                 }}
               >
                 Shifts
@@ -173,7 +174,6 @@ export function App() {
                 data-active={page === PageType.ENDGAME}
                 onClick={() => {
                   setPage(PageType.ENDGAME);
-                  console.log("Clicked on Endgame");
                 }}
               >
                 Endgame
@@ -204,26 +204,26 @@ export function App() {
                 <div style={{ marginTop: 8 }}>
                   {page === PageType.MATCH && (
                     <Match
-                      mainpageData={MatchData}
-                      setmainpageData={setMatchData}
+                      matchData={MatchData}
+                      setMatchData={setMatchData}
                     />
                   )}
                   {page === PageType.AUTON && (
                     <Auton
-                      mainpageData={autonData}
-                      setmainpageData={setautonData}
+                      autonData={autonData}
+                      setAutonData={setautonData}
                     />
                   )}
                   {page === PageType.TransitionalShift && (
                     <TransitionalShift
-                      mainpageData={ShiftData}
-                      setmainpageData={setShiftData}
+                      shiftData={ShiftData}
+                      setShiftData={setShiftData}
                     />
                   )}
                   {page === PageType.ENDGAME && (
                     <ENDGAME
-                      mainpageData={endGameData}
-                      setmainpageData={setendGameData}
+                      endgameData={endgameData}
+                      setEndgameData={setEndgameData}
                     />
                   )}
                   {page === PageType.FINALIZE && (
@@ -237,9 +237,9 @@ export function App() {
                     <QR
                       matchData={MatchData}
                       autonData={autonData}
-                      count={count}
+                      shiftData={ShiftData}
                       finalizeData={finalizeData}
-                      endGameData={endGameData}
+                      endGameData={endgameData}
                       setPage={setPage}
                       previousPage={previousPage}
                       resetAllData={resetAllData}

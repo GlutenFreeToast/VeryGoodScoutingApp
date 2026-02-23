@@ -36,13 +36,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
     event: Event & { currentTarget: HTMLTextAreaElement },
   ) => {
     const { name, value } = event.currentTarget;
-    console.log("Input changed:", name, value);
     if (setmainpageData && mainpageData) {
       const newData = {
         ...mainpageData,
         [name]: value,
       };
-      console.log("Updating with:", newData);
       setmainpageData(newData);
     } else {
       console.log("Warning: setmainpageData or mainpageData is undefined");
@@ -183,7 +181,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           className={"buttons"}
           onClick={() => {
             console.log("Clicked Submit");
-            triggerConfetti("burst", "5431");
             if (mainpageData.notes === "") {
               console.log("Notes are empty");
               setPage(PageType.PRANK);

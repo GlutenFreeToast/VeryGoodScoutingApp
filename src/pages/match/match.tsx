@@ -13,14 +13,14 @@ export interface FormData {
   preload: number;
 }
 
-export interface MainpageProps {
-  mainpageData: FormData;
-  setmainpageData: Dispatch<StateUpdater<FormData>>;
+export interface MatchProps {
+  matchData: FormData;
+  setMatchData: Dispatch<StateUpdater<FormData>>;
 }
 
-const Match: FunctionalComponent<MainpageProps> = ({
-  mainpageData,
-  setmainpageData,
+const Match: FunctionalComponent<MatchProps> = ({
+  matchData: matchData,
+  setMatchData: setMatchData,
 }) => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -28,25 +28,23 @@ const Match: FunctionalComponent<MainpageProps> = ({
 
   const handleChange = (event: Event & { currentTarget: HTMLInputElement }) => {
     const { name, value } = event.currentTarget;
-    console.log("Input changed:", name, value);
-    if (setmainpageData && mainpageData) {
+    if (setMatchData && matchData) {
       let processedValue: any = value;
 
       // Handle number fields with limits
       if (name === "team") {
         const numValue = parseInt(value) || 0;
-        processedValue = Math.max(1, Math.min(99999, numValue));
+        processedValue = Math.max(0, Math.min(99999, numValue));
       } else if (name === "match") {
         const numValue = parseInt(value) || 0;
-        processedValue = Math.max(1, Math.min(999, numValue));
+        processedValue = Math.max(0, Math.min(999, numValue));
       }
 
       const newData = {
-        ...mainpageData,
+        ...matchData,
         [name]: processedValue,
       };
-      console.log("Updating with:", newData);
-      setmainpageData(newData);
+      setMatchData(newData);
     } else {
       console.log("Warning: setmainpageData or mainpageData is undefined");
     }
@@ -61,7 +59,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
             <input
               type="text"
               name="name"
-              value={mainpageData?.name || ""}
+              value={matchData?.name || ""}
               onChange={handleChange}
               placeholder={"Ex: Dwayne Johnson"}
               className={"field"}
@@ -74,7 +72,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               type="text"
               name="comp"
               maxlength={20}
-              value={mainpageData?.comp || ""}
+              value={matchData?.comp || ""}
               onChange={handleChange}
               placeholder={"Ex: Plano"}
               className={"field"}
@@ -90,7 +88,7 @@ const Match: FunctionalComponent<MainpageProps> = ({
               name="team"
               step={1}
               max={99999}
-              value={mainpageData?.team || ""}
+              value={matchData?.team || ""}
               onChange={handleChange}
               placeholder={"Ex: 5431"}
               className={"field"}
@@ -102,9 +100,9 @@ const Match: FunctionalComponent<MainpageProps> = ({
               type="number"
               name="match"
               step={1}
-              min={1}
+              min={0}
               max={999999}
-              value={mainpageData?.match || ""}
+              value={matchData?.match || ""}
               onChange={handleChange}
               placeholder={"Ex: 67"}
               className={"field"}
@@ -117,13 +115,16 @@ const Match: FunctionalComponent<MainpageProps> = ({
           >
             <AllianceSlider />
           </div>
-          <label className={"fieldcontainer"} style={"padding: 5vw"}>
+          <label
+            className={"fieldcontainer"}
+            style={{ width: "65%", marginTop: "5vh" }}
+          >
             Preload:
             <DiscreteSlider
-              value={mainpageData?.preload || 0}
+              value={matchData?.preload || 0}
               onChange={(value) => {
-                setmainpageData({
-                  ...mainpageData,
+                setMatchData({
+                  ...matchData,
                   preload: value,
                 });
               }}
