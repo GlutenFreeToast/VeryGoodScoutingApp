@@ -1,4 +1,4 @@
-import { useRef } from "preact/hooks";
+import { useRef, useEffect } from "preact/hooks";
 import "./Counter.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -12,21 +12,40 @@ interface Props {
 
 function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
   const intervalRef = useRef<number | null>(null);
+  const callbackRef = useRef(onButtonUp);
 
-  function startCounting() {
-    onButtonUp();
+  useEffect(() => {
+    callbackRef.current = onButtonUp;
+  }, [onButtonUp]);
+
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
+  const startCounting = (e: any) => {
+    e.preventDefault();
+    
+    callbackRef.current();
+    
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+    }
 
     intervalRef.current = window.setInterval(() => {
-      onButtonUp();
-    }, 50);
-  }
+      callbackRef.current();
+    }, 100);
+  };
 
-  function stopCounting() {
+  const stopCounting = () => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-  }
+  };
 
   return (
     <>
@@ -44,8 +63,13 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
           <div>
             <button
               className="counterdisplay2"
+              onMouseDown={startCounting}
+              onMouseUp={stopCounting}
+              onMouseLeave={stopCounting}
               onTouchStart={startCounting}
               onTouchEnd={stopCounting}
+              onTouchCancel={stopCounting}
+              onContextMenu={(e) => e.preventDefault()}
             >
               {count}
             </button>
