@@ -133,7 +133,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           <div class="field-row"></div>
 
           <div>
-            <div>
+            <div style={"padding-bottom: 3vw"}>
               <Checkbox
                 name="review"
                 checked={mainpageData.review === true}
@@ -177,7 +177,6 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
             </form>
           </div>
         </div>
-        <h2>---------------</h2>
         <button
           className={"buttons"}
           onClick={() => {

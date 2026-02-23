@@ -72,8 +72,8 @@ export default function DiscreteSlider({
   return (
     <Box
       sx={{
-        width: 500,
-        padding: "80px 0px",
+        // width: 500,
+        padding: "10px 0px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
