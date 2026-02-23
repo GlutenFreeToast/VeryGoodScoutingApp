@@ -54,7 +54,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
       <form onSubmit={handleSubmit}>
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
-            Red Points:
+            🟥Red Points:
             <input
               type="text"
               name="red"
@@ -73,7 +73,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           </label>
 
           <label className={"fieldcontainer"}>
-            Blue Points:
+            🟦Blue Points:
             <input
               type="text"
               name="blue"
@@ -94,7 +94,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
         <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
-            Penalties:
+            ❌Penalties:
             <input
               type="text"
               name="penalties"
@@ -113,7 +113,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           </label>
 
           <label className={"fieldcontainer"}>
-            Ranking Points:
+            ✔️Ranking Points:
             <input
               type="text"
               name="ranking"
@@ -134,6 +134,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
 
           <div>
             <div style={"padding-bottom: 3vw"}>
+              <p>Mark for Review</p>
               <Checkbox
                 name="review"
                 checked={mainpageData.review === true}

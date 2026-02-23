@@ -8,7 +8,7 @@
   background-color: rgba(255, 255, 255, 0.4);
 }
 .field::placeholder {
-  color: rgb(32, 32, 96);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .fieldcontainer {

@@ -34,19 +34,18 @@ function Counter2({ name, count, onButtonDown, onButtonUp }: Props) {
         <h2 className="countertitle2">{name}</h2>
         <div className="counterinrow2">
           <div>
-            <button onClick={onButtonUp} className="rightbutton2">
+            <button onTouchStart={onButtonUp} className="rightbutton2">
               <KeyboardArrowUpIcon />
             </button>
-            <button onClick={onButtonDown} className="leftbutton2">
+            <button onTouchStart={onButtonDown} className="leftbutton2">
               <KeyboardArrowDownIcon />
             </button>
           </div>
           <div>
             <button
               className="counterdisplay2"
-              onMouseDown={startCounting}
-              onMouseUp={stopCounting}
-              onMouseLeave={stopCounting}
+              onTouchStart={startCounting}
+              onTouchEnd={stopCounting}
             >
               {count}
             </button>

@@ -23,7 +23,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
       <div className="pagecontainer">
         <div className="button_container">
           <Counter
-            name="Fuel Scored"
+            name="⛽Fuel Scored"
             count={autonData.FuelScored}
             onButtonDown={() =>
               autonData.FuelScored > 0 &&
@@ -42,7 +42,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
           />
 
           <Counter
-            name="Fuel Missed"
+            name="🔥Fuel Missed"
             count={autonData.FuelMissed}
             onButtonDown={() =>
               autonData.FuelMissed > 0 &&

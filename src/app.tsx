@@ -3,7 +3,9 @@ import "./app.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
 import Match from "./pages/match/match.tsx";
-import TransitionalShift, { Locations } from "./pages/TransitionalShift/TransitionalShift.tsx";
+import TransitionalShift, {
+  Locations,
+} from "./pages/TransitionalShift/TransitionalShift.tsx";
 import ENDGAME from "./pages/endGame/endGame.tsx";
 import Finalize from "./pages/finalize/finalize.tsx";
 import Auton from "./pages/auton/auton.tsx";
@@ -24,6 +26,11 @@ export const PageType = {
   QR: 5,
   PRANK: 10,
 } as const;
+
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+  return false;
+});
 
 export type PageType = (typeof PageType)[keyof typeof PageType];
 
@@ -203,16 +210,10 @@ export function App() {
                 <div>{note}</div>
                 <div style={{ marginTop: 8 }}>
                   {page === PageType.MATCH && (
-                    <Match
-                      matchData={MatchData}
-                      setMatchData={setMatchData}
-                    />
+                    <Match matchData={MatchData} setMatchData={setMatchData} />
                   )}
                   {page === PageType.AUTON && (
-                    <Auton
-                      autonData={autonData}
-                      setAutonData={setautonData}
-                    />
+                    <Auton autonData={autonData} setAutonData={setautonData} />
                   )}
                   {page === PageType.TransitionalShift && (
                     <TransitionalShift

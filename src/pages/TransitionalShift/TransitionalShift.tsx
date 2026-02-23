@@ -23,10 +23,8 @@ export enum Locations {
   RED_DRIVERSTATION,
   RED_NUETRAL_ZONE,
   BLUE_NUETRAL_ZONE,
-  BLUE_DRIVERSTATION
-} 
-
-
+  BLUE_DRIVERSTATION,
+}
 
 export interface ShiftData {
   shotMade: number;
@@ -201,64 +199,53 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               alt="map"
               style={{ position: "relative", width: "100%", height: "auto" }}
             ></img>
-              <ToggleButton
-                value="left"
-                aria-label="left aligned"
-                onChange={() => setcurrentlocation(0)}
-                style={{
-                  height: "200px",
-                  width: "60px",
-                  backgroundColor:
-                    currentlocation === 0 ? "#6b3fe4" : "#e43f3f",
-                  opacity: 0.8,
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => setcurrentlocation(1)}
-                style={{
-                  height: "200px",
-                  width: "60px",
-                  backgroundColor:
-                    currentlocation === 1 ? "#6b3fe4" : "#e43f3f",
-                  opacity: 0.8,
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => setcurrentlocation(2)}
-                style={{
-                  height: "200px",
-                  width: "60px",
-                  backgroundColor:
-                    currentlocation === 2 ? "#6b3fe4" : "#3f3fe4",
-                  opacity: 0.8,
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="right"
-                aria-label="right aligned"
-                onChange={() => {
-                  setcurrentlocation(3);
-                  console.log(currentlocation);
-                }}
-                style={{
-                  height: "200px",
-                  width: "60px",
-                  backgroundColor:
-                    currentlocation === 3 ? "#6b3fe4" : "#3f3fe4",
-                  opacity: 0.8,
-                }}
-              ></ToggleButton>
             <ToggleButton
-              value="justify"
-              aria-label="justified"
-              disabled
-            >
-              <FormatAlignJustifyIcon />
-            </ToggleButton>
+              value="left"
+              aria-label="left aligned"
+              onChange={() => setcurrentlocation(0)}
+              style={{
+                height: "200px",
+                width: "60px",
+                backgroundColor: currentlocation === 0 ? "#00da0b" : "#e43f3f",
+                opacity: 0.8,
+              }}
+            ></ToggleButton>
+            <ToggleButton
+              value="center"
+              aria-label="centered"
+              onChange={() => setcurrentlocation(1)}
+              style={{
+                height: "200px",
+                width: "60px",
+                backgroundColor: currentlocation === 1 ? "#00da0b" : "#e43f3f",
+                opacity: 0.8,
+              }}
+            ></ToggleButton>
+            <ToggleButton
+              value="center"
+              aria-label="centered"
+              onChange={() => setcurrentlocation(2)}
+              style={{
+                height: "200px",
+                width: "60px",
+                backgroundColor: currentlocation === 2 ? "#00da0b" : "#3f3fe4",
+                opacity: 0.8,
+              }}
+            ></ToggleButton>
+            <ToggleButton
+              value="right"
+              aria-label="right aligned"
+              onChange={() => {
+                setcurrentlocation(3);
+                console.log(currentlocation);
+              }}
+              style={{
+                height: "200px",
+                width: "60px",
+                backgroundColor: currentlocation === 3 ? "#00da0b" : "#3f3fe4",
+                opacity: 0.8,
+              }}
+            ></ToggleButton>
           </div>
         </div>
       </>
@@ -335,6 +322,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
           </div>
 
           <div style="height: 5vh;">
+            <p>Played Defense?</p>
             <Checkbox
               name="Defense"
               checked={shiftData.defense === true}
@@ -368,7 +356,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
           </div>
 
           <div>
-            <div style={{ position: "relative", height: "5vh" }}></div>
+            <div style={{ position: "relative", height: "10vh" }}></div>
             <img
               src={map}
               alt="map"

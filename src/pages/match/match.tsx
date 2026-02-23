@@ -55,7 +55,7 @@ const Match: FunctionalComponent<MatchProps> = ({
       <form onSubmit={handleSubmit}>
         <div className={"fieldset"}>
           <label className="fieldcontainer">
-            Enter Your Name:
+            🫵Your Name:
             <input
               type="text"
               name="name"
@@ -67,7 +67,7 @@ const Match: FunctionalComponent<MatchProps> = ({
           </label>
 
           <label className="fieldcontainer">
-            Comp Name:
+            ⚔️Comp Name:
             <input
               type="text"
               name="comp"
@@ -82,7 +82,7 @@ const Match: FunctionalComponent<MatchProps> = ({
         <div style={"margin: 5vh;"}></div>
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
-            Team #:
+            👯Team #:
             <input
               type="number"
               name="team"
@@ -95,7 +95,7 @@ const Match: FunctionalComponent<MatchProps> = ({
             />
           </label>
           <label className={"fieldcontainer"}>
-            Match #:
+            📋Match #:
             <input
               type="number"
               name="match"
@@ -119,7 +119,7 @@ const Match: FunctionalComponent<MatchProps> = ({
             className={"fieldcontainer"}
             style={{ width: "65%", marginTop: "5vh" }}
           >
-            Preload:
+            🟡Preload:
             <DiscreteSlider
               value={matchData?.preload || 0}
               onChange={(value) => {
