@@ -2,7 +2,7 @@ import "../global.css";
 import type { FunctionalComponent } from "preact";
 import { useState } from "preact/compat";
 import QRCode from "react-qr-code";
-import type Shift from "../3. TransitionalShift/TransitionalShift";
+import type Shift from "../TransitionalShift/TransitionalShift";
 import DoubleCheck from "./DoubleCheck/DoubleCheck";
 import type { PageType } from "../../app";
 import { triggerConfetti } from "../../Components/triggerConfetti";
@@ -10,7 +10,7 @@ import { triggerConfetti } from "../../Components/triggerConfetti";
 export interface QRProps {
   matchData: any;
   autonData: any;
-  shiftData: { shift: number[][] };
+  shiftData:  any;
   finalizeData: any;
   endGameData: any;
   setPage?: (page: PageType) => void;
@@ -32,15 +32,15 @@ const QR: FunctionalComponent<QRProps> = ({
   const payload = {
     version: 1,
     timestamp: new Date().toISOString(),
-    match: matchData,
-    auton: autonData,
-    Shift: shiftData,
-    finalize: finalizeData,
-    endgame: endGameData,
-  };
+    ...matchData,
+    ...autonData,
+    ...shiftData,
+    ...finalizeData,
+    ...endGameData
+};
 
   const json = JSON.stringify(payload);
-
+  console.log(json);
   return (
     <div
       style={{

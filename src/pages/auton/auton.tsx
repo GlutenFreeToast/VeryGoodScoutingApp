@@ -4,9 +4,9 @@ import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
 
-export interface MainpageProps {
-  mainpageData: autonData;
-  setmainpageData: Dispatch<StateUpdater<autonData>>;
+export interface AutonProps {
+  autonData: autonData;
+  setAutonData: Dispatch<StateUpdater<autonData>>;
 }
 export interface autonData {
   FuelScored: number;
@@ -14,9 +14,9 @@ export interface autonData {
   climb: number;
 }
 
-const Auton: FunctionalComponent<MainpageProps> = ({
-  mainpageData,
-  setmainpageData,
+const Auton: FunctionalComponent<AutonProps> = ({
+  autonData: autonData,
+  setAutonData: setAutonData,
 }) => {
   return (
     <>
@@ -24,38 +24,38 @@ const Auton: FunctionalComponent<MainpageProps> = ({
         <div className="button_container">
           <Counter
             name="Fuel Scored"
-            count={mainpageData.FuelScored}
+            count={autonData.FuelScored}
             onButtonDown={() =>
-              mainpageData.FuelScored > 0 &&
-              setmainpageData({
-                ...mainpageData,
-                FuelScored: mainpageData.FuelScored - 1,
+              autonData.FuelScored > 0 &&
+              setAutonData({
+                ...autonData,
+                FuelScored: autonData.FuelScored - 1,
               })
             }
             onButtonUp={() =>
-              mainpageData.FuelScored < 99 &&
-              setmainpageData({
-                ...mainpageData,
-                FuelScored: mainpageData.FuelScored + 1,
+              autonData.FuelScored < 99 &&
+              setAutonData({
+                ...autonData,
+                FuelScored: autonData.FuelScored + 1,
               })
             }
           />
 
           <Counter
             name="Fuel Missed"
-            count={mainpageData.FuelMissed}
+            count={autonData.FuelMissed}
             onButtonDown={() =>
-              mainpageData.FuelMissed > 0 &&
-              setmainpageData({
-                ...mainpageData,
-                FuelMissed: mainpageData.FuelMissed - 1,
+              autonData.FuelMissed > 0 &&
+              setAutonData({
+                ...autonData,
+                FuelMissed: autonData.FuelMissed - 1,
               })
             }
             onButtonUp={() =>
-              mainpageData.FuelMissed < 99 &&
-              setmainpageData({
-                ...mainpageData,
-                FuelMissed: mainpageData.FuelMissed + 1,
+              autonData.FuelMissed < 99 &&
+              setAutonData({
+                ...autonData,
+                FuelMissed: autonData.FuelMissed + 1,
               })
             }
           />
@@ -66,10 +66,10 @@ const Auton: FunctionalComponent<MainpageProps> = ({
 
       <select
         className={"dropdown"}
-        value={mainpageData.climb}
+        value={autonData.climb}
         onChange={(e) =>
-          setmainpageData({
-            ...mainpageData,
+          setAutonData({
+            ...autonData,
             climb: parseInt(e.currentTarget.value),
           })
         }

@@ -36,13 +36,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
     event: Event & { currentTarget: HTMLTextAreaElement },
   ) => {
     const { name, value } = event.currentTarget;
-    console.log("Input changed:", name, value);
     if (setmainpageData && mainpageData) {
       const newData = {
         ...mainpageData,
         [name]: value,
       };
-      console.log("Updating with:", newData);
       setmainpageData(newData);
     } else {
       console.log("Warning: setmainpageData or mainpageData is undefined");

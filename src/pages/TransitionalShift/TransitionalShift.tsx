@@ -18,64 +18,58 @@ import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
 import ShieldIcon from "@mui/icons-material/Shield";
 import { Shield } from "@mui/icons-material";
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-  gap: "4.2rem",
-  [`& .${toggleButtonGroupClasses.firstButton}, & .${toggleButtonGroupClasses.middleButton}`]:
-    {
-      borderTopRightRadius: (theme.vars || theme).shape.borderRadius,
-      borderBottomRightRadius: (theme.vars || theme).shape.borderRadius,
-    },
-  [`& .${toggleButtonGroupClasses.lastButton}, & .${toggleButtonGroupClasses.middleButton}`]:
-    {
-      borderTopLeftRadius: (theme.vars || theme).shape.borderRadius,
-      borderBottomLeftRadius: (theme.vars || theme).shape.borderRadius,
-      borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`,
-    },
-  [`& .${toggleButtonGroupClasses.lastButton}.${toggleButtonClasses.disabled}, & .${toggleButtonGroupClasses.middleButton}.${toggleButtonClasses.disabled}`]:
-    {
-      borderLeft: `1px solid ${(theme.vars || theme).palette.action.disabledBackground}`,
-    },
-}));
+export enum Locations {
+  NONE,
+  RED_DRIVERSTATION,
+  RED_NUETRAL_ZONE,
+  BLUE_NUETRAL_ZONE,
+  BLUE_DRIVERSTATION
+} 
 
-export interface MainpageProps {
-  mainpageData: ShiftData;
-  setmainpageData: Dispatch<StateUpdater<ShiftData>>;
+
+
+export interface ShiftData {
+  shotMade: number;
+  misses: number;
+  humanMade: number;
+  humanMiss: number;
+  outpostFed: number;
+  shuttleCount: number;
+  location: Locations;
+  defense: boolean;
+}
+
+export interface ShiftProps {
+  shiftData: ShiftData;
+  setShiftData: Dispatch<StateUpdater<ShiftData>>;
 }
 {
   /*the first number represent a different shift*/
 }
 
-export interface ShiftData {
-  shift: number[][];
-  location: number[];
-  defense: boolean;
-}
-
-const Shift: FunctionalComponent<MainpageProps> = ({
-  mainpageData,
-  setmainpageData,
+const Shift: FunctionalComponent<ShiftProps> = ({
+  shiftData: shiftData,
+  setShiftData: setShiftData,
 }) => {
   const [activeShift, setActiveShift] = useState(0);
-  const [shotMade, setshotmade] = useState(mainpageData.shift[activeShift][0]);
-  const [misses, setmisses] = useState(mainpageData.shift[activeShift][1]);
-  const [humanmade, sethumanmade] = useState(
-    mainpageData.shift[activeShift][2],
-  );
-  const [currentlocation, setcurrentlocation] = useState(0);
-  const [humanmiss, sethumanmiss] = useState(
-    mainpageData.shift[activeShift][3],
-  );
   const [isActive, setIsActive] = useState(true);
-  const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
+  const [shotMade, setshotmade] = useState(0);
+  const [misses, setmisses] = useState(0);
+  const [humanmade, sethumanmade] = useState(0);
+  const [humanmiss, sethumanmiss] = useState(0);
+  const [outpostFed, setoutpostFed] = useState(0);
+  const [shuttleCount, setshuttleCount] = useState(0);
+  const [currentlocation, setcurrentlocation] = useState(0);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
-    setshotmade(mainpageData.shift[activeShift][0]);
-    setmisses(mainpageData.shift[activeShift][1]);
-    sethumanmade(mainpageData.shift[activeShift][2]);
-    sethumanmiss(mainpageData.shift[activeShift][3]);
-  }, [mainpageData, activeShift]);
-
-  const [color, setColor] = useState("");
+    setshotmade(shiftData.shotMade ?? 0);
+    setmisses(shiftData.misses ?? 0);
+    sethumanmade(shiftData.humanMade ?? 0);
+    sethumanmiss(shiftData.humanMiss ?? 0);
+    setoutpostFed(shiftData.outpostFed ?? 0);
+    setshuttleCount(shiftData.shuttleCount ?? 0);
+  }, [shiftData]);
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
@@ -96,10 +90,12 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               );
               setActiveShift(shiftIndex);
               setIsActive(shiftIndex === 0);
-              setshotmade(mainpageData.shift[shiftIndex][0]);
-              setmisses(mainpageData.shift[shiftIndex][1]);
-              sethumanmade(mainpageData.shift[shiftIndex][2]);
-              sethumanmiss(mainpageData.shift[shiftIndex][3]);
+              setshotmade(shiftData.shotMade ?? 0);
+              setmisses(shiftData.misses ?? 0);
+              sethumanmade(shiftData.humanMade ?? 0);
+              sethumanmiss(shiftData.humanMiss ?? 0);
+              setoutpostFed(shiftData.outpostFed ?? 0);
+              setshuttleCount(shiftData.shuttleCount ?? 0);
             }}
           >
             <option value="0" selected>
@@ -115,22 +111,20 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               name="🤖Robot Score"
               count={shotMade}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][0] > 0) {
-                  newData.shift[activeShift][0]--;
-                  setmainpageData(newData);
-                  setshotmade(newData.shift[activeShift][0]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.shotMade > 0) {
+                  newData.shotMade--;
+                  setShiftData(newData);
+                  setshotmade(newData.shotMade);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][0] < 99) {
-                  newData.shift[activeShift][0]++;
-                  setmainpageData(newData);
-                  setshotmade(newData.shift[activeShift][0]);
-                  newData.location[currentlocation] =
-                    newData.shift[activeShift][0];
-                  console.log("update " + newData.shift[activeShift][0]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.shotMade < 99) {
+                  newData.shotMade++;
+                  setShiftData(newData);
+                  setshotmade(newData.shotMade);
+                  // newData.location[currentlocation] = newData.shotMade;
                 }
               }}
             ></Counter2>
@@ -138,19 +132,19 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               name="🤖Robot Missed"
               count={misses}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][1] > 0) {
-                  newData.shift[activeShift][1]--;
-                  setmainpageData(newData);
-                  setmisses(newData.shift[activeShift][1]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.misses > 0) {
+                  newData.misses--;
+                  setShiftData(newData);
+                  setmisses(newData.misses);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][1] < 99) {
-                  newData.shift[activeShift][1]++;
-                  setmainpageData(newData);
-                  setmisses(newData.shift[activeShift][1]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.misses < 99) {
+                  newData.misses++;
+                  setShiftData(newData);
+                  setmisses(newData.misses);
                 }
               }}
             ></Counter2>
@@ -163,19 +157,19 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               name="👱Human Score"
               count={humanmade}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][2] > 0) {
-                  newData.shift[activeShift][2]--;
-                  setmainpageData(newData);
-                  sethumanmade(newData.shift[activeShift][2]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.humanMade > 0) {
+                  newData.humanMade--;
+                  setShiftData(newData);
+                  sethumanmade(newData.humanMade);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][2] < 99) {
-                  newData.shift[activeShift][2]++;
-                  setmainpageData(newData);
-                  sethumanmade(newData.shift[activeShift][2]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.humanMade < 99) {
+                  newData.humanMade++;
+                  setShiftData(newData);
+                  sethumanmade(newData.humanMade);
                 }
               }}
             ></Counter>
@@ -183,20 +177,19 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               name="👱Human Missed"
               count={humanmiss}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][3] > 0) {
-                  newData.shift[activeShift][3]--;
-                  setmainpageData(newData);
-                  sethumanmiss(newData.shift[activeShift][3]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.humanMiss > 0) {
+                  newData.humanMiss--;
+                  setShiftData(newData);
+                  sethumanmiss(newData.humanMiss);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][3] < 99) {
-                  newData.shift[activeShift][3]++;
-                  setmainpageData(newData);
-                  sethumanmiss(newData.shift[activeShift][3]);
-                  console.log("update " + JSON.stringify(newData));
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.humanMiss < 99) {
+                  newData.humanMiss++;
+                  setShiftData(newData);
+                  sethumanmiss(newData.humanMiss);
                 }
               }}
             ></Counter>
@@ -208,14 +201,6 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               alt="map"
               style={{ position: "relative", width: "100%", height: "auto" }}
             ></img>
-            <StyledToggleButtonGroup
-              value={color}
-              color="primary"
-              exclusive
-              style={{ position: "absolute", top: "580px", left: "162px" }}
-              onChange={handleAlignment}
-              aria-label="text alignment"
-            >
               <ToggleButton
                 value="left"
                 aria-label="left aligned"
@@ -267,8 +252,11 @@ const Shift: FunctionalComponent<MainpageProps> = ({
                   opacity: 0.8,
                 }}
               ></ToggleButton>
-            </StyledToggleButtonGroup>
-            <ToggleButton value="justify" aria-label="justified" disabled>
+            <ToggleButton
+              value="justify"
+              aria-label="justified"
+              disabled
+            >
               <FormatAlignJustifyIcon />
             </ToggleButton>
           </div>
@@ -289,10 +277,10 @@ const Shift: FunctionalComponent<MainpageProps> = ({
               );
               setActiveShift(shiftIndex);
               setIsActive(shiftIndex === 0);
-              setshotmade(mainpageData.shift[shiftIndex][0]);
-              setmisses(mainpageData.shift[shiftIndex][1]);
-              sethumanmade(mainpageData.shift[shiftIndex][2]);
-              sethumanmiss(mainpageData.shift[shiftIndex][3]);
+              setshotmade(shiftData.shotMade ?? 0);
+              setmisses(shiftData.misses ?? 0);
+              sethumanmade(shiftData.humanMade ?? 0);
+              sethumanmiss(shiftData.humanMiss ?? 0);
             }}
           >
             <option value="0" selected>
@@ -306,41 +294,41 @@ const Shift: FunctionalComponent<MainpageProps> = ({
           <div className="button_container">
             <Counter2
               name="Outpost Fed"
-              count={shotMade}
+              count={outpostFed}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][0] > 0) {
-                  newData.shift[activeShift][0]--;
-                  setmainpageData(newData);
-                  setshotmade(newData.shift[activeShift][0]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.outpostFed > 0) {
+                  newData.outpostFed--;
+                  setShiftData(newData);
+                  setoutpostFed(newData.outpostFed);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][0] < 99) {
-                  newData.shift[activeShift][0]++;
-                  setmainpageData(newData);
-                  setshotmade(newData.shift[activeShift][0]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.outpostFed < 99) {
+                  newData.outpostFed++;
+                  setShiftData(newData);
+                  setoutpostFed(newData.outpostFed);
                 }
               }}
             ></Counter2>
             <Counter2
               name="Shuttle Count"
-              count={misses}
+              count={shuttleCount}
               onButtonDown={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][1] > 0) {
-                  newData.shift[activeShift][1]--;
-                  setmainpageData(newData);
-                  setmisses(newData.shift[activeShift][1]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.shuttleCount > 0) {
+                  newData.shuttleCount--;
+                  setShiftData(newData);
+                  setshuttleCount(newData.shuttleCount);
                 }
               }}
               onButtonUp={() => {
-                const newData = { ...mainpageData };
-                if (newData.shift[activeShift][1] < 99) {
-                  newData.shift[activeShift][1]++;
-                  setmainpageData(newData);
-                  setmisses(newData.shift[activeShift][1]);
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.shuttleCount < 99) {
+                  newData.shuttleCount++;
+                  setShiftData(newData);
+                  setshuttleCount(newData.shuttleCount);
                 }
               }}
             ></Counter2>
@@ -349,17 +337,16 @@ const Shift: FunctionalComponent<MainpageProps> = ({
           <div style="height: 5vh;">
             <Checkbox
               name="Defense"
-              checked={mainpageData.defense === true}
+              checked={shiftData.defense === true}
               onChange={(event) => {
-                setmainpageData({
-                  ...mainpageData,
+                setShiftData({
+                  ...shiftData,
                   defense: (event.target as HTMLInputElement).checked,
                 });
               }}
               style={{
                 background: "#241f68",
               }}
-              {...label}
               icon={
                 <RemoveModeratorIcon
                   style={{
