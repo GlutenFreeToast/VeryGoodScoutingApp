@@ -74,12 +74,10 @@ const Shift: FunctionalComponent<ShiftProps> = ({
       case Locations.TOP_TRENCH:
         newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
         setShiftData(newData);
-        console.log(newData.shotMadeAtTop);
         break;
       case Locations.BOTTOM_TRENCH:
         newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
         setShiftData(newData);
-        console.log(newData.shotMadeAtBottom);
 
         break;
     }

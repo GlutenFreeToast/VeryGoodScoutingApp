@@ -3,8 +3,16 @@ import type { FunctionalComponent } from "preact";
 import type { Dispatch, StateUpdater } from "preact/hooks";
 import Counter from "../../Components/Counter/Counter.tsx";
 import Counter2 from "../../Components/Counter/Counter2";
+
+export enum ClimbLevels {
+  NO_CLIMB = "NO CLIMB",
+  L1_CLIMB = "L1 CLIMB",
+  L2_CLIMB = "L2 CLIMB",
+  L3_CLIMB = "L3 CLIMB",
+}
+
 export interface endGameData {
-  climbLevel: number;
+  climbLevel: ClimbLevels;
   Scoring: number;
   Misses: number;
   HumanScore: number;
@@ -108,19 +116,21 @@ const endGame: FunctionalComponent<EndgameProps> = ({
 
       <select
         className={"dropdown"}
-        value={endgameData.climbLevel}
-        onChange={(e) =>
+        value={endgameData.climbLevel || ClimbLevels.NO_CLIMB}
+        onChange={(e) => {
+
           setEndgameData &&
           setEndgameData({
             ...endgameData,
-            climbLevel: parseInt(e.currentTarget.value),
-          })
+            climbLevel: e.currentTarget.value as ClimbLevels,
+          });
+        }
         }
       >
-        <option value="0">No Climb</option>
-        <option value="1">L1 Climb</option>
-        <option value="2">L2 Climb</option>
-        <option value="3">L3 Climb</option>
+        <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
+        <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
+        <option value={ClimbLevels.L2_CLIMB}>L2 Climb</option>
+        <option value={ClimbLevels.L3_CLIMB}>L3 Climb</option>
       </select>
       <div style="height: 5vh;"></div>
     </>

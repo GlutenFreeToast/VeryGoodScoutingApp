@@ -4,6 +4,7 @@ import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
 import Counter2 from "../../Components/Counter/Counter2";
+import { ClimbLevels } from "../endGame/endGame";
 
 export interface AutonProps {
   autonData: autonData;
@@ -12,7 +13,7 @@ export interface AutonProps {
 export interface autonData {
   FuelScored: number;
   FuelMissed: number;
-  climb: number;
+  autonClimb: ClimbLevels;
 }
 
 const Auton: FunctionalComponent<AutonProps> = ({
@@ -67,16 +68,17 @@ const Auton: FunctionalComponent<AutonProps> = ({
 
       <select
         className={"dropdown"}
-        value={autonData.climb}
-        onChange={(e) =>
+        value={autonData.autonClimb}
+        onChange={(e) => {
           setAutonData({
             ...autonData,
-            climb: parseInt(e.currentTarget.value),
+            autonClimb: e.currentTarget.value as ClimbLevels,
           })
         }
+        }
       >
-        <option value="0">No Climb</option>
-        <option value="1">L1 Climb</option>
+        <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
+        <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
       </select>
 
       <div style="height: 5vh;"></div>

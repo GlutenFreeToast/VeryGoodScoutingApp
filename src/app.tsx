@@ -6,7 +6,7 @@ import Match from "./pages/match/match.tsx";
 import TransitionalShift, {
   Locations,
 } from "./pages/TransitionalShift/TransitionalShift.tsx";
-import ENDGAME from "./pages/endGame/endGame.tsx";
+import ENDGAME, { ClimbLevels } from "./pages/endGame/endGame.tsx";
 import Finalize from "./pages/finalize/finalize.tsx";
 import Auton from "./pages/auton/auton.tsx";
 import QR from "./pages/QR/QR.tsx";
@@ -59,7 +59,7 @@ export function App() {
   const [autonData, setautonData] = useState({
     FuelScored: 0,
     FuelMissed: 0,
-    climb: 0,
+    autonClimb: ClimbLevels.NO_CLIMB,
   });
   const [ShiftData, setShiftData] = useState({
     shotMade: 0,
@@ -82,7 +82,7 @@ export function App() {
     review: false,
   });
   const [endgameData, setEndgameData] = useState({
-    climbLevel: 0,
+    climbLevel: ClimbLevels.NO_CLIMB,
     Scoring: 0,
     Misses: 0,
     HumanScore: 0,
@@ -100,7 +100,7 @@ export function App() {
     setautonData({
       FuelScored: 0,
       FuelMissed: 0,
-      climb: 0,
+      autonClimb: ClimbLevels.NO_CLIMB,
     });
     setShiftData({
       shotMade: 0,
@@ -123,7 +123,7 @@ export function App() {
       review: false,
     });
     setEndgameData({
-      climbLevel: 0,
+      climbLevel: ClimbLevels.NO_CLIMB,
       Scoring: 0,
       Misses: 0,
       HumanScore: 0,
