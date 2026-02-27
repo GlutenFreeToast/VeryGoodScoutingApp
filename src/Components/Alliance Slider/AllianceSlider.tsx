@@ -1,14 +1,21 @@
 import "./AllianceSlider.css";
 import { triggerConfetti } from "../../Components/triggerConfetti";
-
 import { useRef, useEffect, useCallback } from "react";
 
 interface AllianceSliderProps {
-  // You can add props here if needed, such as a callback for when the alliance changes
+  alliance: "Red" | "Blue" | "None";
+  setAlliance?: (alliance: "Red" | "Blue" | "None") => void;
 }
 
-const AllianceSlider = () => {
+const AllianceSlider = (props: AllianceSliderProps) => {
   const sliderRef = useRef<HTMLInputElement>(null);
+
+  // Helper to map alliance prop to slider value
+  const allianceToValue = (alliance: "Red" | "Blue" | "None") => {
+    if (alliance === "Red") return "3";
+    if (alliance === "Blue") return "1";
+    return "2";
+  };
 
   const updateSlider = useCallback(() => {
     const slider = sliderRef.current;
@@ -21,17 +28,27 @@ const AllianceSlider = () => {
 
     slider.style.background = `linear-gradient(to right, red ${percentage}%, blue ${percentage}%)`;
 
+    let newAlliance: "Red" | "Blue" | "None" = "None";
     if (percentage > 50) {
       triggerConfetti("cannon", "red");
+      newAlliance = "Red";
     } else if (percentage < 50) {
       triggerConfetti("cannon", "blue");
+      newAlliance = "Blue";
     }
+    if (props.setAlliance) props.setAlliance(newAlliance);
     // percentage === 50 means it's in the middle (value = 2), so no confetti
-  }, []);
+  }, [props]);
 
   useEffect(() => {
-    updateSlider();
-  }, [updateSlider]);
+    // Set initial value based on alliance prop
+    if (sliderRef.current) {
+      sliderRef.current.value = allianceToValue(props.alliance);
+      updateSlider();
+    }
+    // Only run on mount or when alliance prop changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.alliance]);
 
   return (
     <input
@@ -39,10 +56,11 @@ const AllianceSlider = () => {
       type="range"
       min="1"
       max="3"
-      defaultValue="2"
+      defaultValue={allianceToValue(props.alliance)}
       className="slider"
       id="alliance"
       onChange={updateSlider}
+      aria-label="Alliance Selector"
     />
   );
 };

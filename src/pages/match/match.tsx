@@ -5,17 +5,18 @@ import type { StateUpdater, Dispatch } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
 import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 
-export interface FormData {
+export interface MatchData {
   name: string;
   comp: string;
   team: number;
   match: number;
+  alliance: "Red" | "Blue" | "None";
   preload: number;
 }
 
 export interface MatchProps {
-  matchData: FormData;
-  setMatchData: Dispatch<StateUpdater<FormData>>;
+  matchData: MatchData;
+  setMatchData: Dispatch<StateUpdater<MatchData>>;
 }
 
 const Match: FunctionalComponent<MatchProps> = ({
@@ -113,7 +114,12 @@ const Match: FunctionalComponent<MatchProps> = ({
             className={"button_container"}
             style={{ width: "75%", marginTop: "5vh" }}
           >
-            <AllianceSlider />
+            <AllianceSlider
+              alliance={matchData?.alliance || "none"}
+              setAlliance={(alliance) => {
+                setMatchData({ ...matchData, alliance });
+              }}
+            />
           </div>
           <label
             className={"fieldcontainer"}

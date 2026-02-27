@@ -6,19 +6,21 @@ import type Shift from "../TransitionalShift/TransitionalShift";
 import DoubleCheck from "./DoubleCheck/DoubleCheck";
 import type { PageType } from "../../app";
 import { triggerConfetti } from "../../Components/triggerConfetti";
+import type { MatchData } from "../match/match";
+import type { AutonData } from "../auton/auton";
+import type { ShiftData } from "../TransitionalShift/TransitionalShift";
+import type { FinalizeData } from "../finalize/finalize";
+import type { EndGameData } from "../endGame/endGame";
 
 export interface QRProps {
-  matchData: any;
-  autonData: any;
-  shiftData: any;
-  finalizeData: any;
-  endGameData: any;
+  matchData: MatchData;
+  autonData: AutonData;
+  shiftData: ShiftData;
+  finalizeData: FinalizeData;
+  endGameData: EndGameData;
   setPage?: (page: PageType) => void;
   previousPage?: PageType;
   resetAllData?: () => void;
-}
-{
-  /*Match Data*/
 }
 
 const QR: FunctionalComponent<QRProps> = ({
@@ -36,6 +38,7 @@ const QR: FunctionalComponent<QRProps> = ({
   const comp = matchData.comp;
   const team = matchData.team;
   const match = matchData.match;
+  const alliance = matchData.alliance;
   const preload = matchData.preload;
   const autoFuelScored = autonData.FuelScored;
   const autoFuelMissed = autonData.FuelMissed;
@@ -68,6 +71,7 @@ const QR: FunctionalComponent<QRProps> = ({
     comp,
     team,
     match,
+    alliance,
     preload,
     autoFuelScored,
     autoFuelMissed,
@@ -96,7 +100,7 @@ const QR: FunctionalComponent<QRProps> = ({
   };
 
   const json = JSON.stringify(payload);
-  console.log(json);
+  console.log(json, matchData.alliance);
   return (
     <div
       style={{

@@ -8,7 +8,7 @@ import Checkbox from "@mui/material/Checkbox";
 import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
 import FlagIcon from "@mui/icons-material/Flag";
 
-export interface FormData {
+export interface FinalizeData {
   notes: string;
   red: number;
   blue: number;
@@ -18,14 +18,14 @@ export interface FormData {
 }
 
 export interface FinalizeProps {
-  mainpageData: FormData;
-  setmainpageData: Dispatch<StateUpdater<FormData>>;
+  finalizeData: FinalizeData;
+  setFinalizeData: Dispatch<StateUpdater<FinalizeData>>;
   setPage: Dispatch<StateUpdater<PageType>>;
 }
 
 const Finalize: FunctionalComponent<FinalizeProps> = ({
-  mainpageData,
-  setmainpageData,
+  finalizeData: finalizeData,
+  setFinalizeData: setFinalizeData,
   setPage,
 }) => {
   const handleSubmit = (event: any) => {
@@ -36,12 +36,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
     event: Event & { currentTarget: HTMLTextAreaElement },
   ) => {
     const { name, value } = event.currentTarget;
-    if (setmainpageData && mainpageData) {
+    if (setFinalizeData && finalizeData) {
       const newData = {
-        ...mainpageData,
+        ...finalizeData,
         [name]: value,
       };
-      setmainpageData(newData);
+      setFinalizeData(newData);
     } else {
       console.log("Warning: setmainpageData or mainpageData is undefined");
     }
@@ -60,12 +60,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="red"
               placeholder={"Ex: 57"}
               className={"field"}
-              value={mainpageData.red || ""}
+              value={finalizeData.red || ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) || 0;
                 const clamped = Math.max(0, Math.min(999, value));
-                setmainpageData({
-                  ...mainpageData,
+                setFinalizeData({
+                  ...finalizeData,
                   red: clamped,
                 });
               }}
@@ -79,12 +79,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="blue"
               placeholder={"Ex: 90"}
               className={"field"}
-              value={mainpageData.blue || ""}
+              value={finalizeData.blue || ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) || 0;
                 const clamped = Math.max(0, Math.min(999, value));
-                setmainpageData({
-                  ...mainpageData,
+                setFinalizeData({
+                  ...finalizeData,
                   blue: clamped,
                 });
               }}
@@ -100,12 +100,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="penalties"
               placeholder={"Ex: 296"}
               className={"field"}
-              value={mainpageData.penalties || ""}
+              value={finalizeData.penalties || ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) || 0;
                 const clamped = Math.max(0, Math.min(999, value));
-                setmainpageData({
-                  ...mainpageData,
+                setFinalizeData({
+                  ...finalizeData,
                   penalties: clamped,
                 });
               }}
@@ -119,12 +119,12 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="ranking"
               placeholder={"Ex: 6"}
               className={"field"}
-              value={mainpageData.ranking || ""}
+              value={finalizeData.ranking || ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) || 0;
                 const clamped = Math.max(0, Math.min(99, value));
-                setmainpageData({
-                  ...mainpageData,
+                setFinalizeData({
+                  ...finalizeData,
                   ranking: clamped,
                 });
               }}
@@ -137,10 +137,10 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               <p>Mark for Review</p>
               <Checkbox
                 name="review"
-                checked={mainpageData.review === true}
+                checked={finalizeData.review === true}
                 onChange={(event) => {
-                  setmainpageData({
-                    ...mainpageData,
+                  setFinalizeData({
+                    ...finalizeData,
                     review: (event.target as HTMLInputElement).checked,
                   });
                 }}
@@ -171,7 +171,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               <textarea
                 className={"notes"}
                 name="notes"
-                value={mainpageData?.notes || ""}
+                value={finalizeData?.notes || ""}
                 onChange={handleChange}
                 placeholder="Ex: robot blew up, injured 6 or 7 people"
               />
@@ -182,7 +182,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           className={"buttons"}
           onClick={() => {
             console.log("Clicked Submit");
-            if (mainpageData.notes === "") {
+            if (finalizeData.notes === "") {
               console.log("Notes are empty");
               setPage(PageType.PRANK);
               return;

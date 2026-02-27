@@ -11,7 +11,7 @@ export enum ClimbLevels {
   L3_CLIMB = "L3 CLIMB",
 }
 
-export interface endGameData {
+export interface EndGameData {
   climbLevel: ClimbLevels;
   Scoring: number;
   Misses: number;
@@ -19,8 +19,8 @@ export interface endGameData {
   HumanMisses: number;
 }
 export interface EndgameProps {
-  endgameData: endGameData;
-  setEndgameData?: Dispatch<StateUpdater<endGameData>>;
+  endgameData: EndGameData;
+  setEndgameData?: Dispatch<StateUpdater<EndGameData>>;
 }
 
 const endGame: FunctionalComponent<EndgameProps> = ({

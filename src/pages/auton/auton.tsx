@@ -7,10 +7,10 @@ import Counter2 from "../../Components/Counter/Counter2";
 import { ClimbLevels } from "../endGame/endGame";
 
 export interface AutonProps {
-  autonData: autonData;
-  setAutonData: Dispatch<StateUpdater<autonData>>;
+  autonData: AutonData;
+  setAutonData: Dispatch<StateUpdater<AutonData>>;
 }
-export interface autonData {
+export interface AutonData {
   FuelScored: number;
   FuelMissed: number;
   autonClimb: ClimbLevels;

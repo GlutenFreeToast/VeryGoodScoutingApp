@@ -54,6 +54,7 @@ export function App() {
     comp: "",
     team: 0,
     match: 0,
+    alliance: "None" as "Red" | "Blue" | "None",
     preload: 0,
   });
   const [autonData, setautonData] = useState({
@@ -95,6 +96,7 @@ export function App() {
       comp: "",
       team: 0,
       match: 0,
+      alliance: "None" as "Red" | "Blue" | "None",
       preload: 0,
     });
     setautonData({
@@ -233,8 +235,8 @@ export function App() {
                   )}
                   {page === PageType.FINALIZE && (
                     <Finalize
-                      mainpageData={finalizeData}
-                      setmainpageData={setfinalizeData}
+                      finalizeData={finalizeData}
+                      setFinalizeData={setfinalizeData}
                       setPage={setPage}
                     />
                   )}
