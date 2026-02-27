@@ -32,43 +32,36 @@ const QR: FunctionalComponent<QRProps> = ({
   resetAllData,
 }) => {
   const [showConfirm, setShowConfirm] = useState(false);
-  const [name, setname] = useState(matchData.name);
-  const [comp, setcomp] = useState(matchData.comp);
-  const [team, setteam] = useState(matchData.team);
-  const [match, setmatch] = useState(matchData.match);
-  const [preload, setpreload] = useState(matchData.preload);
-  const [FuelScored, setFuelScored] = useState(autonData.FuelScored);
-  const [FuelMissed, setFuelMissed] = useState(autonData.FuelMissed);
-  const [autonClimb, setautonClimb] = useState(autonData.autonClimb);
-  const [shiftShotMade, setshiftshotMade] = useState(shiftData.shotMade);
-  const [shiftShotMissed, setshiftshotMissed] = useState(shiftData.misses);
-  const [humanMade, sethumanMade] = useState(shiftData.humanMade);
-  const [humanMiss, sethumanMiss] = useState(shiftData.humanMiss);
-  const [outpostFed, setoutpostFed] = useState(shiftData.outpostFed);
-  const [shuttleCount, setshuttleCount] = useState(shiftData.shuttleCount);
-  const [shotMadeAtFront, setshotMadeAtFront] = useState(
-    shiftData.shotMadeAtFront,
-  );
-  const [shotMadeAtTop, setshotMadeAtTop] = useState(shiftData.shotMadeAtTop);
-  const [shotMadeAtBottom, setshotMadeAtBottom] = useState(
-    shiftData.shotMadeAtBottom,
-  );
-  const [defense, setdefense] = useState(shiftData.defense);
-  const [notes, setnotes] = useState(finalizeData.notes);
-  const [redScore, setredScore] = useState(finalizeData.red);
-  const [blueScore, setblueScore] = useState(finalizeData.blue);
-  const [penalties, setpenalties] = useState(finalizeData.penalties);
-  const [rankingPoints, setrankingPoints] = useState(finalizeData.ranking);
-  const [review, setreview] = useState(finalizeData.review);
-  const [climbLevel, setclimbLevel] = useState(endGameData.climbLevel);
-  const [endgameScoring, setendgameScoring] = useState(endGameData.Scoring);
-  const [endgameMisses, setendgameMisses] = useState(endGameData.Misses);
-  const [endgameHumanScore, setendgameHumanScore] = useState(
-    endGameData.HumanScore,
-  );
-  const [endgameHumanMisses, setendgameHumanMisses] = useState(
-    endGameData.HumanMisses,
-  );
+  const name = matchData.name;
+  const comp = matchData.comp;
+  const team = matchData.team;
+  const match = matchData.match;
+  const preload = matchData.preload;
+  const autoFuelScored = autonData.FuelScored;
+  const autoFuelMissed = autonData.FuelMissed;
+  const autonClimb = autonData.autonClimb ?? null;
+  const shiftShotMade = shiftData.shotMade;
+  const shiftShotMissed = shiftData.misses;
+  const humanMade = shiftData.humanMade;
+  const humanMiss = shiftData.humanMiss;
+  const outpostFed = shiftData.outpostFed;
+  const shuttleCount = shiftData.shuttleCount;
+  const shotMadeAtFront = shiftData.shotMadeAtFront;
+  const shotMadeAtTop = shiftData.shotMadeAtTop;
+  const shotMadeAtBottom = shiftData.shotMadeAtBottom;
+  const defense = shiftData.defense;
+  const endgameScoring = endGameData.Scoring;
+  const endgameMisses = endGameData.Misses;
+  const endgameHumanScore = endGameData.HumanScore;
+  const endgameHumanMisses = endGameData.HumanMisses;
+  const climbLevel = endGameData.climbLevel;
+  const notes = finalizeData.notes;
+  const review = finalizeData.review;
+  const redScore = finalizeData.red;
+  const blueScore = finalizeData.blue;
+  const penalties = finalizeData.penalties;
+  const rankingPoints = finalizeData.ranking;
+
 
   const payload = {
     name,
@@ -76,8 +69,8 @@ const QR: FunctionalComponent<QRProps> = ({
     team,
     match,
     preload,
-    FuelScored,
-    FuelMissed,
+    autoFuelScored,
+    autoFuelMissed,
     autonClimb,
     shiftShotMade,
     shiftShotMissed,
@@ -89,6 +82,10 @@ const QR: FunctionalComponent<QRProps> = ({
     shotMadeAtTop,
     shotMadeAtBottom,
     defense,
+    endgameScoring,
+    endgameMisses,
+    endgameHumanScore,
+    endgameHumanMisses,
     notes,
     redScore,
     blueScore,
@@ -96,10 +93,6 @@ const QR: FunctionalComponent<QRProps> = ({
     rankingPoints,
     review,
     climbLevel,
-    endgameScoring,
-    endgameMisses,
-    endgameHumanScore,
-    endgameHumanMisses,
   };
 
   const json = JSON.stringify(payload);
