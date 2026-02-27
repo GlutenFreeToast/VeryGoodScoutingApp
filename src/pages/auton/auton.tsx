@@ -3,6 +3,7 @@ import "../../../src/pages/global.css";
 import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
+import Counter2 from "../../Components/Counter/Counter2";
 
 export interface AutonProps {
   autonData: autonData;
@@ -22,7 +23,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
     <>
       <div className="pagecontainer">
         <div className="button_container">
-          <Counter
+          <Counter2
             name="⛽Fuel Scored"
             count={autonData.FuelScored}
             onButtonDown={() =>
@@ -41,7 +42,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
             }
           />
 
-          <Counter
+          <Counter2
             name="🔥Fuel Missed"
             count={autonData.FuelMissed}
             onButtonDown={() =>

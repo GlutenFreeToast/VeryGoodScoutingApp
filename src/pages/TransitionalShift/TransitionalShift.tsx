@@ -7,23 +7,16 @@ import type { StateUpdater, Dispatch } from "preact/hooks";
 import { useState, useEffect } from "preact/hooks";
 import map from "../../assets/field.png";
 import "./TransitionalShift.css";
-import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
-import ToggleButton, { toggleButtonClasses } from "@mui/material/ToggleButton";
-import ToggleButtonGroup, {
-  toggleButtonGroupClasses,
-} from "@mui/material/ToggleButtonGroup";
-import { styled } from "@mui/material/styles";
+import ToggleButton from "@mui/material/ToggleButton";
 import Checkbox from "@mui/material/Checkbox";
 import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
 import ShieldIcon from "@mui/icons-material/Shield";
-import { Shield } from "@mui/icons-material";
 
 export enum Locations {
   NONE,
-  RED_DRIVERSTATION,
-  RED_NUETRAL_ZONE,
-  BLUE_NUETRAL_ZONE,
-  BLUE_DRIVERSTATION,
+  FRONT,
+  TOP_TRENCH,
+  BOTTOM_TRENCH,
 }
 
 export interface ShiftData {
@@ -33,7 +26,9 @@ export interface ShiftData {
   humanMiss: number;
   outpostFed: number;
   shuttleCount: number;
-  location: Locations;
+  shotMadeAtFront: number;
+  shotMadeAtTop: number;
+  shotMadeAtBottom: number;
   defense: boolean;
 }
 
@@ -57,8 +52,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   const [humanmiss, sethumanmiss] = useState(0);
   const [outpostFed, setoutpostFed] = useState(0);
   const [shuttleCount, setshuttleCount] = useState(0);
-  const [currentlocation, setcurrentlocation] = useState(0);
-  const [color, setColor] = useState("");
+  const [currentlocation, setcurrentlocation] = useState(Locations.NONE);
 
   useEffect(() => {
     setshotmade(shiftData.shotMade ?? 0);
@@ -69,10 +63,27 @@ const Shift: FunctionalComponent<ShiftProps> = ({
     setshuttleCount(shiftData.shuttleCount ?? 0);
   }, [shiftData]);
 
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null,
-  ) => {};
+  const locationaIncrement = () => {
+    const newData = { ...shiftData } as ShiftData;
+    switch (currentlocation) {
+      case Locations.FRONT:
+        newData.shotMadeAtFront = newData.shotMadeAtFront++;
+        setShiftData(newData);
+
+        break;
+      case Locations.TOP_TRENCH:
+        newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
+        setShiftData(newData);
+        console.log(newData.shotMadeAtTop);
+        break;
+      case Locations.BOTTOM_TRENCH:
+        newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
+        setShiftData(newData);
+        console.log(newData.shotMadeAtBottom);
+
+        break;
+    }
+  };
 
   if (isActive)
     return (
@@ -120,9 +131,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 const newData = { ...shiftData } as ShiftData;
                 if (newData.shotMade < 99) {
                   newData.shotMade++;
+                  locationaIncrement();
                   setShiftData(newData);
                   setshotmade(newData.shotMade);
-                  // newData.location[currentlocation] = newData.shotMade;
                 }
               }}
             ></Counter2>
@@ -139,7 +150,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.misses < 99) {
+                if (newData.misses < 999) {
                   newData.misses++;
                   setShiftData(newData);
                   setmisses(newData.misses);
@@ -164,7 +175,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMade < 99) {
+                if (newData.humanMade < 999) {
                   newData.humanMade++;
                   setShiftData(newData);
                   sethumanmade(newData.humanMade);
@@ -184,7 +195,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMiss < 99) {
+                if (newData.humanMiss < 999) {
                   newData.humanMiss++;
                   setShiftData(newData);
                   sethumanmiss(newData.humanMiss);
@@ -193,59 +204,73 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             ></Counter>
           </div>
           <div>
-            <div style="height: 5vh;"></div>
+            <div style={{}}></div>
             <img
               src={map}
               alt="map"
-              style={{ position: "relative", width: "100%", height: "auto" }}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "auto",
+                top: "645px",
+                left: "0px",
+              }}
             ></img>
-            <ToggleButton
-              value="left"
-              aria-label="left aligned"
-              onChange={() => setcurrentlocation(0)}
+            <div
+              className="ButtonsContainers"
               style={{
-                height: "200px",
-                width: "60px",
-                backgroundColor: currentlocation === 0 ? "#00da0b" : "#e43f3f",
-                opacity: 0.8,
+                width: "auto",
+                right: "0px",
+                scale: "80%",
               }}
-            ></ToggleButton>
-            <ToggleButton
-              value="center"
-              aria-label="centered"
-              onChange={() => setcurrentlocation(1)}
-              style={{
-                height: "200px",
-                width: "60px",
-                backgroundColor: currentlocation === 1 ? "#00da0b" : "#e43f3f",
-                opacity: 0.8,
-              }}
-            ></ToggleButton>
-            <ToggleButton
-              value="center"
-              aria-label="centered"
-              onChange={() => setcurrentlocation(2)}
-              style={{
-                height: "200px",
-                width: "60px",
-                backgroundColor: currentlocation === 2 ? "#00da0b" : "#3f3fe4",
-                opacity: 0.8,
-              }}
-            ></ToggleButton>
-            <ToggleButton
-              value="right"
-              aria-label="right aligned"
-              onChange={() => {
-                setcurrentlocation(3);
-                console.log(currentlocation);
-              }}
-              style={{
-                height: "200px",
-                width: "60px",
-                backgroundColor: currentlocation === 3 ? "#00da0b" : "#3f3fe4",
-                opacity: 0.8,
-              }}
-            ></ToggleButton>
+            >
+              <ToggleButton
+                value="left"
+                aria-label="left aligned"
+                onChange={() => setcurrentlocation(Locations.FRONT)}
+                style={{
+                  height: "180px",
+                  width: "60px",
+                  backgroundColor:
+                    currentlocation === Locations.FRONT ? "#00da0b" : "#aa3fe4",
+                  opacity: 0.8,
+                  left: "-115px",
+                  top: "65px",
+                }}
+              ></ToggleButton>
+              <ToggleButton
+                value="center"
+                aria-label="centered"
+                onChange={() => setcurrentlocation(Locations.TOP_TRENCH)}
+                style={{
+                  height: "40px",
+                  width: "90px",
+                  backgroundColor:
+                    currentlocation === Locations.TOP_TRENCH
+                      ? "#00da0b"
+                      : "#aa3fe4",
+                  opacity: 0.8,
+                  left: "-110px",
+                  top: "-50px",
+                }}
+              ></ToggleButton>
+              <ToggleButton
+                value="center"
+                aria-label="centered"
+                onChange={() => setcurrentlocation(Locations.BOTTOM_TRENCH)}
+                style={{
+                  height: "40px",
+                  width: "90px",
+                  backgroundColor:
+                    currentlocation === Locations.BOTTOM_TRENCH
+                      ? "#00da0b"
+                      : "#aa3fe4",
+                  opacity: 0.8,
+                  left: "-200px",
+                  top: "180px",
+                }}
+              ></ToggleButton>
+            </div>
           </div>
         </div>
       </>

@@ -68,7 +68,9 @@ export function App() {
     humanMiss: 0,
     outpostFed: 0,
     shuttleCount: 0,
-    location: Locations.NONE,
+    shotMadeAtFront: 0,
+    shotMadeAtTop: 0,
+    shotMadeAtBottom: 0,
     defense: false,
   });
   const [finalizeData, setfinalizeData] = useState({
@@ -107,7 +109,9 @@ export function App() {
       humanMiss: 0,
       outpostFed: 0,
       shuttleCount: 0,
-      location: Locations.NONE,
+      shotMadeAtFront: 0,
+      shotMadeAtTop: 0,
+      shotMadeAtBottom: 0,
       defense: false,
     });
     setfinalizeData({
@@ -133,7 +137,7 @@ export function App() {
     <>
       <SpaceFlyingImages
         images={[hyperion, orpheus, teamlogo]}
-        count={30}
+        count={5}
         speed={0.1}
       />
 
