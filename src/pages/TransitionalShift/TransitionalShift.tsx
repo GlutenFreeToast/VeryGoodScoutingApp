@@ -63,24 +63,16 @@ const Shift: FunctionalComponent<ShiftProps> = ({
     setshuttleCount(shiftData.shuttleCount ?? 0);
   }, [shiftData]);
 
-  const locationaIncrement = () => {
-    const newData = { ...shiftData } as ShiftData;
+  const locationaIncrement = (newData: ShiftData) => {
     switch (currentlocation) {
       case Locations.FRONT:
-        newData.shotMadeAtFront = newData.shotMadeAtFront++;
-        setShiftData(newData);
-
+        newData.shotMadeAtFront = newData.shotMadeAtFront + 1;
         break;
       case Locations.TOP_TRENCH:
         newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
-        setShiftData(newData);
-        console.log(newData.shotMadeAtTop);
         break;
       case Locations.BOTTOM_TRENCH:
         newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
-        setShiftData(newData);
-        console.log(newData.shotMadeAtBottom);
-
         break;
     }
   };
@@ -131,7 +123,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 const newData = { ...shiftData } as ShiftData;
                 if (newData.shotMade < 99) {
                   newData.shotMade++;
-                  locationaIncrement();
+                  locationaIncrement(newData);
                   setShiftData(newData);
                   setshotmade(newData.shotMade);
                 }
