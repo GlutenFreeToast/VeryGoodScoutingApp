@@ -1,7 +1,7 @@
 import "../global.css";
 import "./finalize.css";
 import type { FunctionalComponent } from "preact";
-import type { StateUpdater, Dispatch } from "preact/hooks";
+import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
 import { PageType } from "../../app.tsx";
 import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
 import Checkbox from "@mui/material/Checkbox";
@@ -49,9 +49,26 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
 
   const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
 
+  const [showNotes, setShowNotes] = useState(false);
+
+
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {showNotes && <div className="double-note-container">
+        {showNotes && <div className="note-container">
+            <form onSubmit={handleSubmit} className="form">
+              <textarea
+                className={"notes"}
+                name="notes"
+                value={finalizeData?.notes || ""}
+                onChange={handleChange}
+                placeholder="Ex: robot blew up, injured 6 or 7 people"
+              />
+              <button onClick={()=>setShowNotes(false)} className="close-notes-button">close</button>
+            </form>
+            </div>}
+            </div>}
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
             🟥Red Points:
@@ -167,15 +184,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
                 }
               />
             </div>
-            <form onSubmit={handleSubmit}>
-              <textarea
-                className={"notes"}
-                name="notes"
-                value={finalizeData?.notes || ""}
-                onChange={handleChange}
-                placeholder="Ex: robot blew up, injured 6 or 7 people"
-              />
-            </form>
+            <button onClick={()=>showNotes ? setShowNotes(false) : setShowNotes(true)} className="open-notes">Open Notes</button>
           </div>
         </div>
         <button
