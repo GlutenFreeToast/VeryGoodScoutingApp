@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from "preact/hooks";
 import "./app.css";
 import "./pages/global.css";
 import build from "../buildInfo.json";
-import Match from "./pages/match/match.tsx";
+import Match, { type MatchData } from "./pages/match/match.tsx";
 import TransitionalShift, {
   Locations,
+  type ShiftData,
 } from "./pages/TransitionalShift/TransitionalShift.tsx";
-import ENDGAME, { ClimbLevels } from "./pages/endGame/endGame.tsx";
-import Finalize from "./pages/finalize/finalize.tsx";
-import Auton from "./pages/auton/auton.tsx";
+import ENDGAME, { ClimbLevels, type EndGameData } from "./pages/endGame/endGame.tsx";
+import Finalize, { type FinalizeData } from "./pages/finalize/finalize.tsx";
+import Auton, { type AutonData } from "./pages/auton/auton.tsx";
 import QR from "./pages/QR/QR.tsx";
 import Prank from "./pages/help/notes-prank.tsx";
 import hyperion from "../src/assets/hyperion.png";
@@ -49,31 +50,29 @@ export function App() {
   }, [page]);
 
   const setPage = setPageState;
-  const [MatchData, setMatchData] = useState({
+  const [matchData, setMatchData] = useState({
     name: "",
     comp: "",
     team: 0,
     match: 0,
     alliance: "None" as "Red" | "Blue" | "None",
     preload: 0,
-  });
+  } as MatchData);
   const [autonData, setautonData] = useState({
     FuelScored: 0,
     FuelMissed: 0,
     autonClimb: ClimbLevels.NO_CLIMB,
-  });
-  const [ShiftData, setShiftData] = useState({
+  } as AutonData);
+  const [shiftData, setShiftData] = useState({
     shotMade: 0,
     misses: 0,
     humanMade: 0,
     humanMiss: 0,
     outpostFed: 0,
     shuttleCount: 0,
-    shotMadeAtFront: 0,
-    shotMadeAtTop: 0,
-    shotMadeAtBottom: 0,
     defense: false,
-  });
+    frequentLocation: Locations.NONE,
+  } as ShiftData);
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
     red: 0,
@@ -81,14 +80,14 @@ export function App() {
     penalties: 0,
     ranking: 0,
     review: false,
-  });
+  } as FinalizeData);
   const [endgameData, setEndgameData] = useState({
     climbLevel: ClimbLevels.NO_CLIMB,
     Scoring: 0,
     Misses: 0,
     HumanScore: 0,
     HumanMisses: 0,
-  });
+  } as EndGameData);
 
   const resetAllData = () => {
     setMatchData({
@@ -111,9 +110,7 @@ export function App() {
       humanMiss: 0,
       outpostFed: 0,
       shuttleCount: 0,
-      shotMadeAtFront: 0,
-      shotMadeAtTop: 0,
-      shotMadeAtBottom: 0,
+      frequentLocation: Locations.NONE,
       defense: false,
     });
     setfinalizeData({
@@ -216,14 +213,14 @@ export function App() {
                 <div>{note}</div>
                 <div style={{ marginTop: 8 }}>
                   {page === PageType.MATCH && (
-                    <Match matchData={MatchData} setMatchData={setMatchData} />
+                    <Match matchData={matchData} setMatchData={setMatchData} />
                   )}
                   {page === PageType.AUTON && (
                     <Auton autonData={autonData} setAutonData={setautonData} />
                   )}
                   {page === PageType.TransitionalShift && (
                     <TransitionalShift
-                      shiftData={ShiftData}
+                      shiftData={shiftData}
                       setShiftData={setShiftData}
                     />
                   )}
@@ -242,9 +239,9 @@ export function App() {
                   )}
                   {page === PageType.QR && (
                     <QR
-                      matchData={MatchData}
+                      matchData={matchData}
                       autonData={autonData}
-                      shiftData={ShiftData}
+                      shiftData={shiftData}
                       finalizeData={finalizeData}
                       endGameData={endgameData}
                       setPage={setPage}

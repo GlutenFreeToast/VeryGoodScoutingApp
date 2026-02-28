@@ -49,9 +49,7 @@ const QR: FunctionalComponent<QRProps> = ({
   const humanMiss = shiftData.humanMiss;
   const outpostFed = shiftData.outpostFed;
   const shuttleCount = shiftData.shuttleCount;
-  const shotMadeAtFront = shiftData.shotMadeAtFront;
-  const shotMadeAtTop = shiftData.shotMadeAtTop;
-  const shotMadeAtBottom = shiftData.shotMadeAtBottom;
+  const frequentLocation = shiftData.frequentLocation;
   const defense = shiftData.defense;
   const endgameScoring = endGameData.Scoring;
   const endgameMisses = endGameData.Misses;
@@ -82,9 +80,7 @@ const QR: FunctionalComponent<QRProps> = ({
     humanMiss,
     outpostFed,
     shuttleCount,
-    shotMadeAtFront,
-    shotMadeAtTop,
-    shotMadeAtBottom,
+    frequentLocation,
     defense,
     endgameScoring,
     endgameMisses,
@@ -100,7 +96,7 @@ const QR: FunctionalComponent<QRProps> = ({
   };
 
   const json = JSON.stringify(payload);
-  console.log(json, matchData.alliance);
+  console.log(json, shiftData.frequentLocation);
   return (
     <div
       style={{

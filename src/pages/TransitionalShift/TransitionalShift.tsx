@@ -13,10 +13,10 @@ import RemoveModeratorIcon from "@mui/icons-material/RemoveModerator";
 import ShieldIcon from "@mui/icons-material/Shield";
 
 export enum Locations {
-  NONE,
-  FRONT,
-  TOP_TRENCH,
-  BOTTOM_TRENCH,
+  NONE = "None",
+  FRONT = "Front",
+  TOP_TRENCH = "Top Trench",
+  BOTTOM_TRENCH = "Bottom Trench",
 }
 
 export interface ShiftData {
@@ -26,10 +26,8 @@ export interface ShiftData {
   humanMiss: number;
   outpostFed: number;
   shuttleCount: number;
-  shotMadeAtFront: number;
-  shotMadeAtTop: number;
-  shotMadeAtBottom: number;
   defense: boolean;
+  frequentLocation: Locations;
 }
 
 export interface ShiftProps {
@@ -61,25 +59,26 @@ const Shift: FunctionalComponent<ShiftProps> = ({
     sethumanmiss(shiftData.humanMiss ?? 0);
     setoutpostFed(shiftData.outpostFed ?? 0);
     setshuttleCount(shiftData.shuttleCount ?? 0);
+    setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
   }, [shiftData]);
 
-  const locationaIncrement = (newData: ShiftData) => {
-    switch (currentlocation) {
-      case Locations.FRONT:
-        newData.shotMadeAtFront = newData.shotMadeAtFront + 1;
-        break;
-      case Locations.TOP_TRENCH:
-        newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
-        setShiftData(newData);
-        break;
-      case Locations.BOTTOM_TRENCH:
-        newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
-        setShiftData(newData);
-        console.log(newData.shotMadeAtBottom);
+  // const locationaIncrement = (newData: ShiftData) => {
+  //   switch (currentlocation) {
+  //     case Locations.FRONT:
+  //       newData.shotMadeAtFront = newData.shotMadeAtFront + 1;
+  //       break;
+  //     case Locations.TOP_TRENCH:
+  //       newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
+  //       setShiftData(newData);
+  //       break;
+  //     case Locations.BOTTOM_TRENCH:
+  //       newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
+  //       setShiftData(newData);
+  //       console.log(newData.shotMadeAtBottom);
 
-        break;
-    }
-  };
+  //       break;
+  //   }
+  // };
 
   if (isActive)
     return (
@@ -101,6 +100,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               sethumanmiss(shiftData.humanMiss ?? 0);
               setoutpostFed(shiftData.outpostFed ?? 0);
               setshuttleCount(shiftData.shuttleCount ?? 0);
+              setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
             }}
           >
             <option value="0" selected>
@@ -127,7 +127,6 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 const newData = { ...shiftData } as ShiftData;
                 if (newData.shotMade < 99) {
                   newData.shotMade++;
-                  locationaIncrement(newData);
                   setShiftData(newData);
                   setshotmade(newData.shotMade);
                 }
@@ -223,7 +222,12 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               <ToggleButton
                 value="left"
                 aria-label="left aligned"
-                onChange={() => setcurrentlocation(Locations.FRONT)}
+                onChange={() => {
+                  const newData = { ...shiftData } as ShiftData;
+                  newData.frequentLocation = Locations.FRONT;
+                  setcurrentlocation(Locations.FRONT);
+                  setShiftData(newData);
+                  }}
                 style={{
                   height: "180px",
                   width: "60px",
@@ -237,7 +241,12 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               <ToggleButton
                 value="center"
                 aria-label="centered"
-                onChange={() => setcurrentlocation(Locations.TOP_TRENCH)}
+                onChange={() => {
+                  const newData = { ...shiftData } as ShiftData;
+                  newData.frequentLocation = Locations.TOP_TRENCH;
+                  setcurrentlocation(Locations.TOP_TRENCH)
+                  setShiftData(newData);
+                  }}
                 style={{
                   height: "40px",
                   width: "90px",
@@ -253,7 +262,12 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               <ToggleButton
                 value="center"
                 aria-label="centered"
-                onChange={() => setcurrentlocation(Locations.BOTTOM_TRENCH)}
+                onChange={() => {
+                  const newData = { ...shiftData } as ShiftData;
+                  newData.frequentLocation = Locations.BOTTOM_TRENCH;
+                  setcurrentlocation(Locations.BOTTOM_TRENCH)
+                  setShiftData(newData);
+                  }}
                 style={{
                   height: "40px",
                   width: "90px",
@@ -266,6 +280,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                   top: "180px",
                 }}
               ></ToggleButton>
+              <h2>Frequent Location</h2>
             </div>
           </div>
         </div>

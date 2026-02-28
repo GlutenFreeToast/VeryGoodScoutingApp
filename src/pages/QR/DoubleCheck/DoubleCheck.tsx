@@ -32,10 +32,11 @@ const DoubleCheck: FunctionalComponent<DoubleCheckProps> = ({
           borderRadius: "8px",
           textAlign: "center",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          color: "black"
         }}
       >
         <h2 style={{ marginTop: 0 }}>Are you sure?</h2>
-        <p>Do you want to reset all your data?</p>
+        <p style={{color: "black"}}>Do you want to reset all your data?</p>
         <div style={{ display: "flex", gap: "16px", justifyContent: "center" }}>
           <button
             className="buttons"

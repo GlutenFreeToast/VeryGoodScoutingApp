@@ -122,7 +122,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               value={finalizeData.ranking || ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) || 0;
-                const clamped = Math.max(0, Math.min(99, value));
+                const clamped = Math.max(0, Math.min(6, value));
                 setFinalizeData({
                   ...finalizeData,
                   ranking: clamped,

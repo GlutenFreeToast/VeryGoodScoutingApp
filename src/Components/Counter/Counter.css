@@ -68,6 +68,7 @@
   filter: brightness(1.2) contrast(120%) saturate(150%);
   padding: 0.1em;
   z-index: 1;
+  color: black;
 }
 
 .counterdisplay2 {
