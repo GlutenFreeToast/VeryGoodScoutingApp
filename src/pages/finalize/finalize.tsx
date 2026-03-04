@@ -73,7 +73,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           <label className={"fieldcontainer"}>
             🟥Red Points:
             <input
-              type="text"
+              type="number"
               name="red"
               placeholder={"Ex: 57"}
               className={"field"}
@@ -92,7 +92,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           <label className={"fieldcontainer"}>
             🟦Blue Points:
             <input
-              type="text"
+              type="number"
               name="blue"
               placeholder={"Ex: 90"}
               className={"field"}
@@ -113,7 +113,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           <label className={"fieldcontainer"}>
             ❌Penalties:
             <input
-              type="text"
+              type="number"
               name="penalties"
               placeholder={"Ex: 296"}
               className={"field"}
@@ -132,7 +132,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
           <label className={"fieldcontainer"}>
             ✔️Ranking Points:
             <input
-              type="text"
+              type="number"
               name="ranking"
               placeholder={"Ex: 6"}
               className={"field"}

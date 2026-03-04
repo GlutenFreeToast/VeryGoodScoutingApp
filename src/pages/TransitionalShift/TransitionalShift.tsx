@@ -125,7 +125,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.shotMade < 99) {
+                if (newData.shotMade < 999) {
                   newData.shotMade++;
                   setShiftData(newData);
                   setshotmade(newData.shotMade);
@@ -328,7 +328,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.outpostFed < 99) {
+                if (newData.outpostFed < 999) {
                   newData.outpostFed++;
                   setShiftData(newData);
                   setoutpostFed(newData.outpostFed);
@@ -348,7 +348,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.shuttleCount < 99) {
+                if (newData.shuttleCount < 999) {
                   newData.shuttleCount++;
                   setShiftData(newData);
                   setshuttleCount(newData.shuttleCount);

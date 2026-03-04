@@ -43,7 +43,7 @@ const endGame: FunctionalComponent<EndgameProps> = ({
           }
           onButtonUp={() =>
             setEndgameData &&
-            endgameData.Scoring < 99 &&
+            endgameData.Scoring < 999 &&
             setEndgameData({
               ...endgameData,
               Scoring: endgameData.Scoring + 1,
@@ -63,7 +63,7 @@ const endGame: FunctionalComponent<EndgameProps> = ({
           }
           onButtonUp={() =>
             setEndgameData &&
-            endgameData.Misses < 99 &&
+            endgameData.Misses < 999 &&
             setEndgameData({
               ...endgameData,
               Misses: endgameData.Misses + 1,
@@ -83,7 +83,7 @@ const endGame: FunctionalComponent<EndgameProps> = ({
           }
           onButtonUp={() =>
             setEndgameData &&
-            endgameData.HumanScore < 99 &&
+            endgameData.HumanScore < 999 &&
             setEndgameData({
               ...endgameData,
               HumanScore: endgameData.HumanScore + 1,
@@ -103,7 +103,7 @@ const endGame: FunctionalComponent<EndgameProps> = ({
           }
           onButtonUp={() =>
             setEndgameData &&
-            endgameData.HumanMisses < 99 &&
+            endgameData.HumanMisses < 999 &&
             setEndgameData({
               ...endgameData,
               HumanMisses: endgameData.HumanMisses + 1,

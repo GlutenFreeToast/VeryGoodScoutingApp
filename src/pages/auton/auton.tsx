@@ -1,5 +1,6 @@
 import "../../app.css";
 import "../../../src/pages/global.css";
+import "./auton.css"
 import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
@@ -66,20 +67,35 @@ const Auton: FunctionalComponent<AutonProps> = ({
 
       <div style="height: 5vh;"></div>
 
-      <select
-        className={"dropdown"}
-        value={autonData.autonClimb}
-        onChange={(e) => {
-          setAutonData({
-            ...autonData,
-            autonClimb: e.currentTarget.value as ClimbLevels,
-          })
-        }
-        }
-      >
-        <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
-        <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
-      </select>
+      <div className="dropdown-container-auton">
+        <div className="dropdown-auton">
+          <label>Climb?</label>
+          <select
+            className={"dropdown"}
+            value={autonData.autonClimb}
+            onChange={(e) => {
+              setAutonData({
+                ...autonData,
+                autonClimb: e.currentTarget.value as ClimbLevels,
+              })
+            }
+            }
+          >
+            <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
+            <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
+          </select>
+        </div>
+
+        <div>
+          <div className="checklist-container">
+          <label className="checklist-title">Source?</label>
+          <div className="checklist-item"><input type="checkbox" className="checkmark"/> <label>Depot</label></div>
+          <div className="checklist-item"><input type="checkbox" className="checkmark"/> <label>Outpost</label></div>
+          <div className="checklist-item"><input type="checkbox" className="checkmark"/> <label>Neutral Zone</label></div>
+          </div>
+        </div>
+      </div>
+      
 
       <div style="height: 5vh;"></div>
     </>

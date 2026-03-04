@@ -33,7 +33,7 @@
   position: absolute;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 95%;
   height: 100%;
   pointer-events: none;
 }
@@ -42,7 +42,7 @@
   position: absolute;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 95%;
   height: 60%;
 }
 

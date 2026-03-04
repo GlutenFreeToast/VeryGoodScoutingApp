@@ -1,0 +1,63 @@
+.dropdown-container-auton {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.dropdown-auton {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    font-size: xx-large;
+}
+
+.checklist-container {
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+}
+
+.checklist-item {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    font-size: large;
+    align-items: center;
+    margin: 1vh;
+}
+
+.checklist-title {
+    justify-self: center;
+}
+
+
+input[type="checkbox"].checkmark {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  width: 25px;
+  height: 25px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+}
+
+/* checked state */
+input[type="checkbox"].checkmark:checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+/* check icon */
+input[type="checkbox"].checkmark:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+}
