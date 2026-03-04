@@ -61,7 +61,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               <textarea
                 className={"notes"}
                 name="notes"
-                value={finalizeData?.notes || ""}
+                value={finalizeData?.notes ?? ""}
                 onChange={handleChange}
                 placeholder="Ex: robot blew up, injured 6 or 7 people"
               />
@@ -77,9 +77,9 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="red"
               placeholder={"Ex: 57"}
               className={"field"}
-              value={finalizeData.red || ""}
+              value={finalizeData.red ?? ""}
               onChange={(e) => {
-                const value = parseInt(e.currentTarget.value) || 0;
+                const value = parseInt(e.currentTarget.value) ?? 0;
                 const clamped = Math.max(0, Math.min(999, value));
                 setFinalizeData({
                   ...finalizeData,
@@ -96,10 +96,11 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="blue"
               placeholder={"Ex: 90"}
               className={"field"}
-              value={finalizeData.blue || ""}
+              value={finalizeData.blue ?? ""}
               onChange={(e) => {
-                const value = parseInt(e.currentTarget.value) || 0;
+                const value = parseInt(e.currentTarget.value) ?? 0;
                 const clamped = Math.max(0, Math.min(999, value));
+                console.log("Blue Points:", clamped);
                 setFinalizeData({
                   ...finalizeData,
                   blue: clamped,
@@ -117,9 +118,9 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="penalties"
               placeholder={"Ex: 296"}
               className={"field"}
-              value={finalizeData.penalties || ""}
+              value={finalizeData.penalties ?? ""}
               onChange={(e) => {
-                const value = parseInt(e.currentTarget.value) || 0;
+                const value = parseInt(e.currentTarget.value) ?? 0;
                 const clamped = Math.max(0, Math.min(999, value));
                 setFinalizeData({
                   ...finalizeData,
@@ -136,9 +137,9 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               name="ranking"
               placeholder={"Ex: 6"}
               className={"field"}
-              value={finalizeData.ranking || ""}
+              value={finalizeData.ranking ?? ""}
               onChange={(e) => {
-                const value = parseInt(e.currentTarget.value) || 0;
+                const value = parseInt(e.currentTarget.value) ?? 0;
                 const clamped = Math.max(0, Math.min(6, value));
                 setFinalizeData({
                   ...finalizeData,

@@ -40,16 +40,20 @@ const QR: FunctionalComponent<QRProps> = ({
   const match = matchData.match;
   const alliance = matchData.alliance;
   const preload = matchData.preload;
-  const autoFuelScored = autonData.FuelScored;
-  const autoFuelMissed = autonData.FuelMissed;
+  const autoFuelScored = autonData.fuelScored;
+  const autoFuelMissed = autonData.fuelMissed;
   const autonClimb = autonData.autonClimb ?? null;
+  const depotSourced = autonData.depotSourced;
+  const outpostSourced = autonData.outpostSourced;
+  const neutralZoneSourced = autonData.neutralZoneSourced;
+  const autonFrequentLocation = autonData.frequentLocation;
   const shiftShotMade = shiftData.shotMade;
   const shiftShotMissed = shiftData.misses;
   const humanMade = shiftData.humanMade;
   const humanMiss = shiftData.humanMiss;
   const outpostFed = shiftData.outpostFed;
   const shuttleCount = shiftData.shuttleCount;
-  const frequentLocation = shiftData.frequentLocation;
+  const matchFrequentLocation = shiftData.frequentLocation;
   const defense = shiftData.defense;
   const endgameScoring = endGameData.Scoring;
   const endgameMisses = endGameData.Misses;
@@ -74,13 +78,17 @@ const QR: FunctionalComponent<QRProps> = ({
     autoFuelScored,
     autoFuelMissed,
     autonClimb,
+    autonFrequentLocation,
+    depotSourced,
+    outpostSourced,
+    neutralZoneSourced,
     shiftShotMade,
     shiftShotMissed,
     humanMade,
     humanMiss,
     outpostFed,
     shuttleCount,
-    frequentLocation,
+    frequentLocation: matchFrequentLocation,
     defense,
     endgameScoring,
     endgameMisses,
@@ -96,7 +104,7 @@ const QR: FunctionalComponent<QRProps> = ({
   };
 
   const json = JSON.stringify(payload);
-  console.log(json, shiftData.frequentLocation);
+  console.log(json, autonData);
   return (
     <div
       style={{

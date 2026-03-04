@@ -59,9 +59,12 @@ export function App() {
     preload: 0,
   } as MatchData);
   const [autonData, setautonData] = useState({
-    FuelScored: 0,
-    FuelMissed: 0,
+    fuelScored: 0,
+    fuelMissed: 0,
     autonClimb: ClimbLevels.NO_CLIMB,
+    depotSourced: false,
+    outpostSourced: false,
+    neutralZoneSourced: false,
   } as AutonData);
   const [shiftData, setShiftData] = useState({
     shotMade: 0,
@@ -91,17 +94,21 @@ export function App() {
 
   const resetAllData = () => {
     setMatchData({
-      name: "",
-      comp: "",
+      name: matchData.name,
+      comp: matchData.comp,
       team: 0,
       match: 0,
       alliance: "None" as "Red" | "Blue" | "None",
       preload: 0,
     });
     setautonData({
-      FuelScored: 0,
-      FuelMissed: 0,
+      fuelScored: 0,
+      fuelMissed: 0,
       autonClimb: ClimbLevels.NO_CLIMB,
+      depotSourced: false,
+      outpostSourced: false,
+      neutralZoneSourced: false,
+      frequentLocation: Locations.NONE,
     });
     setShiftData({
       shotMade: 0,
