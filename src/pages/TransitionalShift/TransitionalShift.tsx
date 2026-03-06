@@ -24,7 +24,8 @@ export interface ShiftData {
   misses: number;
   humanMade: number;
   humanMiss: number;
-  outpostFed: number;
+  activeOutpostFed: number;
+  inActiveOutpostFed: number;
   shuttleCount: number;
   defense: boolean;
   frequentLocation: Locations;
@@ -48,7 +49,8 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   const [misses, setmisses] = useState(0);
   const [humanmade, sethumanmade] = useState(0);
   const [humanmiss, sethumanmiss] = useState(0);
-  const [outpostFed, setoutpostFed] = useState(0);
+  const [activeOutpostFed, setactiveOutpostFed] = useState(0);
+  const [inActiveOutpostFed, setinActiveOutpostFed] = useState(0);
   const [shuttleCount, setshuttleCount] = useState(0);
   const [currentlocation, setcurrentlocation] = useState(Locations.NONE);
 
@@ -57,7 +59,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
     setmisses(shiftData.misses ?? 0);
     sethumanmade(shiftData.humanMade ?? 0);
     sethumanmiss(shiftData.humanMiss ?? 0);
-    setoutpostFed(shiftData.outpostFed ?? 0);
+    setactiveOutpostFed(shiftData.activeOutpostFed ?? 0);
     setshuttleCount(shiftData.shuttleCount ?? 0);
     setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
   }, [shiftData]);
@@ -83,8 +85,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   if (isActive)
     return (
       <>
-        <div style="height: 2vh;"></div>
-        <div className="pagecontainer">
+        <div style="position: relative; height: 2vh; top: -60px;">
           <select
             className={"dropdown"}
             value={activeShift}
@@ -98,7 +99,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               setmisses(shiftData.misses ?? 0);
               sethumanmade(shiftData.humanMade ?? 0);
               sethumanmiss(shiftData.humanMiss ?? 0);
-              setoutpostFed(shiftData.outpostFed ?? 0);
+              setactiveOutpostFed(shiftData.activeOutpostFed ?? 0);
               setshuttleCount(shiftData.shuttleCount ?? 0);
               setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
             }}
@@ -108,9 +109,8 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             </option>
             <option value="1">Inactive</option>
           </select>
-
-          <div style="height: 5vh;"></div>
-
+        </div>
+        <div className="pagecontainer">
           <div className="button_container">
             <Counter2
               name="🤖Robot Score"
@@ -132,6 +132,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 }
               }}
             ></Counter2>
+
             <Counter2
               name="🤖Robot Missed"
               count={misses}
@@ -154,7 +155,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             ></Counter2>
           </div>
 
-          <div style="height: 5vh;"></div>
+          <div style="height: 2vh;"></div>
 
           <div className="button_container">
             <Counter
@@ -199,6 +200,28 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             ></Counter>
           </div>
           <div>
+            <Counter2
+              name="Outpost Fed"
+              count={activeOutpostFed}
+              onButtonDown={() => {
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.activeOutpostFed > 0) {
+                  newData.activeOutpostFed--;
+                  setShiftData(newData);
+                  setactiveOutpostFed(newData.activeOutpostFed);
+                }
+              }}
+              onButtonUp={() => {
+                const newData = { ...shiftData } as ShiftData;
+                if (newData.activeOutpostFed < 999) {
+                  newData.activeOutpostFed++;
+                  setShiftData(newData);
+                  setactiveOutpostFed(newData.activeOutpostFed);
+                }
+              }}
+            ></Counter2>
+          </div>
+          <div>
             <div style={{}}></div>
             <img
               src={map}
@@ -207,7 +230,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 position: "absolute",
                 width: "100%",
                 height: "auto",
-                top: "645px",
+                top: "700px",
                 left: "0px",
               }}
             ></img>
@@ -227,7 +250,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                   newData.frequentLocation = Locations.FRONT;
                   setcurrentlocation(Locations.FRONT);
                   setShiftData(newData);
-                  }}
+                }}
                 style={{
                   height: "180px",
                   width: "60px",
@@ -244,9 +267,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 onChange={() => {
                   const newData = { ...shiftData } as ShiftData;
                   newData.frequentLocation = Locations.TOP_TRENCH;
-                  setcurrentlocation(Locations.TOP_TRENCH)
+                  setcurrentlocation(Locations.TOP_TRENCH);
                   setShiftData(newData);
-                  }}
+                }}
                 style={{
                   height: "40px",
                   width: "90px",
@@ -265,9 +288,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 onChange={() => {
                   const newData = { ...shiftData } as ShiftData;
                   newData.frequentLocation = Locations.BOTTOM_TRENCH;
-                  setcurrentlocation(Locations.BOTTOM_TRENCH)
+                  setcurrentlocation(Locations.BOTTOM_TRENCH);
                   setShiftData(newData);
-                  }}
+                }}
                 style={{
                   height: "40px",
                   width: "90px",
@@ -289,8 +312,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   else
     return (
       <>
-        <div style="height: 2vh;"></div>
-        <div className="pagecontainer">
+        <div style="position: relative; height: 2vh; top: -60px;">
           <select
             className={"dropdown"}
             value={activeShift}
@@ -311,27 +333,26 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             </option>
             <option value="1">Inactive</option>
           </select>
-
-          <div style="height: 5vh;"></div>
-
+        </div>
+        <div className="pagecontainer">
           <div className="button_container">
             <Counter2
               name="Outpost Fed"
-              count={outpostFed}
+              count={inActiveOutpostFed}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.outpostFed > 0) {
-                  newData.outpostFed--;
+                if (newData.inActiveOutpostFed > 0) {
+                  newData.inActiveOutpostFed--;
                   setShiftData(newData);
-                  setoutpostFed(newData.outpostFed);
+                  setinActiveOutpostFed(newData.inActiveOutpostFed);
                 }
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.outpostFed < 999) {
-                  newData.outpostFed++;
+                if (newData.inActiveOutpostFed < 999) {
+                  newData.inActiveOutpostFed++;
                   setShiftData(newData);
-                  setoutpostFed(newData.outpostFed);
+                  setinActiveOutpostFed(newData.inActiveOutpostFed);
                 }
               }}
             ></Counter2>

@@ -1,6 +1,6 @@
 import "../../app.css";
 import "../../../src/pages/global.css";
-import "./auton.css"
+import "./auton.css";
 import type { FunctionalComponent } from "preact";
 import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
@@ -85,9 +85,8 @@ const Auton: FunctionalComponent<AutonProps> = ({
               setAutonData({
                 ...autonData,
                 autonClimb: e.currentTarget.value as ClimbLevels,
-              })
-            }
-            }
+              });
+            }}
           >
             <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
             <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
@@ -96,14 +95,52 @@ const Auton: FunctionalComponent<AutonProps> = ({
 
         <div>
           <div className="checklist-container">
-          <label className="checklist-title">Source?</label>
-          <div className="checklist-item"><input type="checkbox" className="checkmark" checked={autonData.depotSourced} onChange={() => setAutonData({ ...autonData, depotSourced: !autonData.depotSourced })}/> <label>Depot</label></div>
-          <div className="checklist-item"><input type="checkbox" className="checkmark" checked={autonData.outpostSourced} onChange={() => setAutonData({ ...autonData, outpostSourced: !autonData.outpostSourced })}/> <label>Outpost</label></div>
-          <div className="checklist-item"><input type="checkbox" className="checkmark" checked={autonData.neutralZoneSourced} onChange={() => setAutonData({ ...autonData, neutralZoneSourced: !autonData.neutralZoneSourced })}/> <label>Neutral Zone</label></div>
+            <label className="checklist-title">Source?</label>
+            <div className="checklist-item">
+              <input
+                type="checkbox"
+                className="checkmark"
+                checked={autonData.depotSourced}
+                onChange={() =>
+                  setAutonData({
+                    ...autonData,
+                    depotSourced: !autonData.depotSourced,
+                  })
+                }
+              />{" "}
+              <label>Depot</label>
+            </div>
+            <div className="checklist-item">
+              <input
+                type="checkbox"
+                className="checkmark"
+                checked={autonData.outpostSourced}
+                onChange={() =>
+                  setAutonData({
+                    ...autonData,
+                    outpostSourced: !autonData.outpostSourced,
+                  })
+                }
+              />{" "}
+              <label>Outpost</label>
+            </div>
+            <div className="checklist-item">
+              <input
+                type="checkbox"
+                className="checkmark"
+                checked={autonData.neutralZoneSourced}
+                onChange={() =>
+                  setAutonData({
+                    ...autonData,
+                    neutralZoneSourced: !autonData.neutralZoneSourced,
+                  })
+                }
+              />{" "}
+              <label>Neutral Zone</label>
+            </div>
           </div>
         </div>
       </div>
-      
 
       <img
         src={map}
@@ -112,81 +149,85 @@ const Auton: FunctionalComponent<AutonProps> = ({
           position: "absolute",
           width: "100%",
           height: "auto",
-          top: "750px",
+          top: "650px",
           left: "0px",
         }}
       ></img>
-       <div
-              className="ButtonsContainers"
-              style={{
-                width: "auto",
-                right: "0px",
-                scale: "80%",
-              }}
-            >
-              <ToggleButton
-                value="left"
-                aria-label="left aligned"
-                onChange={() => {
-                  setAutonData({
-                    ...autonData,
-                    frequentLocation: Locations.FRONT,
-                  })
-                }}
-                style={{
-                  height: "180px",
-                  width: "60px",
-                  backgroundColor:
-                    autonData.frequentLocation === Locations.FRONT ? "#00da0b" : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-115px",
-                  top: "170px",
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => {
-                  setAutonData({
-                    ...autonData,
-                    frequentLocation: Locations.TOP_TRENCH,
-                  })
-                }}
-                style={{
-                  height: "40px",
-                  width: "90px",
-                  backgroundColor:
-                    autonData.frequentLocation === Locations.TOP_TRENCH
-                      ? "#00da0b"
-                      : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-110px",
-                  top: "55px",
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => {
-                  setAutonData({
-                    ...autonData,
-                    frequentLocation: Locations.BOTTOM_TRENCH,
-                  })
-                }}
-                style={{
-                  height: "40px",
-                  width: "90px",
-                  backgroundColor:
-                    autonData.frequentLocation === Locations.BOTTOM_TRENCH
-                      ? "#00da0b"
-                      : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-200px",
-                  top: "285px",
-                }}
-              ></ToggleButton>
-              <h2>Frequent Location</h2>
-            </div>
+      <div
+        className="ButtonsContainers"
+        style={{
+          width: "auto",
+          right: "0px",
+          top: "15px",
+          height: "auto",
+          scale: "80%",
+        }}
+      >
+        <ToggleButton
+          value="left"
+          aria-label="left aligned"
+          onChange={() => {
+            setAutonData({
+              ...autonData,
+              frequentLocation: Locations.FRONT,
+            });
+          }}
+          style={{
+            height: "180px",
+            width: "60px",
+            backgroundColor:
+              autonData.frequentLocation === Locations.FRONT
+                ? "#00da0b"
+                : "#aa3fe4",
+            opacity: 0.8,
+            left: "-115px",
+            top: "100px",
+          }}
+        ></ToggleButton>
+        <ToggleButton
+          value="center"
+          aria-label="centered"
+          onChange={() => {
+            setAutonData({
+              ...autonData,
+              frequentLocation: Locations.TOP_TRENCH,
+            });
+          }}
+          style={{
+            height: "40px",
+            width: "90px",
+            backgroundColor:
+              autonData.frequentLocation === Locations.TOP_TRENCH
+                ? "#00da0b"
+                : "#aa3fe4",
+            opacity: 0.8,
+            left: "-110px",
+            top: "-10px",
+          }}
+        ></ToggleButton>
+        <ToggleButton
+          value="center"
+          aria-label="centered"
+          onChange={() => {
+            setAutonData({
+              ...autonData,
+              frequentLocation: Locations.BOTTOM_TRENCH,
+            });
+          }}
+          style={{
+            height: "40px",
+            width: "90px",
+            backgroundColor:
+              autonData.frequentLocation === Locations.BOTTOM_TRENCH
+                ? "#00da0b"
+                : "#aa3fe4",
+            opacity: 0.8,
+            left: "-200px",
+            top: "210px",
+          }}
+        ></ToggleButton>
+        <h2>Frequent Location</h2>
+      </div>
     </>
   );
 };

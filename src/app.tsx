@@ -7,7 +7,10 @@ import TransitionalShift, {
   Locations,
   type ShiftData,
 } from "./pages/TransitionalShift/TransitionalShift.tsx";
-import ENDGAME, { ClimbLevels, type EndGameData } from "./pages/endGame/endGame.tsx";
+import ENDGAME, {
+  ClimbLevels,
+  type EndGameData,
+} from "./pages/endGame/endGame.tsx";
 import Finalize, { type FinalizeData } from "./pages/finalize/finalize.tsx";
 import Auton, { type AutonData } from "./pages/auton/auton.tsx";
 import QR from "./pages/QR/QR.tsx";
@@ -75,6 +78,8 @@ export function App() {
     shuttleCount: 0,
     defense: false,
     frequentLocation: Locations.NONE,
+    activeOutpostFed: 0,
+    inActiveOutpostFed: 0,
   } as ShiftData);
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -115,7 +120,8 @@ export function App() {
       misses: 0,
       humanMade: 0,
       humanMiss: 0,
-      outpostFed: 0,
+      activeOutpostFed: 0,
+      inActiveOutpostFed: 0,
       shuttleCount: 0,
       frequentLocation: Locations.NONE,
       defense: false,
