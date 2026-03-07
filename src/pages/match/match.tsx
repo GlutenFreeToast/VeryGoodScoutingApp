@@ -4,6 +4,7 @@ import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
 import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
+import { Children } from "preact/compat";
 
 export interface MatchData {
   name: string;
@@ -54,7 +55,7 @@ const Match: FunctionalComponent<MatchProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className={"fieldset"}>
+        <div className={"fieldset"} style={{ height: "250px" }}>
           <label className="fieldcontainer">
             🫵Your Name:
             <input
@@ -121,6 +122,7 @@ const Match: FunctionalComponent<MatchProps> = ({
               }}
             />
           </div>
+
           <label
             className={"fieldcontainer"}
             style={{ width: "65%", marginTop: "5vh" }}

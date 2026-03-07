@@ -50,18 +50,30 @@ const AllianceSlider = (props: AllianceSliderProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.alliance]);
 
+  const getColorIndicator = () => {
+    if (props.alliance === "Red") return "#FF0000";
+    if (props.alliance === "Blue") return "#0000FF";
+    return "#CCCCCC";
+  };
+
   return (
-    <input
-      ref={sliderRef}
-      type="range"
-      min="1"
-      max="3"
-      defaultValue={allianceToValue(props.alliance)}
-      className="slider"
-      id="alliance"
-      onChange={updateSlider}
-      aria-label="Alliance Selector"
-    />
+    <div className="alliance-slider-container">
+      <div
+        className="color-indicator"
+        style={{ backgroundColor: getColorIndicator() }}
+      ></div>
+      <input
+        ref={sliderRef}
+        type="range"
+        min="1"
+        max="3"
+        defaultValue={allianceToValue(props.alliance)}
+        className="slider"
+        id="alliance"
+        onChange={updateSlider}
+        aria-label="Alliance Selector"
+      />
+    </div>
   );
 };
 
