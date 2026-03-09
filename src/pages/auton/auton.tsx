@@ -181,7 +181,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
                 : "#aa3fe4",
             opacity: 0.8,
             left: "-115px",
-            top: "100px",
+            top: "145px",
           }}
         ></ToggleButton>
         <ToggleButton
@@ -202,7 +202,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
                 : "#aa3fe4",
             opacity: 0.8,
             left: "-110px",
-            top: "-10px",
+            top: "35px",
           }}
         ></ToggleButton>
         <ToggleButton
@@ -223,7 +223,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
                 : "#aa3fe4",
             opacity: 0.8,
             left: "-200px",
-            top: "210px",
+            top: "255px",
           }}
         ></ToggleButton>
         <h2>Frequent Location</h2>

@@ -20,6 +20,46 @@ html {
   overflow-x: hidden;
 }
 
+/* Light Theme (default) */
+:root.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #cccccc;
+}
+
+/* Dark Theme */
+:root.dark-theme {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #444444;
+}
+
+.dark-theme body,
+.dark-theme html {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dark-theme [role="tabpanel"] {
+  background: rgba(50, 50, 50, 0.5);
+}
+
+.dark-theme [type="text"] {
+  background: rgba(80, 80, 80, 0.6);
+  color: #ffffff;
+  border-color: #555555;
+}
+
+.dark-theme .buttons {
+  background: #333333;
+  color: #ffffff;
+  border-color: #555555;
+}
+
+.dark-theme .buttons:hover {
+  background: #444444;
+}
+
 .title {
   color: rgb(37, 37, 37);
 }
@@ -32,4 +72,17 @@ html {
 [type="text"] {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 5px;
+}
+
+.invisible-build-button {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
 }

@@ -1,5 +1,4 @@
 import "./AllianceSlider.css";
-import { triggerConfetti } from "../../Components/triggerConfetti";
 import { useRef, useEffect, useCallback } from "react";
 
 interface AllianceSliderProps {
@@ -30,10 +29,8 @@ const AllianceSlider = (props: AllianceSliderProps) => {
 
     let newAlliance: "Red" | "Blue" | "None" = "None";
     if (percentage > 50) {
-      triggerConfetti("cannon", "red");
       newAlliance = "Red";
     } else if (percentage < 50) {
-      triggerConfetti("cannon", "blue");
       newAlliance = "Blue";
     }
     if (props.setAlliance) props.setAlliance(newAlliance);

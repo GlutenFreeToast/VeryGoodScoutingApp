@@ -230,7 +230,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 position: "absolute",
                 width: "100%",
                 height: "auto",
-                top: "700px",
+                top: "680px",
                 left: "0px",
               }}
             ></img>
@@ -258,7 +258,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                     currentlocation === Locations.FRONT ? "#00da0b" : "#aa3fe4",
                   opacity: 0.8,
                   left: "-115px",
-                  top: "65px",
+                  top: "80px",
                 }}
               ></ToggleButton>
               <ToggleButton
@@ -279,7 +279,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                       : "#aa3fe4",
                   opacity: 0.8,
                   left: "-110px",
-                  top: "-50px",
+                  top: "-30px",
                 }}
               ></ToggleButton>
               <ToggleButton
@@ -300,7 +300,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                       : "#aa3fe4",
                   opacity: 0.8,
                   left: "-200px",
-                  top: "180px",
+                  top: "200px",
                 }}
               ></ToggleButton>
               <h2>Frequent Location</h2>

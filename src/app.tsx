@@ -15,10 +15,6 @@ import Finalize, { type FinalizeData } from "./pages/finalize/finalize.tsx";
 import Auton, { type AutonData } from "./pages/auton/auton.tsx";
 import QR from "./pages/QR/QR.tsx";
 import Prank from "./pages/help/notes-prank.tsx";
-import hyperion from "../src/assets/hyperion.png";
-import orpheus from "../src/assets/Orpheus.png";
-import SpaceFlyingImages from "./Components/SpaceFlyingImages.tsx";
-import teamlogo from "./assets/5431logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const PageType = {
@@ -52,6 +48,7 @@ export function App() {
     }
   }, [page]);
 
+  // Apply theme changes
   const setPage = setPageState;
   const [matchData, setMatchData] = useState({
     name: "",
@@ -147,20 +144,15 @@ export function App() {
 
   return (
     <>
-      <SpaceFlyingImages
-        images={[hyperion, orpheus, teamlogo]}
-        count={5}
-        speed={0.1}
-      />
-
       <div
         className={`window robotics`}
         style={{ width: "100vw", height: "100vh", fontSize: "15px" }}
       >
         <div className="window-body"></div>
+
         <div>
           <section class="tabs" style={{ margin: "2.5vw", height: "68.4vh" }}>
-            <p style={"color:#1e90ff"}>{`Build # ${build.buildRevision}`}</p>
+            <div style={{ position: "relative" }}></div>
             <div style={"height: 25vw"}>
               <button
                 className="buttons"

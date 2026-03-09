@@ -6,8 +6,8 @@
 }
 
 .color-indicator {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 8px;
   border: 2px solid #333;
   transition: background-color 0.2s ease;
