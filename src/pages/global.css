@@ -21,7 +21,7 @@
 
 .fieldset {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   flex-direction: row;
   align-content: space-evenly;

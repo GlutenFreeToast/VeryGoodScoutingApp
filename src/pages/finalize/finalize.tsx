@@ -51,24 +51,32 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
 
   const [showNotes, setShowNotes] = useState(false);
 
-
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {showNotes && <div className="double-note-container">
-        {showNotes && <div className="note-container">
-            <form onSubmit={handleSubmit} className="form">
-              <textarea
-                className={"notes"}
-                name="notes"
-                value={finalizeData?.notes ?? ""}
-                onChange={handleChange}
-                placeholder="Ex: robot blew up, injured 6 or 7 people"
-              />
-              <button onClick={()=>setShowNotes(false)} className="close-notes-button">close</button>
-            </form>
-            </div>}
-            </div>}
+        {showNotes && (
+          <div className="double-note-container">
+            {showNotes && (
+              <div className="note-container">
+                <form onSubmit={handleSubmit} className="form">
+                  <textarea
+                    className={"notes"}
+                    name="notes"
+                    value={finalizeData?.notes ?? ""}
+                    onChange={handleChange}
+                    placeholder="Ex: robot blew up, injured 6 or 7 people"
+                  />
+                  <button
+                    onClick={() => setShowNotes(false)}
+                    className="close-notes-button"
+                  >
+                    close
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        )}
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
             🟥Red Points:
@@ -80,7 +88,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               value={finalizeData.red ?? ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) ?? 0;
-                const clamped = Math.max(0, Math.min(999, value));
+                const clamped = Math.max(0, Math.min(9999, value));
                 setFinalizeData({
                   ...finalizeData,
                   red: clamped,
@@ -99,7 +107,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
               value={finalizeData.blue ?? ""}
               onChange={(e) => {
                 const value = parseInt(e.currentTarget.value) ?? 0;
-                const clamped = Math.max(0, Math.min(999, value));
+                const clamped = Math.max(0, Math.min(9999, value));
                 console.log("Blue Points:", clamped);
                 setFinalizeData({
                   ...finalizeData,
@@ -185,7 +193,14 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
                 }
               />
             </div>
-            <button onClick={()=>showNotes ? setShowNotes(false) : setShowNotes(true)} className="open-notes">Open Notes</button>
+            <button
+              onClick={() =>
+                showNotes ? setShowNotes(false) : setShowNotes(true)
+              }
+              className="open-notes"
+            >
+              Open Notes
+            </button>
           </div>
         </div>
         <button

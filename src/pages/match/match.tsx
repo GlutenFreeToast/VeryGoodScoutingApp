@@ -111,7 +111,7 @@ const Match: FunctionalComponent<MatchProps> = ({
 
           <div
             className={"button_container"}
-            style={{ width: "75%", marginTop: "5vh" }}
+            style={{ width: "75%", marginTop: "3vh" }}
           >
             <AllianceSlider
               alliance={matchData?.alliance || "none"}
