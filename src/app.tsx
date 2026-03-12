@@ -71,12 +71,12 @@ export function App() {
     misses: 0,
     humanMade: 0,
     humanMiss: 0,
-    outpostFed: 0,
+    outPostFed: 0,
     shuttleCount: 0,
     defense: false,
     frequentLocation: Locations.NONE,
-    activeOutpostFed: 0,
-    inActiveOutpostFed: 0,
+    inActiveShuttleCount: 0,
+    ActiveShuttleCount: 0,
   } as ShiftData);
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -117,9 +117,9 @@ export function App() {
       misses: 0,
       humanMade: 0,
       humanMiss: 0,
-      activeOutpostFed: 0,
-      inActiveOutpostFed: 0,
-      shuttleCount: 0,
+      ActiveShuttleCount: 0,
+      inActiveShuttleCount: 0,
+      outPostFed: 0,
       frequentLocation: Locations.NONE,
       defense: false,
     });

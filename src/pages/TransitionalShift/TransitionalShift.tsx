@@ -24,9 +24,9 @@ export interface ShiftData {
   misses: number;
   humanMade: number;
   humanMiss: number;
-  activeOutpostFed: number;
-  inActiveOutpostFed: number;
-  shuttleCount: number;
+  outPostFed: number;
+  inActiveShuttleCount: number;
+  ActiveShuttleCount: number;
   defense: boolean;
   frequentLocation: Locations;
 }
@@ -49,8 +49,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   const [misses, setmisses] = useState(0);
   const [humanmade, sethumanmade] = useState(0);
   const [humanmiss, sethumanmiss] = useState(0);
-  const [activeOutpostFed, setactiveOutpostFed] = useState(0);
-  const [inActiveOutpostFed, setinActiveOutpostFed] = useState(0);
+  const [ActiveShuttleCount, setActiveShuttleCount] = useState(0);
+  const [inActiveShuttleCount, setinActiveShuttleCount] = useState(0);
+  const [outPostFed, setoutPostFed] = useState(0);
   const [shuttleCount, setshuttleCount] = useState(0);
   const [currentlocation, setcurrentlocation] = useState(Locations.NONE);
 
@@ -59,28 +60,11 @@ const Shift: FunctionalComponent<ShiftProps> = ({
     setmisses(shiftData.misses ?? 0);
     sethumanmade(shiftData.humanMade ?? 0);
     sethumanmiss(shiftData.humanMiss ?? 0);
-    setactiveOutpostFed(shiftData.activeOutpostFed ?? 0);
-    setshuttleCount(shiftData.shuttleCount ?? 0);
+    setoutPostFed(shiftData.outPostFed ?? 0);
+    setActiveShuttleCount(shiftData.ActiveShuttleCount ?? 0);
+    setinActiveShuttleCount(shiftData.inActiveShuttleCount ?? 0);
     setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
   }, [shiftData]);
-
-  // const locationaIncrement = (newData: ShiftData) => {
-  //   switch (currentlocation) {
-  //     case Locations.FRONT:
-  //       newData.shotMadeAtFront = newData.shotMadeAtFront + 1;
-  //       break;
-  //     case Locations.TOP_TRENCH:
-  //       newData.shotMadeAtTop = newData.shotMadeAtTop + 1;
-  //       setShiftData(newData);
-  //       break;
-  //     case Locations.BOTTOM_TRENCH:
-  //       newData.shotMadeAtBottom = newData.shotMadeAtBottom + 1;
-  //       setShiftData(newData);
-  //       console.log(newData.shotMadeAtBottom);
-
-  //       break;
-  //   }
-  // };
 
   if (isActive)
     return (
@@ -99,8 +83,10 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               setmisses(shiftData.misses ?? 0);
               sethumanmade(shiftData.humanMade ?? 0);
               sethumanmiss(shiftData.humanMiss ?? 0);
-              setactiveOutpostFed(shiftData.activeOutpostFed ?? 0);
-              setshuttleCount(shiftData.shuttleCount ?? 0);
+              setActiveShuttleCount(shiftData.ActiveShuttleCount);
+              setinActiveShuttleCount(shiftData.ActiveShuttleCount);
+              setActiveShuttleCount(shiftData.ActiveShuttleCount ?? 0);
+              setinActiveShuttleCount(shiftData.inActiveShuttleCount ?? 0);
               setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
             }}
           >
@@ -201,22 +187,22 @@ const Shift: FunctionalComponent<ShiftProps> = ({
           </div>
           <div>
             <Counter2
-              name="Outpost Fed"
-              count={activeOutpostFed}
+              name="Shuttle Count"
+              count={ActiveShuttleCount}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.activeOutpostFed > 0) {
-                  newData.activeOutpostFed--;
+                if (newData.ActiveShuttleCount > 0) {
+                  newData.ActiveShuttleCount--;
                   setShiftData(newData);
-                  setactiveOutpostFed(newData.activeOutpostFed);
+                  setActiveShuttleCount(newData.ActiveShuttleCount);
                 }
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.activeOutpostFed < 999) {
-                  newData.activeOutpostFed++;
+                if (newData.ActiveShuttleCount < 999) {
+                  newData.ActiveShuttleCount++;
                   setShiftData(newData);
-                  setactiveOutpostFed(newData.activeOutpostFed);
+                  setActiveShuttleCount(newData.ActiveShuttleCount);
                 }
               }}
             ></Counter2>
@@ -338,21 +324,21 @@ const Shift: FunctionalComponent<ShiftProps> = ({
           <div className="button_container">
             <Counter2
               name="Outpost Fed"
-              count={inActiveOutpostFed}
+              count={outPostFed}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.inActiveOutpostFed > 0) {
-                  newData.inActiveOutpostFed--;
+                if (newData.outPostFed > 0) {
+                  newData.outPostFed--;
                   setShiftData(newData);
-                  setinActiveOutpostFed(newData.inActiveOutpostFed);
+                  setoutPostFed(newData.outPostFed);
                 }
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.inActiveOutpostFed < 999) {
-                  newData.inActiveOutpostFed++;
+                if (newData.outPostFed < 999) {
+                  newData.outPostFed++;
                   setShiftData(newData);
-                  setinActiveOutpostFed(newData.inActiveOutpostFed);
+                  setoutPostFed(newData.outPostFed);
                 }
               }}
             ></Counter2>
@@ -361,18 +347,18 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               count={shuttleCount}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.shuttleCount > 0) {
-                  newData.shuttleCount--;
+                if (newData.inActiveShuttleCount > 0) {
+                  newData.inActiveShuttleCount--;
                   setShiftData(newData);
-                  setshuttleCount(newData.shuttleCount);
+                  setinActiveShuttleCount(newData.inActiveShuttleCount);
                 }
               }}
               onButtonUp={() => {
                 const newData = { ...shiftData } as ShiftData;
-                if (newData.shuttleCount < 999) {
-                  newData.shuttleCount++;
+                if (newData.inActiveShuttleCount < 999) {
+                  newData.inActiveShuttleCount++;
                   setShiftData(newData);
-                  setshuttleCount(newData.shuttleCount);
+                  setinActiveShuttleCount(newData.inActiveShuttleCount);
                 }
               }}
             ></Counter2>
