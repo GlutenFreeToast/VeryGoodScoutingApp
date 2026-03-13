@@ -206,9 +206,7 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
         <button
           className={"buttons"}
           onClick={() => {
-            console.log("Clicked Submit");
             if (finalizeData.notes === "") {
-              console.log("Notes are empty");
               setPage(PageType.PRANK);
               return;
             } else {

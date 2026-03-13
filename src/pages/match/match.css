@@ -1,8 +1,26 @@
-.square {
-  width: 100px; /* Set a specific width */
-  height: 100px; /* Set the same height as the width */
-  background-color: red; /* Choose a background color */
-  display: flex; /* Helps center content inside */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+.addbutton {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin: 5%;
+  margin-left: 0%;
+  font-size: 2.5vw;
+  height: 7.7vw;
+  width: 15vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  background-color: rgba(255, 255, 255, 0.67);
+}
+
+.fieldb {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin: 5%;
+  margin-right: 0%;
+  font-size: 3vw;
+  height: 7vw;
+  width: 20vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: azure;
 }

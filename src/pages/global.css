@@ -1,12 +1,14 @@
 .field {
   border-radius: 15px;
   margin: 5%;
-  font-size: 2.5vw;
+  font-size: 3vw;
   height: 7vw;
   padding-left: 1vw;
   padding-right: 1vw;
   background-color: rgba(255, 255, 255, 0.4);
+  color: azure;
 }
+
 .field::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -16,7 +18,12 @@
   flex-direction: column;
   width: 40%;
   font-size: xx-large;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.addfield {
+  display: flex;
+  flex-direction: row;
 }
 
 .fieldset {

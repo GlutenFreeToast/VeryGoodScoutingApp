@@ -21,8 +21,6 @@ const prank: FunctionalComponent<MainpageProps> = ({ setPage }) => {
       <div
         style={{
           width: "92.5vw",
-          borderTopRightRadius: "5px !important",
-          borderTopLeftRadius: "5px !important",
         }}
         className="window subwindow"
       >

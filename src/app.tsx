@@ -99,8 +99,8 @@ export function App() {
       name: matchData.name,
       comp: matchData.comp,
       team: 0,
-      match: 0,
-      alliance: "None" as "Red" | "Blue" | "None",
+      match: matchData.match,
+      alliance: matchData.alliance,
       preload: 0,
     });
     setautonData({

@@ -1,35 +1,35 @@
 .dropdown-container-auton {
-    display: flex;
-    justify-content: space-evenly;
-
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .dropdown-auton {
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  font-size: xx-large;
 }
 
 .checklist-container {
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
 }
 
 .checklist-item {
-    display: flex;
-    flex-direction: row;
-    gap: 1vw;
-    font-size: large;
-    align-items: center;
-    margin: 1vh;
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  font-size: large;
+  align-items: center;
+  margin: 1vh;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .checklist-title {
-    justify-self: center;
+  justify-self: center;
+  color: rgba(255, 255, 255, 0.9);
 }
-
 
 input[type="checkbox"].checkmark {
   -webkit-appearance: none;
@@ -47,8 +47,8 @@ input[type="checkbox"].checkmark {
 
 /* checked state */
 input[type="checkbox"].checkmark:checked {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
+  background-color: #4caf50;
+  border-color: #4caf50;
 }
 
 /* check icon */

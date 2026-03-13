@@ -9,6 +9,7 @@ import { ClimbLevels } from "../endGame/endGame";
 import map from "../../assets/field.png";
 import { ToggleButton } from "@mui/material";
 import { Locations } from "../TransitionalShift/TransitionalShift";
+import { color } from "framer-motion";
 
 export interface AutonProps {
   autonData: AutonData;
@@ -77,7 +78,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
 
       <div className="dropdown-container-auton">
         <div className="dropdown-auton">
-          <label>Climb?</label>
+          <label style={"color: rgba(255, 255, 255, 0.9)"}>Climb?</label>
           <select
             className={"dropdown"}
             value={autonData.autonClimb}

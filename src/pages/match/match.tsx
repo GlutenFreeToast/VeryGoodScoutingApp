@@ -1,5 +1,6 @@
 import "../global.css";
 import "../../app.css";
+import "../../pages/match/match.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
@@ -96,17 +97,37 @@ const Match: FunctionalComponent<MatchProps> = ({
           </label>
           <label className={"fieldcontainer"}>
             📋Match #:
-            <input
-              type="number"
-              name="match"
-              step={1}
-              min={0}
-              max={999999}
-              value={matchData?.match || ""}
-              onChange={handleChange}
-              placeholder={"Ex: 67"}
-              className={"field"}
-            />
+            <div className={"addfield"}>
+              <input
+                type="number"
+                name="match"
+                step={1}
+                min={0}
+                max={999}
+                value={matchData?.match || ""}
+                onChange={handleChange}
+                placeholder={"Ex: 67"}
+                className={"fieldb"}
+              />
+              <button
+                onTouchStart={(
+                  event: Event & { currentTarget: HTMLButtonElement },
+                ) => {
+                  const value =
+                    parseInt(matchData?.match.toString() || "0") || 0;
+                  const newData = {
+                    ...matchData,
+                    match: value + 1,
+                  };
+                  setMatchData(newData);
+
+                  console.log("Match Number:", matchData.match);
+                }}
+                className={"addbutton"}
+              >
+                +
+              </button>
+            </div>
           </label>
 
           <div
