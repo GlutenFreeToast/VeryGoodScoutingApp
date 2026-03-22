@@ -163,72 +163,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
           height: "auto",
           scale: "80%",
         }}
-      >
-        <ToggleButton
-          value="left"
-          aria-label="left aligned"
-          onChange={() => {
-            setAutonData({
-              ...autonData,
-              frequentLocation: Locations.FRONT,
-            });
-          }}
-          style={{
-            height: "180px",
-            width: "60px",
-            backgroundColor:
-              autonData.frequentLocation === Locations.FRONT
-                ? "#00da0b"
-                : "#aa3fe4",
-            opacity: 0.8,
-            left: "-115px",
-            top: "145px",
-          }}
-        ></ToggleButton>
-        <ToggleButton
-          value="center"
-          aria-label="centered"
-          onChange={() => {
-            setAutonData({
-              ...autonData,
-              frequentLocation: Locations.TOP_TRENCH,
-            });
-          }}
-          style={{
-            height: "40px",
-            width: "90px",
-            backgroundColor:
-              autonData.frequentLocation === Locations.TOP_TRENCH
-                ? "#00da0b"
-                : "#aa3fe4",
-            opacity: 0.8,
-            left: "-110px",
-            top: "35px",
-          }}
-        ></ToggleButton>
-        <ToggleButton
-          value="center"
-          aria-label="centered"
-          onChange={() => {
-            setAutonData({
-              ...autonData,
-              frequentLocation: Locations.BOTTOM_TRENCH,
-            });
-          }}
-          style={{
-            height: "40px",
-            width: "90px",
-            backgroundColor:
-              autonData.frequentLocation === Locations.BOTTOM_TRENCH
-                ? "#00da0b"
-                : "#aa3fe4",
-            opacity: 0.8,
-            left: "-200px",
-            top: "255px",
-          }}
-        ></ToggleButton>
-        <h2>Frequent Location</h2>
-      </div>
+      ></div>
     </>
   );
 };

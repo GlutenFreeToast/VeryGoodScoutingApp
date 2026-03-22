@@ -22,13 +22,10 @@ export enum Locations {
 export interface ShiftData {
   shotMade: number;
   misses: number;
-  humanMade: number;
-  humanMiss: number;
   outPostFed: number;
   inActiveShuttleCount: number;
   ActiveShuttleCount: number;
   defense: boolean;
-  frequentLocation: Locations;
 }
 
 export interface ShiftProps {
@@ -47,8 +44,6 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   const [isActive, setIsActive] = useState(true);
   const [shotMade, setshotmade] = useState(0);
   const [misses, setmisses] = useState(0);
-  const [humanmade, sethumanmade] = useState(0);
-  const [humanmiss, sethumanmiss] = useState(0);
   const [ActiveShuttleCount, setActiveShuttleCount] = useState(0);
   const [inActiveShuttleCount, setinActiveShuttleCount] = useState(0);
   const [outPostFed, setoutPostFed] = useState(0);
@@ -58,12 +53,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   useEffect(() => {
     setshotmade(shiftData.shotMade ?? 0);
     setmisses(shiftData.misses ?? 0);
-    sethumanmade(shiftData.humanMade ?? 0);
-    sethumanmiss(shiftData.humanMiss ?? 0);
     setoutPostFed(shiftData.outPostFed ?? 0);
     setActiveShuttleCount(shiftData.ActiveShuttleCount ?? 0);
     setinActiveShuttleCount(shiftData.inActiveShuttleCount ?? 0);
-    setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
   }, [shiftData]);
 
   if (isActive)
@@ -81,13 +73,10 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               setIsActive(shiftIndex === 0);
               setshotmade(shiftData.shotMade ?? 0);
               setmisses(shiftData.misses ?? 0);
-              sethumanmade(shiftData.humanMade ?? 0);
-              sethumanmiss(shiftData.humanMiss ?? 0);
               setActiveShuttleCount(shiftData.ActiveShuttleCount);
               setinActiveShuttleCount(shiftData.ActiveShuttleCount);
               setActiveShuttleCount(shiftData.ActiveShuttleCount ?? 0);
               setinActiveShuttleCount(shiftData.inActiveShuttleCount ?? 0);
-              setcurrentlocation(shiftData.frequentLocation ?? Locations.NONE);
             }}
           >
             <option value="0" selected>
@@ -99,7 +88,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
         <div className="pagecontainer">
           <div className="button_container">
             <Counter2
-              name="🤖Robot Score"
+              name="🏀Total Scores"
               count={shotMade}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
@@ -120,7 +109,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
             ></Counter2>
 
             <Counter2
-              name="🤖Robot Missed"
+              name="❌Total Misses"
               count={misses}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
@@ -142,52 +131,9 @@ const Shift: FunctionalComponent<ShiftProps> = ({
           </div>
 
           <div style="height: 2vh;"></div>
-
-          <div className="button_container">
-            <Counter
-              name="👱Human Score"
-              count={humanmade}
-              onButtonDown={() => {
-                const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMade > 0) {
-                  newData.humanMade--;
-                  setShiftData(newData);
-                  sethumanmade(newData.humanMade);
-                }
-              }}
-              onButtonUp={() => {
-                const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMade < 999) {
-                  newData.humanMade++;
-                  setShiftData(newData);
-                  sethumanmade(newData.humanMade);
-                }
-              }}
-            ></Counter>
-            <Counter
-              name="👱Human Missed"
-              count={humanmiss}
-              onButtonDown={() => {
-                const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMiss > 0) {
-                  newData.humanMiss--;
-                  setShiftData(newData);
-                  sethumanmiss(newData.humanMiss);
-                }
-              }}
-              onButtonUp={() => {
-                const newData = { ...shiftData } as ShiftData;
-                if (newData.humanMiss < 999) {
-                  newData.humanMiss++;
-                  setShiftData(newData);
-                  sethumanmiss(newData.humanMiss);
-                }
-              }}
-            ></Counter>
-          </div>
           <div>
             <Counter2
-              name="Shuttle Count"
+              name="🔄️Shuttle Count"
               count={ActiveShuttleCount}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
@@ -220,77 +166,6 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 left: "0px",
               }}
             ></img>
-            <div
-              className="ButtonsContainers"
-              style={{
-                width: "auto",
-                right: "0px",
-                scale: "80%",
-              }}
-            >
-              <ToggleButton
-                value="left"
-                aria-label="left aligned"
-                onChange={() => {
-                  const newData = { ...shiftData } as ShiftData;
-                  newData.frequentLocation = Locations.FRONT;
-                  setcurrentlocation(Locations.FRONT);
-                  setShiftData(newData);
-                }}
-                style={{
-                  height: "180px",
-                  width: "60px",
-                  backgroundColor:
-                    currentlocation === Locations.FRONT ? "#00da0b" : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-115px",
-                  top: "80px",
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => {
-                  const newData = { ...shiftData } as ShiftData;
-                  newData.frequentLocation = Locations.TOP_TRENCH;
-                  setcurrentlocation(Locations.TOP_TRENCH);
-                  setShiftData(newData);
-                }}
-                style={{
-                  height: "40px",
-                  width: "90px",
-                  backgroundColor:
-                    currentlocation === Locations.TOP_TRENCH
-                      ? "#00da0b"
-                      : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-110px",
-                  top: "-30px",
-                }}
-              ></ToggleButton>
-              <ToggleButton
-                value="center"
-                aria-label="centered"
-                onChange={() => {
-                  const newData = { ...shiftData } as ShiftData;
-                  newData.frequentLocation = Locations.BOTTOM_TRENCH;
-                  setcurrentlocation(Locations.BOTTOM_TRENCH);
-                  setShiftData(newData);
-                }}
-                style={{
-                  height: "40px",
-                  width: "90px",
-                  backgroundColor:
-                    currentlocation === Locations.BOTTOM_TRENCH
-                      ? "#00da0b"
-                      : "#aa3fe4",
-                  opacity: 0.8,
-                  left: "-200px",
-                  top: "200px",
-                }}
-              ></ToggleButton>
-              <h2>Frequent Location</h2>
-            </div>
           </div>
         </div>
       </>
@@ -310,8 +185,6 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               setIsActive(shiftIndex === 0);
               setshotmade(shiftData.shotMade ?? 0);
               setmisses(shiftData.misses ?? 0);
-              sethumanmade(shiftData.humanMade ?? 0);
-              sethumanmiss(shiftData.humanMiss ?? 0);
             }}
           >
             <option value="0" selected>
@@ -343,7 +216,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }}
             ></Counter2>
             <Counter2
-              name="Shuttle Count"
+              name="🔄️Shuttle Count"
               count={shuttleCount}
               onButtonDown={() => {
                 const newData = { ...shiftData } as ShiftData;
@@ -362,40 +235,6 @@ const Shift: FunctionalComponent<ShiftProps> = ({
                 }
               }}
             ></Counter2>
-          </div>
-
-          <div style="height: 5vh;">
-            <p>Played Defense?</p>
-            <Checkbox
-              name="Defense"
-              checked={shiftData.defense === true}
-              onChange={(event) => {
-                setShiftData({
-                  ...shiftData,
-                  defense: (event.target as HTMLInputElement).checked,
-                });
-              }}
-              style={{
-                background: "#241f68",
-              }}
-              icon={
-                <RemoveModeratorIcon
-                  style={{
-                    height: "80px",
-                    width: "80px",
-                    backgroundcolor: "red",
-                  }}
-                />
-              }
-              checkedIcon={
-                <ShieldIcon
-                  style={{
-                    height: "80px",
-                    width: "80px",
-                  }}
-                />
-              }
-            />
           </div>
 
           <div>
