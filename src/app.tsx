@@ -4,7 +4,6 @@ import "./pages/global.css";
 import build from "../buildInfo.json";
 import Match, { type MatchData } from "./pages/match/match.tsx";
 import TransitionalShift, {
-  Locations,
   type ShiftData,
 } from "./pages/TransitionalShift/TransitionalShift.tsx";
 import ENDGAME, {
@@ -57,6 +56,7 @@ export function App() {
     match: 0,
     alliance: "None" as "Red" | "Blue" | "None",
     preload: 0,
+    show: true,
   } as MatchData);
   const [autonData, setautonData] = useState({
     fuelScored: 0,
@@ -69,14 +69,8 @@ export function App() {
   const [shiftData, setShiftData] = useState({
     shotMade: 0,
     misses: 0,
-    humanMade: 0,
-    humanMiss: 0,
+    ShuttleCount: 0,
     outPostFed: 0,
-    shuttleCount: 0,
-    defense: false,
-    frequentLocation: Locations.NONE,
-    inActiveShuttleCount: 0,
-    ActiveShuttleCount: 0,
   } as ShiftData);
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -102,6 +96,7 @@ export function App() {
       match: matchData.match,
       alliance: matchData.alliance,
       preload: 0,
+      show: matchData.show,
     });
     setautonData({
       fuelScored: 0,
@@ -110,18 +105,12 @@ export function App() {
       depotSourced: false,
       outpostSourced: false,
       neutralZoneSourced: false,
-      frequentLocation: Locations.NONE,
     });
     setShiftData({
       shotMade: 0,
       misses: 0,
-      humanMade: 0,
-      humanMiss: 0,
-      ActiveShuttleCount: 0,
-      inActiveShuttleCount: 0,
+      ShuttleCount: 0,
       outPostFed: 0,
-      frequentLocation: Locations.NONE,
-      defense: false,
     });
     setfinalizeData({
       notes: "",
@@ -130,6 +119,7 @@ export function App() {
       penalties: 0,
       ranking: 0,
       review: false,
+      defenseRating: 0,
     });
     setEndgameData({
       climbLevel: ClimbLevels.NO_CLIMB,

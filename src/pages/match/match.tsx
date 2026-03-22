@@ -3,6 +3,7 @@ import "../../app.css";
 import "../../pages/match/match.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
+import { useState } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
 import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 export interface MatchData {
@@ -12,6 +13,7 @@ export interface MatchData {
   match: number;
   alliance: "Red" | "Blue" | "None";
   preload: number;
+  show: boolean;
 }
 
 export interface MatchProps {
@@ -23,6 +25,8 @@ const Match: FunctionalComponent<MatchProps> = ({
   matchData: matchData,
   setMatchData: setMatchData,
 }) => {
+  const [show, setShow] = useState(true);
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -84,16 +88,32 @@ const Match: FunctionalComponent<MatchProps> = ({
         <div className={"fieldset"}>
           <label className={"fieldcontainer"}>
             👯Team #:
-            <input
-              type="number"
-              name="team"
-              step={1}
-              max={99999}
-              value={matchData?.team || ""}
-              onChange={handleChange}
-              placeholder={"Ex: 5431"}
-              className={"field"}
-            />
+            <div className={"addfield"}>
+              <input
+                type="number"
+                name="team"
+                step={1}
+                max={99999}
+                value={matchData?.team || ""}
+                onChange={handleChange}
+                placeholder={"Ex: 5431"}
+                className={"fieldb"}
+              />
+              <button
+                onTouchStart={(
+                  event: Event & { currentTarget: HTMLButtonElement },
+                ) => {
+                  setShow(!show);
+                }}
+                className={"addbutton"}
+                style={{
+                  backgroundColor: show ? "#4CAF50" : "#f44336",
+                  color: "white",
+                }}
+              >
+                Show
+              </button>
+            </div>
           </label>
           <label className={"fieldcontainer"}>
             📋Match #:
@@ -120,8 +140,6 @@ const Match: FunctionalComponent<MatchProps> = ({
                     match: value + 1,
                   };
                   setMatchData(newData);
-
-                  console.log("Match Number:", matchData.match);
                 }}
                 className={"addbutton"}
               >

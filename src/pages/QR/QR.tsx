@@ -37,6 +37,7 @@ const QR: FunctionalComponent<QRProps> = ({
   const name = matchData.name;
   const comp = matchData.comp;
   const team = matchData.team;
+  const show = matchData.show;
   const match = matchData.match;
   const alliance = matchData.alliance;
   const preload = matchData.preload;
@@ -46,22 +47,17 @@ const QR: FunctionalComponent<QRProps> = ({
   const depotSourced = autonData.depotSourced;
   const outpostSourced = autonData.outpostSourced;
   const neutralZoneSourced = autonData.neutralZoneSourced;
-  const autonFrequentLocation = autonData.frequentLocation;
   const shiftShotMade = shiftData.shotMade;
   const shiftShotMissed = shiftData.misses;
-  const humanMade = shiftData.humanMade;
-  const humanMiss = shiftData.humanMiss;
   const outpostFed = shiftData.outPostFed;
-  const activeShuttleCount = shiftData.ActiveShuttleCount;
-  const inActiveShuttleCount = shiftData.inActiveShuttleCount;
-  const matchFrequentLocation = shiftData.frequentLocation;
-  const defense = shiftData.defense;
+  const ShuttleCount = shiftData.ShuttleCount;
   const endgameScoring = endGameData.Scoring;
   const endgameMisses = endGameData.Misses;
   const endgameHumanScore = endGameData.HumanScore;
   const endgameHumanMisses = endGameData.HumanMisses;
   const climbLevel = endGameData.climbLevel;
   const notes = finalizeData.notes;
+  const defenseRating = finalizeData.defenseRating;
   const review = finalizeData.review;
   const redScore = finalizeData.red;
   const blueScore = finalizeData.blue;
@@ -72,30 +68,26 @@ const QR: FunctionalComponent<QRProps> = ({
     name,
     comp,
     team,
+    show,
     match,
     alliance,
     preload,
     autoFuelScored,
     autoFuelMissed,
     autonClimb,
-    autonFrequentLocation,
     depotSourced,
     outpostSourced,
     neutralZoneSourced,
     shiftShotMade,
     shiftShotMissed,
-    humanMade,
-    humanMiss,
     outpostFed,
-    activeShuttleCount,
-    inActiveShuttleCount,
-    frequentLocation: matchFrequentLocation,
-    defense,
+    ShuttleCount,
     endgameScoring,
     endgameMisses,
     endgameHumanScore,
     endgameHumanMisses,
     notes,
+    defenseRating,
     redScore,
     blueScore,
     penalties,
@@ -124,6 +116,7 @@ const QR: FunctionalComponent<QRProps> = ({
           className="buttons"
           style={"width: 200px; height: 100px;"}
           onClick={() => {
+            console.log(payload);
             if (setPage && previousPage !== undefined) {
               setPage(previousPage);
             }

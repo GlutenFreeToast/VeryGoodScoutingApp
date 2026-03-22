@@ -3,7 +3,6 @@ import "./finalize.css";
 import type { FunctionalComponent } from "preact";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
 import { PageType } from "../../app.tsx";
-import { triggerConfetti } from "../../Components/triggerConfetti.tsx";
 import Checkbox from "@mui/material/Checkbox";
 import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
 import FlagIcon from "@mui/icons-material/Flag";
@@ -15,6 +14,7 @@ export interface FinalizeData {
   penalties: number;
   ranking: number;
   review: boolean;
+  defenseRating: number;
 }
 
 export interface FinalizeProps {
@@ -50,10 +50,14 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
   const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
 
   const [showNotes, setShowNotes] = useState(false);
+  const [defenseRating, setDefenseRating] = useState(
+    finalizeData?.defenseRating ?? 0,
+  );
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {showNotes && <div className="notes-backdrop"></div>}
         {showNotes && (
           <div className="double-note-container">
             {showNotes && (
@@ -66,6 +70,27 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
                     onChange={handleChange}
                     placeholder="Ex: robot blew up, injured 6 or 7 people"
                   />
+                  <div className="defense-rating-container">
+                    <label>Defense Rating:</label>
+                    <div className="star-rating">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          className={`star ${star <= defenseRating ? "filled" : ""}`}
+                          onClick={() => {
+                            setDefenseRating(star);
+                            setFinalizeData({
+                              ...finalizeData,
+                              defenseRating: star,
+                            });
+                          }}
+                        >
+                          ★
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <button
                     onClick={() => setShowNotes(false)}
                     className="close-notes-button"

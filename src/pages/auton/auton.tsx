@@ -2,14 +2,9 @@ import "../../app.css";
 import "../../../src/pages/global.css";
 import "./auton.css";
 import type { FunctionalComponent } from "preact";
-import Counter from "../../Components/Counter/Counter";
 import { type StateUpdater, type Dispatch, useState } from "preact/hooks";
 import Counter2 from "../../Components/Counter/Counter2";
 import { ClimbLevels } from "../endGame/endGame";
-import map from "../../assets/field.png";
-import { ToggleButton } from "@mui/material";
-import { Locations } from "../TransitionalShift/TransitionalShift";
-import { color } from "framer-motion";
 
 export interface AutonProps {
   autonData: AutonData;
@@ -23,7 +18,6 @@ export interface AutonData {
   depotSourced: boolean;
   outpostSourced: boolean;
   neutralZoneSourced: boolean;
-  frequentLocation: Locations;
 }
 
 const Auton: FunctionalComponent<AutonProps> = ({
@@ -143,17 +137,6 @@ const Auton: FunctionalComponent<AutonProps> = ({
         </div>
       </div>
 
-      <img
-        src={map}
-        alt="map"
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "auto",
-          top: "650px",
-          left: "0px",
-        }}
-      ></img>
       <div
         className="ButtonsContainers"
         style={{
