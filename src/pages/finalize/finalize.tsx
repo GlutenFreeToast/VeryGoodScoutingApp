@@ -15,6 +15,7 @@ export interface FinalizeData {
   ranking: number;
   review: boolean;
   defenseRating: number;
+  speedRating: number;
 }
 
 export interface FinalizeProps {
@@ -53,6 +54,9 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
   const [defenseRating, setDefenseRating] = useState(
     finalizeData?.defenseRating ?? 0,
   );
+  const [speedRating, setSpeedRating] = useState(
+    finalizeData?.speedRating ?? 0,
+  );
 
   return (
     <>
@@ -84,6 +88,28 @@ const Finalize: FunctionalComponent<FinalizeProps> = ({
                               ...finalizeData,
                               defenseRating: star,
                             });
+                          }}
+                        >
+                          ★
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="defense-rating-container">
+                    <label>Speed Rating:</label>
+                    <div className="star-rating">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          className={`star ${star <= speedRating ? "filled" : ""}`}
+                          onClick={() => {
+                            setSpeedRating(star);
+                            setFinalizeData({
+                              ...finalizeData,
+                              speedRating: star,
+                            });
+                            console.log("Speed Rating:", speedRating);
                           }}
                         >
                           ★

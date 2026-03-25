@@ -98,6 +98,7 @@ const Match: FunctionalComponent<MatchProps> = ({
                 onChange={handleChange}
                 placeholder={"Ex: 5431"}
                 className={"fieldb"}
+                style={{ width: "17vw" }}
               />
               <button
                 onTouchStart={(
@@ -107,11 +108,12 @@ const Match: FunctionalComponent<MatchProps> = ({
                 }}
                 className={"addbutton"}
                 style={{
-                  backgroundColor: show ? "#4CAF50" : "#f44336",
+                  backgroundColor: show ? "#4CAF50" : "#FF0000",
                   color: "white",
+                  marginLeft: "",
                 }}
               >
-                Show
+                {show ? "Show" : "No Show"}
               </button>
             </div>
           </label>

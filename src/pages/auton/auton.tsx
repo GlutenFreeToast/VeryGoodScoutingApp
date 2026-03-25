@@ -14,6 +14,7 @@ export interface AutonProps {
 export interface AutonData {
   fuelScored: number;
   fuelMissed: number;
+  autonShuttleCount: number;
   autonClimb: ClimbLevels;
   depotSourced: boolean;
   outpostSourced: boolean;
@@ -66,87 +67,93 @@ const Auton: FunctionalComponent<AutonProps> = ({
             }
           />
         </div>
-      </div>
+        <Counter2
+          name="🔄️Shuttle Count"
+          count={autonData.autonShuttleCount}
+          onButtonDown={() =>
+            autonData.autonShuttleCount > 0 &&
+            setAutonData({
+              ...autonData,
+              autonShuttleCount: autonData.autonShuttleCount - 1,
+            })
+          }
+          onButtonUp={() =>
+            autonData.autonShuttleCount < 999 &&
+            setAutonData({
+              ...autonData,
+              autonShuttleCount: autonData.autonShuttleCount + 1,
+            })
+          }
+        />
+        <div style="height: 5vh;"></div>
 
-      <div style="height: 5vh;"></div>
+        <div className="dropdown-container-auton">
+          <div className="dropdown-auton">
+            <label style={"color: rgba(255, 255, 255, 0.9)"}>Climb?</label>
+            <select
+              className={"dropdown"}
+              value={autonData.autonClimb}
+              onChange={(e) => {
+                setAutonData({
+                  ...autonData,
+                  autonClimb: e.currentTarget.value as ClimbLevels,
+                });
+              }}
+            >
+              <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
+              <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
+            </select>
+          </div>
 
-      <div className="dropdown-container-auton">
-        <div className="dropdown-auton">
-          <label style={"color: rgba(255, 255, 255, 0.9)"}>Climb?</label>
-          <select
-            className={"dropdown"}
-            value={autonData.autonClimb}
-            onChange={(e) => {
-              setAutonData({
-                ...autonData,
-                autonClimb: e.currentTarget.value as ClimbLevels,
-              });
-            }}
-          >
-            <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
-            <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>
-          </select>
-        </div>
-
-        <div>
-          <div className="checklist-container">
-            <label className="checklist-title">Source?</label>
-            <div className="checklist-item">
-              <input
-                type="checkbox"
-                className="checkmark"
-                checked={autonData.depotSourced}
-                onChange={() =>
-                  setAutonData({
-                    ...autonData,
-                    depotSourced: !autonData.depotSourced,
-                  })
-                }
-              />{" "}
-              <label>Depot</label>
-            </div>
-            <div className="checklist-item">
-              <input
-                type="checkbox"
-                className="checkmark"
-                checked={autonData.outpostSourced}
-                onChange={() =>
-                  setAutonData({
-                    ...autonData,
-                    outpostSourced: !autonData.outpostSourced,
-                  })
-                }
-              />{" "}
-              <label>Outpost</label>
-            </div>
-            <div className="checklist-item">
-              <input
-                type="checkbox"
-                className="checkmark"
-                checked={autonData.neutralZoneSourced}
-                onChange={() =>
-                  setAutonData({
-                    ...autonData,
-                    neutralZoneSourced: !autonData.neutralZoneSourced,
-                  })
-                }
-              />{" "}
-              <label>Neutral Zone</label>
+          <div>
+            <div className="checklist-container">
+              <label className="checklist-title">Source?</label>
+              <div className="checklist-item">
+                <input
+                  type="checkbox"
+                  className="checkmark"
+                  checked={autonData.depotSourced}
+                  onChange={() =>
+                    setAutonData({
+                      ...autonData,
+                      depotSourced: !autonData.depotSourced,
+                    })
+                  }
+                />{" "}
+                <label>Depot</label>
+              </div>
+              <div className="checklist-item">
+                <input
+                  type="checkbox"
+                  className="checkmark"
+                  checked={autonData.outpostSourced}
+                  onChange={() =>
+                    setAutonData({
+                      ...autonData,
+                      outpostSourced: !autonData.outpostSourced,
+                    })
+                  }
+                />{" "}
+                <label>Outpost</label>
+              </div>
+              <div className="checklist-item">
+                <input
+                  type="checkbox"
+                  className="checkmark"
+                  checked={autonData.neutralZoneSourced}
+                  onChange={() =>
+                    setAutonData({
+                      ...autonData,
+                      neutralZoneSourced: !autonData.neutralZoneSourced,
+                    })
+                  }
+                />{" "}
+                <label>Neutral Zone</label>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div
-        className="ButtonsContainers"
-        style={{
-          width: "auto",
-          right: "0px",
-          top: "15px",
-          height: "auto",
-          scale: "80%",
-        }}
-      ></div>
     </>
   );
 };

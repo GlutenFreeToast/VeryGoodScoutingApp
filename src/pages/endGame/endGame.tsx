@@ -15,8 +15,6 @@ export interface EndGameData {
   climbLevel: ClimbLevels;
   Scoring: number;
   Misses: number;
-  HumanScore: number;
-  HumanMisses: number;
 }
 export interface EndgameProps {
   endgameData: EndGameData;
@@ -70,46 +68,6 @@ const endGame: FunctionalComponent<EndgameProps> = ({
             })
           }
         />
-        <Counter
-          name="🙆‍♂️Human Score"
-          count={endgameData.HumanScore}
-          onButtonDown={() =>
-            setEndgameData &&
-            endgameData.HumanScore > 0 &&
-            setEndgameData({
-              ...endgameData,
-              HumanScore: endgameData.HumanScore - 1,
-            })
-          }
-          onButtonUp={() =>
-            setEndgameData &&
-            endgameData.HumanScore < 999 &&
-            setEndgameData({
-              ...endgameData,
-              HumanScore: endgameData.HumanScore + 1,
-            })
-          }
-        />
-        <Counter
-          name="🙎‍♂️Human Misses"
-          count={endgameData.HumanMisses}
-          onButtonDown={() =>
-            setEndgameData &&
-            endgameData.HumanMisses > 0 &&
-            setEndgameData({
-              ...endgameData,
-              HumanMisses: endgameData.HumanMisses - 1,
-            })
-          }
-          onButtonUp={() =>
-            setEndgameData &&
-            endgameData.HumanMisses < 999 &&
-            setEndgameData({
-              ...endgameData,
-              HumanMisses: endgameData.HumanMisses + 1,
-            })
-          }
-        />
       </div>
 
       <div style="height: 5vh;"></div>
@@ -118,14 +76,12 @@ const endGame: FunctionalComponent<EndgameProps> = ({
         className={"dropdown"}
         value={endgameData.climbLevel || ClimbLevels.NO_CLIMB}
         onChange={(e) => {
-
           setEndgameData &&
-          setEndgameData({
-            ...endgameData,
-            climbLevel: e.currentTarget.value as ClimbLevels,
-          });
-        }
-        }
+            setEndgameData({
+              ...endgameData,
+              climbLevel: e.currentTarget.value as ClimbLevels,
+            });
+        }}
       >
         <option value={ClimbLevels.NO_CLIMB}>No Climb</option>
         <option value={ClimbLevels.L1_CLIMB}>L1 Climb</option>

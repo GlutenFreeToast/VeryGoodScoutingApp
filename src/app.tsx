@@ -61,6 +61,7 @@ export function App() {
   const [autonData, setautonData] = useState({
     fuelScored: 0,
     fuelMissed: 0,
+    autonShuttleCount: 0,
     autonClimb: ClimbLevels.NO_CLIMB,
     depotSourced: false,
     outpostSourced: false,
@@ -70,7 +71,6 @@ export function App() {
     shotMade: 0,
     misses: 0,
     ShuttleCount: 0,
-    outPostFed: 0,
   } as ShiftData);
   const [finalizeData, setfinalizeData] = useState({
     notes: "",
@@ -79,13 +79,13 @@ export function App() {
     penalties: 0,
     ranking: 0,
     review: false,
+    defenseRating: 0,
+    speedRating: 0,
   } as FinalizeData);
   const [endgameData, setEndgameData] = useState({
     climbLevel: ClimbLevels.NO_CLIMB,
     Scoring: 0,
     Misses: 0,
-    HumanScore: 0,
-    HumanMisses: 0,
   } as EndGameData);
 
   const resetAllData = () => {
@@ -101,6 +101,7 @@ export function App() {
     setautonData({
       fuelScored: 0,
       fuelMissed: 0,
+      autonShuttleCount: 0,
       autonClimb: ClimbLevels.NO_CLIMB,
       depotSourced: false,
       outpostSourced: false,
@@ -110,7 +111,6 @@ export function App() {
       shotMade: 0,
       misses: 0,
       ShuttleCount: 0,
-      outPostFed: 0,
     });
     setfinalizeData({
       notes: "",
@@ -120,13 +120,12 @@ export function App() {
       ranking: 0,
       review: false,
       defenseRating: 0,
+      speedRating: 0,
     });
     setEndgameData({
       climbLevel: ClimbLevels.NO_CLIMB,
       Scoring: 0,
       Misses: 0,
-      HumanScore: 0,
-      HumanMisses: 0,
     });
   };
 

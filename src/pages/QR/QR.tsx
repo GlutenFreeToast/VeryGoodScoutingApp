@@ -43,21 +43,20 @@ const QR: FunctionalComponent<QRProps> = ({
   const preload = matchData.preload;
   const autoFuelScored = autonData.fuelScored;
   const autoFuelMissed = autonData.fuelMissed;
+  const autoShuttleCount = autonData.autonShuttleCount;
   const autonClimb = autonData.autonClimb ?? null;
   const depotSourced = autonData.depotSourced;
   const outpostSourced = autonData.outpostSourced;
   const neutralZoneSourced = autonData.neutralZoneSourced;
   const shiftShotMade = shiftData.shotMade;
   const shiftShotMissed = shiftData.misses;
-  const outpostFed = shiftData.outPostFed;
   const ShuttleCount = shiftData.ShuttleCount;
   const endgameScoring = endGameData.Scoring;
   const endgameMisses = endGameData.Misses;
-  const endgameHumanScore = endGameData.HumanScore;
-  const endgameHumanMisses = endGameData.HumanMisses;
   const climbLevel = endGameData.climbLevel;
   const notes = finalizeData.notes;
   const defenseRating = finalizeData.defenseRating;
+  const speedRating = finalizeData.speedRating;
   const review = finalizeData.review;
   const redScore = finalizeData.red;
   const blueScore = finalizeData.blue;
@@ -74,20 +73,19 @@ const QR: FunctionalComponent<QRProps> = ({
     preload,
     autoFuelScored,
     autoFuelMissed,
+    autoShuttleCount,
     autonClimb,
     depotSourced,
     outpostSourced,
     neutralZoneSourced,
     shiftShotMade,
     shiftShotMissed,
-    outpostFed,
     ShuttleCount,
     endgameScoring,
     endgameMisses,
-    endgameHumanScore,
-    endgameHumanMisses,
     notes,
     defenseRating,
+    speedRating,
     redScore,
     blueScore,
     penalties,

@@ -102,7 +102,7 @@
   color: #ddd;
   transition: color 0.2s ease;
   padding: 0;
-  line-height: 3;
+  line-height: 1;
   -webkit-tap-highlight-color: transparent;
 }
 

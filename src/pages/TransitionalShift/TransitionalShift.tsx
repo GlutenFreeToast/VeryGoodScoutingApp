@@ -9,7 +9,6 @@ import "./TransitionalShift.css";
 export interface ShiftData {
   shotMade: number;
   misses: number;
-  outPostFed: number;
   ShuttleCount: number;
 }
 
@@ -28,22 +27,17 @@ const Shift: FunctionalComponent<ShiftProps> = ({
   const [shotMade, setshotmade] = useState(0);
   const [misses, setmisses] = useState(0);
   const [ShuttleCount, setShuttleCount] = useState(0);
-  const [outPostFed, setoutPostFed] = useState(0);
 
   useEffect(() => {
     setshotmade(shiftData.shotMade ?? 0);
     setmisses(shiftData.misses ?? 0);
-    setoutPostFed(shiftData.outPostFed ?? 0);
     setShuttleCount(shiftData.ShuttleCount ?? 0);
   }, [shiftData]);
 
   return (
     <>
       <div style="position: relative; height: 2vh; top: 0px;"></div>
-      <div
-        className="pagecontainer"
-        style={{ margin: "2.5vw", height: "68.4vh" }}
-      >
+      <div className="pagecontainer" style={{ margin: "2.5vw" }}>
         <div className="button_container">
           <Counter2
             name="🏀Total Scores"
@@ -86,50 +80,7 @@ const Shift: FunctionalComponent<ShiftProps> = ({
               }
             }}
           ></Counter2>
-          <Counter2
-            name="Outpost Fed"
-            count={outPostFed}
-            onButtonDown={() => {
-              const newData = { ...shiftData } as ShiftData;
-              if (newData.outPostFed > 0) {
-                newData.outPostFed--;
-                setShiftData(newData);
-                setoutPostFed(newData.outPostFed);
-              }
-            }}
-            onButtonUp={() => {
-              const newData = { ...shiftData } as ShiftData;
-              if (newData.outPostFed < 999) {
-                newData.outPostFed++;
-                setShiftData(newData);
-                setoutPostFed(newData.outPostFed);
-              }
-            }}
-          ></Counter2>
-          <Counter2
-            name="🔄️Shuttle Count"
-            count={ShuttleCount}
-            onButtonDown={() => {
-              const newData = { ...shiftData } as ShiftData;
-              if (newData.ShuttleCount > 0) {
-                newData.ShuttleCount--;
-                setShiftData(newData);
-                setShuttleCount(newData.ShuttleCount);
-              }
-            }}
-            onButtonUp={() => {
-              const newData = { ...shiftData } as ShiftData;
-              if (newData.ShuttleCount < 999) {
-                newData.ShuttleCount++;
-                setShiftData(newData);
-                setShuttleCount(newData.ShuttleCount);
-              }
-            }}
-          ></Counter2>
-        </div>
 
-        <div style="height: 2vh;"></div>
-        <div>
           <Counter2
             name="🔄️Shuttle Count"
             count={ShuttleCount}

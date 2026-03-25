@@ -24,6 +24,7 @@
 .addfield {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .fieldset {
@@ -89,4 +90,11 @@
   transform: scale(1.25);
   width: 6.5em;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+input {
+  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* WebKit/Blink */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
 }
