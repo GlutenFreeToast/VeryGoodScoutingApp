@@ -86,6 +86,7 @@ export function App() {
     climbLevel: ClimbLevels.NO_CLIMB,
     Scoring: 0,
     Misses: 0,
+    shuttleCount: 0,
   } as EndGameData);
 
   const resetAllData = () => {
@@ -126,6 +127,7 @@ export function App() {
       climbLevel: ClimbLevels.NO_CLIMB,
       Scoring: 0,
       Misses: 0,
+      shuttleCount: 0,
     });
   };
 

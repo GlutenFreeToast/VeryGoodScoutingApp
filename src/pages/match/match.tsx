@@ -3,7 +3,6 @@ import "../../app.css";
 import "../../pages/match/match.css";
 import type { FunctionalComponent } from "preact";
 import type { StateUpdater, Dispatch } from "preact/hooks";
-import { useState } from "preact/hooks";
 import DiscreteSlider from "../../Components/Slider/Slider.tsx";
 import AllianceSlider from "../../Components/Alliance Slider/AllianceSlider.tsx";
 export interface MatchData {
@@ -25,8 +24,6 @@ const Match: FunctionalComponent<MatchProps> = ({
   matchData: matchData,
   setMatchData: setMatchData,
 }) => {
-  const [show, setShow] = useState(true);
-
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -104,16 +101,20 @@ const Match: FunctionalComponent<MatchProps> = ({
                 onTouchStart={(
                   event: Event & { currentTarget: HTMLButtonElement },
                 ) => {
-                  setShow(!show);
+                  const newData = {
+                    ...matchData,
+                    show: !matchData?.show,
+                  };
+                  setMatchData(newData);
                 }}
                 className={"addbutton"}
                 style={{
-                  backgroundColor: show ? "#4CAF50" : "#FF0000",
+                  backgroundColor: matchData?.show ? "#4CAF50" : "#FF0000",
                   color: "white",
                   marginLeft: "",
                 }}
               >
-                {show ? "Show" : "No Show"}
+                {matchData?.show ? "Show" : "No Show"}
               </button>
             </div>
           </label>

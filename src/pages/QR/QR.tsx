@@ -53,6 +53,7 @@ const QR: FunctionalComponent<QRProps> = ({
   const ShuttleCount = shiftData.ShuttleCount;
   const endgameScoring = endGameData.Scoring;
   const endgameMisses = endGameData.Misses;
+  const endgameShuttleCount = endGameData.shuttleCount;
   const climbLevel = endGameData.climbLevel;
   const notes = finalizeData.notes;
   const defenseRating = finalizeData.defenseRating;
@@ -83,6 +84,7 @@ const QR: FunctionalComponent<QRProps> = ({
     ShuttleCount,
     endgameScoring,
     endgameMisses,
+    endgameShuttleCount,
     notes,
     defenseRating,
     speedRating,

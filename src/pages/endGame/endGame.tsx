@@ -1,7 +1,6 @@
 import "../global.css";
 import type { FunctionalComponent } from "preact";
 import type { Dispatch, StateUpdater } from "preact/hooks";
-import Counter from "../../Components/Counter/Counter.tsx";
 import Counter2 from "../../Components/Counter/Counter2";
 
 export enum ClimbLevels {
@@ -15,6 +14,7 @@ export interface EndGameData {
   climbLevel: ClimbLevels;
   Scoring: number;
   Misses: number;
+  shuttleCount: number;
 }
 export interface EndgameProps {
   endgameData: EndGameData;
@@ -65,6 +65,26 @@ const endGame: FunctionalComponent<EndgameProps> = ({
             setEndgameData({
               ...endgameData,
               Misses: endgameData.Misses + 1,
+            })
+          }
+        />
+        <Counter2
+          name="Shuttle Count"
+          count={endgameData.shuttleCount}
+          onButtonDown={() =>
+            setEndgameData &&
+            endgameData.shuttleCount > 0 &&
+            setEndgameData({
+              ...endgameData,
+              shuttleCount: endgameData.shuttleCount - 1,
+            })
+          }
+          onButtonUp={() =>
+            setEndgameData &&
+            endgameData.shuttleCount < 999 &&
+            setEndgameData({
+              ...endgameData,
+              shuttleCount: endgameData.shuttleCount + 1,
             })
           }
         />

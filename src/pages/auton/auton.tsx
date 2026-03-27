@@ -40,7 +40,7 @@ const Auton: FunctionalComponent<AutonProps> = ({
               })
             }
             onButtonUp={() =>
-              autonData.fuelScored < 99 &&
+              autonData.fuelScored < 999 &&
               setAutonData({
                 ...autonData,
                 fuelScored: autonData.fuelScored + 1,
